@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { portfolioData } from "@/constants/portfolioData";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function Hero() {
   const { profile } = portfolioData;
@@ -138,25 +139,24 @@ export function Hero() {
             Especializado en interfaces web modernas, asimétricas y con experiencias interactivas de alto impacto visual.
           </p>
 
-          <a
-            href="#projects"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-display font-bold uppercase tracking-wider text-sm rounded-full overflow-hidden transition-transform duration-300 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
-          >
-            <span>Ver proyectos</span>
-            <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
+          <MagneticButton href="#projects">
+            <div className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-display font-bold uppercase tracking-wider text-sm rounded-full overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              <span>Ver proyectos</span>
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </div>
+          </MagneticButton>
         </motion.div>
       </div>
 
