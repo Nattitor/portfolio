@@ -21,7 +21,7 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData = {
   profile: {
-    name: "John Doe", // TODO: Replace with your actual name
+    name: "Freddy Guerra",
     role: "Web Developer",
     location: "Merlo, Buenos Aires, Argentina",
     availability: "Available for remote work",
