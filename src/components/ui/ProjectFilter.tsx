@@ -14,7 +14,11 @@ export function ProjectFilter({
   onSelectFilter,
 }: ProjectFilterProps) {
   return (
-    <div className="flex flex-wrap items-center gap-2 mb-10">
+    <div
+      role="group"
+      aria-label="Filter projects by technology"
+      className="flex flex-wrap items-center gap-2 mb-10"
+    >
       {categories.map((category) => {
         const isActive = activeFilter === category;
         return (

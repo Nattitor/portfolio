@@ -44,7 +44,7 @@ export function ProjectCard({
 
   return (
     <motion.article
-      layout
+      layout="position"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9 }}
@@ -69,13 +69,18 @@ export function ProjectCard({
         </span>
       </div>
 
-      {/* Mock Glassmorphism Image Container */}
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 flex flex-col items-center justify-center p-6 mb-6 glass-card group-hover:border-white/20 transition-colors">
-        <div className="absolute inset-0 bg-accentCyan/5 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity pointer-events-none" />
-        <span className="font-display font-bold text-lg md:text-xl text-zinc-300 text-center tracking-wide uppercase select-none group-hover:text-white transition-colors">
+      {/* Mock Glassmorphism Image Container with Brutalist Noise */}
+      <div
+        className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 flex flex-col items-center justify-center p-6 mb-6 glass-card group-hover:border-white/20 transition-colors"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
+        }}
+      >
+        <div className="absolute inset-0 bg-accentCyan/10 opacity-0 group-hover:opacity-100 blur-3xl transition-opacity pointer-events-none mix-blend-screen" />
+        <span className="relative z-10 font-display font-bold text-lg md:text-xl text-zinc-300 text-center tracking-wide uppercase select-none group-hover:text-white transition-colors">
           {project.title}
         </span>
-        <span className="mt-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+        <span className="relative z-10 mt-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
           Preview Unavailable
         </span>
       </div>
@@ -99,7 +104,7 @@ export function ProjectCard({
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="rounded-md border border-white/10 bg-zinc-900/80 px-2.5 py-1 text-xs font-mono text-zinc-300 transition-colors hover:border-accentCyan/40 hover:text-accentCyan"
+                className="rounded-md border border-zinc-700 bg-zinc-900/80 px-2.5 py-1 text-xs font-mono text-zinc-300 transition-colors hover:border-accentCyan/50 hover:text-white"
               >
                 {tech}
               </span>
