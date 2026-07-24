@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Project } from "@/constants/portfolioData";
 
 interface ProjectCardProps {
@@ -14,7 +17,13 @@ export function ProjectCard({
   const formattedIndex = String(index + 1).padStart(2, "0");
 
   return (
-    <article
+    <motion.article
+      layout
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -6 }}
       className={`group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-zinc-950/40 p-6 md:p-8 backdrop-blur-md transition-all duration-300 hover:border-accentCyan/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.08)] ${
         featured ? "md:col-span-2" : "col-span-1"
       }`}
@@ -23,7 +32,7 @@ export function ProjectCard({
       <div className="flex items-center justify-between gap-4 mb-4">
         {project.category ? (
           <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accentCyan">
-            <span className="h-1.5 w-1.5 rounded-full bg-accentCyan" />
+            <span className="h-1.5 w-1.5 rounded-full bg-accentCyan animate-pulse" />
             {project.category}
           </span>
         ) : (
@@ -78,7 +87,7 @@ export function ProjectCard({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black bg-white px-4 py-2 rounded-full hover:bg-accentCyan transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black bg-white px-4 py-2 rounded-full hover:bg-accentCyan transition-colors shadow-sm"
               >
                 <span>Live Demo</span>
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,6 +112,6 @@ export function ProjectCard({
           </div>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
