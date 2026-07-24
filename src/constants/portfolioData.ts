@@ -8,6 +8,7 @@ export interface Profile {
 export interface Project {
   id: string;
   title: string;
+  category?: string;
   shortDescription: string;
   technologies: string[];
   liveUrl: string;
@@ -29,19 +30,39 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: "project-1",
-      title: "Modern E-Commerce",
-      shortDescription: "A fast, asymmetric e-commerce platform with glassmorphism elements.",
-      technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
-      liveUrl: "",
-      repoUrl: "",
+      title: "Apex SaaS Engine",
+      category: "Full-Stack",
+      shortDescription: "Enterprise resource and analytics management dashboard built for high-scale workflows.",
+      technologies: ["Next.js", "Tailwind CSS", "Supabase", "PostgreSQL"],
+      liveUrl: "#",
+      repoUrl: "#",
     },
     {
       id: "project-2",
-      title: "Interactive Dashboard",
-      shortDescription: "A brutalist-minimalist dashboard for real-time analytics visualization.",
-      technologies: ["React", "Framer Motion", "Zustand"],
-      liveUrl: "",
-      repoUrl: "",
+      title: "NeuraMind AI",
+      category: "AI Integration",
+      shortDescription: "Next-gen intelligent workspace integrating generative AI for creative content workflows.",
+      technologies: ["React", "Node.js", "Gemini API", "Framer Motion"],
+      liveUrl: "#",
+      repoUrl: "#",
+    },
+    {
+      id: "project-3",
+      title: "VogueVault Storefront",
+      category: "Transactional Logic",
+      shortDescription: "A modern, lightning-fast e-commerce engine with full Stripe API integration.",
+      technologies: ["Next.js", "Zustand", "Stripe API", "Tailwind CSS"],
+      liveUrl: "#",
+      repoUrl: "#",
+    },
+    {
+      id: "project-4",
+      title: "PulseStream Hub",
+      category: "Sockets & Interactivity",
+      shortDescription: "Low-latency real-time collaborative workspace powered by WebSocket architecture.",
+      technologies: ["React", "Express", "Socket.io", "Tailwind CSS"],
+      liveUrl: "#",
+      repoUrl: "#",
     },
   ],
 };
