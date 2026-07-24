@@ -3,51 +3,104 @@ import { Project } from "@/constants/portfolioData";
 interface ProjectCardProps {
   project: Project;
   featured?: boolean;
+  index?: number;
 }
 
-export function ProjectCard({ project, featured = false }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  featured = false,
+  index = 0,
+}: ProjectCardProps) {
+  const formattedIndex = String(index + 1).padStart(2, "0");
+
   return (
     <article
-      className={`group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-zinc-950/40 p-6 md:p-8 backdrop-blur-md ${
+      className={`group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-zinc-950/40 p-6 md:p-8 backdrop-blur-md transition-all duration-300 hover:border-accentCyan/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.08)] ${
         featured ? "md:col-span-2" : "col-span-1"
       }`}
     >
+      {/* Top Header Row: Index & Category */}
+      <div className="flex items-center justify-between gap-4 mb-4">
+        {project.category ? (
+          <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accentCyan">
+            <span className="h-1.5 w-1.5 rounded-full bg-accentCyan" />
+            {project.category}
+          </span>
+        ) : (
+          <div />
+        )}
+        <span className="font-mono text-xs text-zinc-600 font-bold tracking-widest">
+          [{formattedIndex}]
+        </span>
+      </div>
+
       {/* Mock Glassmorphism Image Container */}
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 flex items-center justify-center p-6 mb-6 glass-card">
-        <div className="absolute inset-0 bg-accentCyan/5 opacity-50 blur-xl pointer-events-none" />
-        <span className="font-display font-bold text-lg md:text-xl text-zinc-300 text-center tracking-wide uppercase select-none">
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 flex flex-col items-center justify-center p-6 mb-6 glass-card group-hover:border-white/20 transition-colors">
+        <div className="absolute inset-0 bg-accentCyan/5 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity pointer-events-none" />
+        <span className="font-display font-bold text-lg md:text-xl text-zinc-300 text-center tracking-wide uppercase select-none group-hover:text-white transition-colors">
           {project.title}
+        </span>
+        <span className="mt-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+          Preview Unavailable
         </span>
       </div>
 
       {/* Content */}
       <div className="flex flex-col justify-between flex-grow">
         <div>
-          {project.category && (
-            <div className="text-xs font-mono uppercase tracking-widest text-accentCyan mb-2">
-              // {project.category}
-            </div>
-          )}
-
-          <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-3">
+          <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-3 group-hover:text-accentCyan transition-colors">
             {project.title}
           </h3>
 
-          <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6">
+          <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6 font-normal">
             {project.shortDescription}
           </p>
         </div>
 
-        {/* Tech Pills */}
-        <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
-          {project.technologies.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-zinc-300"
-            >
-              {tech}
-            </span>
-          ))}
+        {/* Bottom Metadata: Tech Pills & Action Buttons */}
+        <div className="flex flex-col gap-4 pt-4 border-t border-white/10">
+          {/* Tech Pills */}
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-md border border-white/10 bg-zinc-900/80 px-2.5 py-1 text-xs font-mono text-zinc-300 transition-colors hover:border-accentCyan/40 hover:text-accentCyan"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Action Links */}
+          <div className="flex items-center gap-3 pt-2">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black bg-white px-4 py-2 rounded-full hover:bg-accentCyan transition-colors"
+              >
+                <span>Live Demo</span>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            )}
+
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 border border-white/10 bg-white/5 px-4 py-2 rounded-full hover:border-white/30 hover:text-white transition-colors"
+              >
+                <span>Source Code</span>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </article>

@@ -22,6 +22,7 @@ export function ProjectsSection() {
           <ProjectCard
             key={project.id}
             project={project}
+            index={index}
             featured={index === 0}
           />
         ))}
