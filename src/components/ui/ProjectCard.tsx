@@ -9,6 +9,32 @@ interface ProjectCardProps {
   index?: number;
 }
 
+// Micro-component for Action Links (DRY refactor)
+function ActionLink({ href, type, label }: { href: string; type: "primary" | "secondary"; label: string }) {
+  const isPrimary = type === "primary";
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider rounded-full transition-colors ${
+        isPrimary
+          ? "text-black bg-white px-4 py-2 hover:bg-accentCyan shadow-sm"
+          : "text-zinc-300 border border-white/10 bg-white/5 px-4 py-2 hover:border-white/30 hover:text-white"
+      }`}
+    >
+      <span>{label}</span>
+      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {isPrimary ? (
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        ) : (
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        )}
+      </svg>
+    </a>
+  );
+}
+
 export function ProjectCard({
   project,
   featured = false,
@@ -83,31 +109,10 @@ export function ProjectCard({
           {/* Action Links */}
           <div className="flex items-center gap-3 pt-2">
             {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black bg-white px-4 py-2 rounded-full hover:bg-accentCyan transition-colors shadow-sm"
-              >
-                <span>Live Demo</span>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
+              <ActionLink href={project.liveUrl} type="primary" label="Live Demo" />
             )}
-
             {project.repoUrl && (
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 border border-white/10 bg-white/5 px-4 py-2 rounded-full hover:border-white/30 hover:text-white transition-colors"
-              >
-                <span>Source Code</span>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </a>
+              <ActionLink href={project.repoUrl} type="secondary" label="Source Code" />
             )}
           </div>
         </div>

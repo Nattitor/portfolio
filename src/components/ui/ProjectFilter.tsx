@@ -28,7 +28,7 @@ export function ProjectFilter({
           >
             {isActive && (
               <motion.div
-                layoutId="active-filter-pill"
+                layoutId="projects-active-filter"
                 className="absolute inset-0 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.25)] z-0"
                 transition={{ type: "spring", stiffness: 350, damping: 30 }}
               />

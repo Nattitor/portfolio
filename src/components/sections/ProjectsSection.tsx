@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { portfolioData } from "@/constants/portfolioData";
 import { ProjectCard } from "@/components/ui/ProjectCard";
@@ -10,23 +10,26 @@ export function ProjectsSection() {
   const { projects } = portfolioData;
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  // Dynamically extract categories for filtering
-  const categories = [
-    "All",
-    ...Array.from(
-      new Set(
-        projects
-          .map((project) => project.category)
-          .filter((cat): cat is string => Boolean(cat))
-      )
-    ),
-  ];
+  // Dynamically extract categories for filtering (memoized)
+  const categories = useMemo(() => {
+    return [
+      "All",
+      ...Array.from(
+        new Set(
+          projects
+            .map((project) => project.category)
+            .filter((cat): cat is string => Boolean(cat))
+        )
+      ),
+    ];
+  }, [projects]);
 
-  // Derived filtered projects list
-  const filteredProjects =
-    activeFilter === "All"
+  // Derived filtered projects list (memoized)
+  const filteredProjects = useMemo(() => {
+    return activeFilter === "All"
       ? projects
       : projects.filter((project) => project.category === activeFilter);
+  }, [activeFilter, projects]);
 
   return (
     <section id="projects" className="relative w-full px-6 py-20 md:px-16 lg:px-24">
