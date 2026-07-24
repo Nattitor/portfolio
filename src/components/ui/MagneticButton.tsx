@@ -18,9 +18,9 @@ export function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
 
-  // Configured with high-responsiveness spring physics
-  const x = useSpring(0, { stiffness: 200, damping: 15, mass: 0.1 });
-  const y = useSpring(0, { stiffness: 200, damping: 15, mass: 0.1 });
+  // Configured with heavy, industrial spring physics
+  const x = useSpring(0, { stiffness: 350, damping: 25, mass: 0.5 });
+  const y = useSpring(0, { stiffness: 350, damping: 25, mass: 0.5 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!ref.current) return;

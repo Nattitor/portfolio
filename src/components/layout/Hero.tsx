@@ -73,6 +73,10 @@ export function Hero() {
         DEV
       </motion.div>
 
+      {/* Ambient glowing orbs for Glassmorphism refraction */}
+      <div className="absolute top-1/2 left-1/4 w-[30rem] h-[30rem] bg-accentCyan/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" aria-hidden="true" />
+      <div className="absolute bottom-0 right-0 w-[40rem] h-[30rem] bg-accentViolet/10 rounded-full blur-[150px] translate-x-1/4 translate-y-1/4 pointer-events-none z-0" aria-hidden="true" />
+
       {/* Top Asymmetric Bar: Status & Location */}
       <motion.div
         variants={topBarVariants}
@@ -128,7 +132,7 @@ export function Hero() {
           variants={contentFadeInVariants}
           initial="hidden"
           animate="visible"
-          className="mt-8 md:mt-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-8"
+          className="mt-16 md:mt-24 flex flex-col items-start md:items-end md:text-right md:ml-auto w-full md:w-2/3 lg:w-1/2 gap-8"
         >
           <p className="max-w-lg text-zinc-400 text-lg md:text-xl lg:text-2xl font-normal leading-relaxed">
             Especializado en interfaces web modernas, asimétricas y con experiencias interactivas de alto impacto visual.
