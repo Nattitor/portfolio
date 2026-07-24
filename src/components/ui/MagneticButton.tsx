@@ -16,13 +16,13 @@ export function MagneticButton({
   onClick,
   className = "",
 }: MagneticButtonProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
 
   // Configured with high-responsiveness spring physics
   const x = useSpring(0, { stiffness: 200, damping: 15, mass: 0.1 });
   const y = useSpring(0, { stiffness: 200, damping: 15, mass: 0.1 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
@@ -41,29 +41,31 @@ export function MagneticButton({
     y.set(0);
   };
 
-  const buttonWrapper = (
-    <motion.div
+  if (href) {
+    return (
+      <motion.a
+        href={href}
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ x, y }}
+        className={`inline-block ${className}`}
+      >
+        {children}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.button
       ref={ref}
+      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x, y }}
       className={`inline-block ${className}`}
     >
       {children}
-    </motion.div>
-  );
-
-  if (href) {
-    return (
-      <a href={href} className="inline-block">
-        {buttonWrapper}
-      </a>
-    );
-  }
-
-  return (
-    <button onClick={onClick} className="inline-block">
-      {buttonWrapper}
-    </button>
+    </motion.button>
   );
 }

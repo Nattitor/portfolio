@@ -1,8 +1,58 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { portfolioData } from "@/constants/portfolioData";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { StatusBadge } from "@/components/ui/StatusBadge";
+
+// Extracted Variants to prevent re-creation on every render (Performance Optimization)
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const letterVariants: Variants = {
+  hidden: { y: "120%", opacity: 0 },
+  visible: {
+    y: "0%",
+    opacity: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+const contentFadeInVariants: Variants = {
+  hidden: { y: 24, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.8,
+    },
+  },
+};
+
+const topBarVariants: Variants = {
+  hidden: { y: -20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 export function Hero() {
   const { profile } = portfolioData;
@@ -10,60 +60,11 @@ export function Hero() {
   const [firstName, ...lastNameParts] = profile.name.split(" ");
   const lastName = lastNameParts.join(" ");
 
-  // Variants for staggered title reveal
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.04,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const letterVariants = {
-    hidden: { y: "120%", opacity: 0 },
-    visible: {
-      y: "0%",
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
-
-  // Variant for description & CTA button
-  const contentFadeInVariants = {
-    hidden: { y: 24, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
-        delay: 0.8,
-      },
-    },
-  };
-
-  const topBarVariants = {
-    hidden: { y: -20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-between px-6 py-12 md:px-16 md:py-20 lg:px-24 overflow-hidden pt-24 md:pt-32">
-      {/* Background Decorative Watermark */}
+      {/* Background Decorative Watermark - aria-hidden for accessibility */}
       <motion.div
+        aria-hidden="true"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
@@ -79,15 +80,9 @@ export function Hero() {
         animate="visible"
         className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6"
       >
-        <div className="flex items-center gap-3 glass-card px-4 py-2 rounded-full text-xs md:text-sm font-medium">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accentCyan opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accentCyan"></span>
-          </span>
-          <span className="text-zinc-300">{profile.availability}</span>
-        </div>
+        <StatusBadge statusText={profile.availability} />
 
-        <div className="text-xs md:text-sm text-zinc-500 font-mono tracking-wide">
+        <div className="text-xs md:text-sm text-zinc-400 font-mono tracking-wide">
           📍 {profile.location}
         </div>
       </motion.div>
@@ -119,7 +114,7 @@ export function Hero() {
             ))}
           </span>
           <br />
-          <span className="text-gradient-accent ml-4 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-1">
+          <span className="text-stroke-white ml-4 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-1">
             {lastName.split("").map((char, index) => (
               <motion.span key={`last-${index}`} variants={letterVariants} className="inline-block">
                 {char === " " ? "\u00A0" : char}
@@ -135,7 +130,7 @@ export function Hero() {
           animate="visible"
           className="mt-8 md:mt-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-8"
         >
-          <p className="max-w-md text-zinc-400 text-base md:text-lg font-normal leading-relaxed">
+          <p className="max-w-lg text-zinc-400 text-lg md:text-xl lg:text-2xl font-normal leading-relaxed">
             Especializado en interfaces web modernas, asimétricas y con experiencias interactivas de alto impacto visual.
           </p>
 

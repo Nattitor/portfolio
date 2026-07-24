@@ -67,4 +67,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .text-stroke-white {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+    color: transparent;
+  }
 }
