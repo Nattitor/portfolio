@@ -66,16 +66,28 @@ export function ProjectsSection() {
       {/* Animated Asymmetric Grid */}
       <motion.div
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative"
       >
-        <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="wait">
           {filteredProjects.map((project, index) => (
-            <ProjectCard
+            <motion.div
               key={project.id}
-              project={project}
-              index={index}
-              featured={activeFilter === "All" && index === 0}
-            />
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
+              transition={{
+                layout: { type: "spring", stiffness: 300, damping: 30 },
+                duration: 0.2,
+              }}
+              className={activeFilter === "All" && index === 0 ? "md:col-span-2" : "col-span-1"}
+            >
+              <ProjectCard
+                project={project}
+                index={index}
+                featured={activeFilter === "All" && index === 0}
+              />
+            </motion.div>
           ))}
         </AnimatePresence>
       </motion.div>

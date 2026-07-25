@@ -44,15 +44,8 @@ export function ProjectCard({
 
   return (
     <motion.article
-      layout="position"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6 }}
-      className={`group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-zinc-950/40 p-6 md:p-8 backdrop-blur-md transition-all duration-300 hover:border-accentCyan/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.08)] ${
-        featured ? "md:col-span-2" : "col-span-1"
-      }`}
+      className="group relative flex h-full w-full flex-col justify-between rounded-2xl border border-white/10 bg-zinc-950/40 p-6 md:p-8 backdrop-blur-md transition-all duration-300 hover:border-accentCyan/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.08)]"
     >
       {/* Top Header Row: Index & Category */}
       <div className="flex items-center justify-between gap-4 mb-4">
