@@ -61,7 +61,7 @@ export function Hero() {
   const lastName = lastNameParts.join(" ");
 
   return (
-    <section id="home" className="relative min-h-screen w-full flex flex-col justify-between px-6 py-12 md:px-16 md:py-20 lg:px-24 overflow-hidden pt-24 md:pt-32">
+    <section id="home" className="relative min-h-screen w-full flex flex-col justify-between px-6 py-12 md:px-16 md:py-20 lg:px-24 overflow-hidden overflow-x-hidden pt-24 md:pt-32">
       {/* Background Decorative Watermark - aria-hidden for accessibility */}
       <motion.div
         aria-hidden="true"
