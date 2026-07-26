@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { bentoVariants } from "@/lib/motion";
 
+import { LiveClock } from "@/components/ui/LiveClock";
+
 export function LocationCard() {
   return (
     <motion.div
@@ -27,7 +29,11 @@ export function LocationCard() {
       
       <div className="relative z-10 mt-24">
         <h3 className="text-xl font-display font-bold text-white">Merlo, Buenos Aires</h3>
-        <p className="text-sm font-mono text-zinc-400 mt-1 uppercase tracking-wider">Argentina (GMT-3)</p>
+        <div className="flex items-center gap-2 mt-2">
+          <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider">Argentina (GMT-3)</p>
+          <span className="text-zinc-600 font-mono">•</span>
+          <LiveClock />
+        </div>
       </div>
     </motion.div>
   );
