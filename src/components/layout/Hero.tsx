@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import { useI18n } from "@/context/I18nContext";
 import { portfolioData } from "@/constants/portfolioData";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { StatusBadge } from "@/components/ui/StatusBadge";
@@ -56,6 +57,7 @@ const topBarVariants: Variants = {
 
 export function Hero() {
   const { profile } = portfolioData;
+  const { t } = useI18n();
 
   const [firstName, ...lastNameParts] = profile.name.split(" ");
   const lastName = lastNameParts.join(" ");
@@ -84,10 +86,10 @@ export function Hero() {
         animate="visible"
         className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6"
       >
-        <StatusBadge statusText={profile.availability} />
+        <StatusBadge statusText={t.hero.availability} />
 
         <div className="text-xs md:text-sm text-zinc-400 font-mono tracking-wide">
-          📍 {profile.location}
+          📍 {t.hero.location}
         </div>
       </motion.div>
 
@@ -100,7 +102,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="inline-block text-accentCyan font-mono text-sm md:text-base uppercase tracking-widest mb-4"
         >
-          // {profile.role}
+          // {t.hero.role}
         </motion.div>
 
         {/* Gigantic Asymmetric Heading with Letter Reveal */}

@@ -3,23 +3,20 @@
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
-interface NavLink {
-  name: string;
-  href: string;
-}
-
-const navLinks: NavLink[] = [
-  { name: "Home", href: "#home" },
-  { name: "Projects", href: "#projects" },
-  { name: "About", href: "#about" },
-];
+import { useI18n } from "@/context/I18nContext";
 
 export function Navbar() {
   const [active, setActive] = useState<string>("Home");
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [lastY, setLastY] = useState(0);
+  const { t, language, setLanguage } = useI18n();
+
+  const translatedNavLinks = [
+    { name: "Home", label: t.nav.home, href: "#home" },
+    { name: "Projects", label: t.nav.projects, href: "#projects" },
+    { name: "About", label: t.nav.about, href: "#about" },
+  ];
 
   // 1. Smart Floating: Hide on scroll down, show on scroll up
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -34,19 +31,17 @@ export function Navbar() {
   // 2. Scroll Spy: Update active tab based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      // Check if user is near top of page -> Home
       if (window.scrollY < 200) {
         if (active !== "Home") setActive("Home");
         return;
       }
 
-      // Check if user is at the absolute bottom of the page -> About
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
         if (active !== "About") setActive("About");
         return;
       }
 
-      const sections = navLinks
+      const sections = translatedNavLinks
         .map((link) => document.querySelector(link.href))
         .filter((el): el is HTMLElement => el !== null);
 
@@ -55,7 +50,7 @@ export function Navbar() {
       for (const section of sections) {
         const rect = section.getBoundingClientRect();
         if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 3) {
-          const match = navLinks.find((link) => link.href === `#${section.id}`);
+          const match = translatedNavLinks.find((link) => link.href === `#${section.id}`);
           if (match) currentActive = match.name;
         }
       }
@@ -68,7 +63,7 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Check on mount
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [active]);
+  }, [active, translatedNavLinks]);
 
   return (
     <motion.div
@@ -78,7 +73,7 @@ export function Navbar() {
       className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2"
     >
       <nav className="flex items-center gap-1 rounded-full border border-white/10 bg-zinc-950/60 px-2 py-2 backdrop-blur-xl shadow-2xl">
-        {navLinks.map((link) => {
+        {translatedNavLinks.map((link) => {
           const isActive = active === link.name;
           return (
             <Link
@@ -97,10 +92,22 @@ export function Navbar() {
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
-              <span className="relative z-10">{link.name}</span>
+              <span className="relative z-10">{link.label}</span>
             </Link>
           );
         })}
+        
+        {/* Divider */}
+        <div className="w-[1px] h-6 bg-white/20 mx-1" /> 
+        
+        {/* i18n Toggle */}
+        <button
+          onClick={() => setLanguage(language === "es" ? "en" : "es")}
+          className="relative rounded-full px-4 py-2.5 text-sm font-medium transition-colors text-zinc-400 hover:text-white uppercase tracking-wider"
+          aria-label="Toggle Language"
+        >
+          {language}
+        </button>
       </nav>
     </motion.div>
   );

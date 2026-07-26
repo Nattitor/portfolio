@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Project } from "@/constants/portfolioData";
 import { ActionLink } from "@/components/ui/ActionLink";
+import { useI18n } from "@/context/I18nContext";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,12 +11,9 @@ interface ProjectCardProps {
   index?: number;
 }
 
-export function ProjectCard({
-  project,
-  featured = false,
-  index = 0,
-}: ProjectCardProps) {
-  const formattedIndex = String(index + 1).padStart(2, "0");
+export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+  const formattedIndex = (index + 1).toString().padStart(2, "0");
+  const { t } = useI18n();
 
   return (
     <motion.article
@@ -55,7 +53,7 @@ export function ProjectCard({
           {project.title}
         </span>
         <span className="relative z-10 mt-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-          Preview Unavailable
+          {t.projects.previewUnavailable}
         </span>
       </div>
 
@@ -88,10 +86,10 @@ export function ProjectCard({
           {/* Action Links */}
           <div className="flex items-center gap-3 pt-2">
             {project.liveUrl && (
-              <ActionLink href={project.liveUrl} type="primary" label="Live Demo" />
+              <ActionLink href={project.liveUrl} type="primary" label={t.projects.liveDemo} />
             )}
             {project.repoUrl && (
-              <ActionLink href={project.repoUrl} type="secondary" label="Source Code" />
+              <ActionLink href={project.repoUrl} type="secondary" label={t.projects.sourceCode} />
             )}
           </div>
         </div>

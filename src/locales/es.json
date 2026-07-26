@@ -13,6 +13,8 @@
   },
   "projects": {
     "sectionTitle": "Obras Destacadas",
+    "heading1": "Proyectos",
+    "heading2": "Destacados",
     "previewUnavailable": "Vista Previa No Disponible",
     "liveDemo": "Demo en Vivo",
     "sourceCode": "Código Fuente",
@@ -49,7 +51,9 @@
     "contact": {
       "letsTalk": "// HABLEMOS",
       "success": "// ÉXITO",
-      "copied": "¡Copiado al Portapapeles!"
+      "copied": "¡Copiado al Portapapeles!",
+      "ready": "Listo para pegar",
+      "click": "Clic para copiar email"
     }
   }
 }

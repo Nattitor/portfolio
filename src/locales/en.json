@@ -13,6 +13,8 @@
   },
   "projects": {
     "sectionTitle": "Selected Works",
+    "heading1": "Featured",
+    "heading2": "Projects",
     "previewUnavailable": "Preview Unavailable",
     "liveDemo": "Live Demo",
     "sourceCode": "Source Code",
@@ -49,7 +51,9 @@
     "contact": {
       "letsTalk": "// LET'S TALK",
       "success": "// SUCCESS",
-      "copied": "Copied to Clipboard!"
+      "copied": "Copied to Clipboard!",
+      "ready": "Ready to paste",
+      "click": "Click to copy email address"
     }
   }
 }

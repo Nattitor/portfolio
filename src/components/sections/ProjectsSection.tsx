@@ -5,9 +5,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { portfolioData } from "@/constants/portfolioData";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { ProjectFilter } from "@/components/ui/ProjectFilter";
+import { useI18n } from "@/context/I18nContext";
 
 export function ProjectsSection() {
-  const { projects } = portfolioData;
+  const { t } = useI18n();
+  const baseProjects = portfolioData.projects;
+
+  // Translate projects on the fly
+  const projects = useMemo(() => {
+    return baseProjects.map((p) => {
+      const translation = t.projects.items[p.id as keyof typeof t.projects.items];
+      return {
+        ...p,
+        title: translation?.title || p.title,
+        category: translation?.category || p.category,
+        shortDescription: translation?.description || p.shortDescription,
+      };
+    });
+  }, [baseProjects, t]);
+
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
   // Dynamically extract categories for filtering (memoized)
@@ -42,10 +58,10 @@ export function ProjectsSection() {
         className="mb-10 md:mb-12"
       >
         <div className="text-accentCyan font-mono text-sm md:text-base uppercase tracking-widest mb-3">
-          // SELECTED WORKS
+          // {t.projects.sectionTitle.toUpperCase()}
         </div>
         <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight">
-          Proyectos <span className="text-stroke-white">Destacados</span>
+          {t.projects.heading1} <span className="text-stroke-white">{t.projects.heading2}</span>
         </h2>
       </motion.div>
 
