@@ -10,11 +10,12 @@ const wrap = (min: number, max: number, v: number) => {
 };
 
 export function TechMarquee() {
-  const technologies = [
+  const baseTech = [
     "REACT", "NEXT.JS", "TYPESCRIPT", "TAILWIND CSS", 
-    "FRAMER MOTION", "NODE.JS", "SUPABASE", "POSTGRESQL",
-    "REACT", "NEXT.JS", "TYPESCRIPT", "TAILWIND CSS", 
+    "FRAMER MOTION", "NODE.JS", "SUPABASE", "POSTGRESQL"
   ];
+  // Duplicación perfecta para que el loop matemático del -50% sea invisible
+  const technologies = [...baseTech, ...baseTech];
 
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
@@ -28,17 +29,12 @@ export function TechMarquee() {
   });
 
   const [isHovered, setIsHovered] = useState(false);
-  // Cambiamos a 1 para que el movimiento sea negativo (De Derecha a Izquierda)
   const directionFactor = useRef<number>(1);
 
   useAnimationFrame((t, delta) => {
-    // Reducimos la velocidad base de 10 a 4 para que sea más relajado
     let moveBy = directionFactor.current * -1 * (delta / 1000) * 4; 
-
-    // Accelerate based on scroll velocity
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
 
-    // Pause / massive slow down on hover
     if (isHovered) {
       moveBy *= 0.05; 
     }
@@ -46,7 +42,8 @@ export function TechMarquee() {
     baseX.set(baseX.get() + moveBy);
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(0, -50, v)}%`);
+  // wrap(-50, 0, v) es más seguro que wrap(0, -50, v)
+  const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
 
   return (
     <motion.div
@@ -59,7 +56,7 @@ export function TechMarquee() {
       <div className="absolute right-0 w-24 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
       
       <motion.div 
-        className="flex w-[200%] whitespace-nowrap"
+        className="flex w-max whitespace-nowrap"
         style={{ x, willChange: "transform" }}
       >
         {technologies.map((tech, index) => (
