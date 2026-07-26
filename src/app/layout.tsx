@@ -21,16 +21,20 @@ export const metadata: Metadata = {
   description: "Portfolio of Freddy Guerra, Web Developer based in Merlo, Buenos Aires, Argentina.",
 };
 
+import { I18nProvider } from "@/context/I18nContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <body className="font-body bg-darkBg text-zinc-100 antialiased select-none overflow-x-hidden max-w-[100vw] selection:bg-accentCyan selection:text-black">
-        <Navbar />
-        {children}
+        <I18nProvider>
+          <Navbar />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

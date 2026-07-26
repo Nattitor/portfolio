@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre Mí",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "role": "Desarrollador Web",
+    "location": "Merlo, Buenos Aires, Argentina",
+    "availability": "Disponible para trabajo remoto",
+    "scrollDown": "Desplazar Abajo"
+  },
+  "projects": {
+    "sectionTitle": "Obras Destacadas",
+    "previewUnavailable": "Vista Previa No Disponible",
+    "liveDemo": "Demo en Vivo",
+    "sourceCode": "Código Fuente",
+    "items": {
+      "project-1": {
+        "category": "Full-Stack",
+        "title": "Apex SaaS Engine",
+        "description": "Dashboard de gestión de recursos y analíticas empresariales construido para flujos de trabajo a gran escala."
+      },
+      "project-2": {
+        "category": "Integración IA",
+        "title": "NeuraMind AI",
+        "description": "Espacio de trabajo inteligente de próxima generación que integra IA generativa para flujos de contenido creativo."
+      },
+      "project-3": {
+        "category": "Lógica Transaccional",
+        "title": "VogueVault Storefront",
+        "description": "Un motor de comercio electrónico moderno y ultrarrápido con integración completa de la API de Stripe."
+      },
+      "project-4": {
+        "category": "Sockets e Interactividad",
+        "title": "PulseStream Hub",
+        "description": "Espacio de trabajo colaborativo en tiempo real de baja latencia impulsado por arquitectura WebSocket."
+      }
+    }
+  },
+  "bento": {
+    "bio": {
+      "titlePart1": "Software Engineer ",
+      "titleMuted": "obsesionado con el rendimiento y el ",
+      "titlePart2": "diseño pixel-perfect.",
+      "description": "OPERANDO A NIVEL GLOBAL // ENFOCADO EN EQUIPOS REMOTOS DE ALTO NIVEL PARA CREAR EXPERIENCIAS DIGITALES QUE SUPERAN LAS EXPECTATIVAS."
+    },
+    "contact": {
+      "letsTalk": "// HABLEMOS",
+      "success": "// ÉXITO",
+      "copied": "¡Copiado al Portapapeles!"
+    }
+  }
+}

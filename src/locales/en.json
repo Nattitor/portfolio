@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "role": "Web Developer",
+    "location": "Merlo, Buenos Aires, Argentina",
+    "availability": "Available for remote work",
+    "scrollDown": "Scroll Down"
+  },
+  "projects": {
+    "sectionTitle": "Selected Works",
+    "previewUnavailable": "Preview Unavailable",
+    "liveDemo": "Live Demo",
+    "sourceCode": "Source Code",
+    "items": {
+      "project-1": {
+        "category": "Full-Stack",
+        "title": "Apex SaaS Engine",
+        "description": "Enterprise resource and analytics management dashboard built for high-scale workflows."
+      },
+      "project-2": {
+        "category": "AI Integration",
+        "title": "NeuraMind AI",
+        "description": "Next-gen intelligent workspace integrating generative AI for creative content workflows."
+      },
+      "project-3": {
+        "category": "Transactional Logic",
+        "title": "VogueVault Storefront",
+        "description": "A modern, lightning-fast e-commerce engine with full Stripe API integration."
+      },
+      "project-4": {
+        "category": "Sockets & Interactivity",
+        "title": "PulseStream Hub",
+        "description": "Low-latency real-time collaborative workspace powered by WebSocket architecture."
+      }
+    }
+  },
+  "bento": {
+    "bio": {
+      "titlePart1": "Software Engineer ",
+      "titleMuted": "obsessed with performance and ",
+      "titlePart2": "pixel-perfect design.",
+      "description": "OPERATING GLOBALLY // FOCUSED ON HIGH-PERFORMANCE REMOTE TEAMS TO CREATE DIGITAL EXPERIENCES THAT EXCEED EXPECTATIONS."
+    },
+    "contact": {
+      "letsTalk": "// LET'S TALK",
+      "success": "// SUCCESS",
+      "copied": "Copied to Clipboard!"
+    }
+  }
+}
