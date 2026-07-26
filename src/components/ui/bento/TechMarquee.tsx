@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from "framer-motion";
+import { motion, useTransform, useMotionValue, useAnimationFrame } from "framer-motion";
 import { bentoVariants } from "@/lib/motion";
 
 const wrap = (min: number, max: number, v: number) => {
@@ -18,23 +18,14 @@ export function TechMarquee() {
   const technologies = [...baseTech, ...baseTech];
 
   const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400
-  });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-    clamp: false
-  });
-
   const [isHovered, setIsHovered] = useState(false);
   const directionFactor = useRef<number>(1);
 
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * -1 * (delta / 1000) * 4; 
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+    // Velocidad base constante (1.5) sin aceleración por scroll
+    let moveBy = directionFactor.current * -1 * (delta / 1000) * 1.5; 
 
+    // Pause / massive slow down on hover
     if (isHovered) {
       moveBy *= 0.05; 
     }
@@ -42,7 +33,7 @@ export function TechMarquee() {
     baseX.set(baseX.get() + moveBy);
   });
 
-  // wrap(-50, 0, v) es más seguro que wrap(0, -50, v)
+  // wrap(-50, 0, v) asegura un loop perfecto
   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
 
   return (
