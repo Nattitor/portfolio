@@ -4,6 +4,17 @@ import { useRef, useState } from "react";
 import { motion, useTransform, useMotionValue, useAnimationFrame } from "framer-motion";
 import { bentoVariants } from "@/lib/motion";
 
+import {
+  ReactIcon,
+  NextjsIcon,
+  TypeScriptIcon,
+  TailwindIcon,
+  FramerIcon,
+  NodejsIcon,
+  SupabaseIcon,
+  PostgresqlIcon,
+} from "./TechIcons";
+
 const wrap = (min: number, max: number, v: number) => {
   const rangeSize = max - min;
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
@@ -11,14 +22,14 @@ const wrap = (min: number, max: number, v: number) => {
 
 export function TechMarquee() {
   const baseTech = [
-    { name: "REACT", color: "#61DAFB" },
-    { name: "NEXT.JS", color: "#FFFFFF" },
-    { name: "TYPESCRIPT", color: "#3178C6" },
-    { name: "TAILWIND CSS", color: "#38B2AC" },
-    { name: "FRAMER MOTION", color: "#F51996" },
-    { name: "NODE.JS", color: "#339933" },
-    { name: "SUPABASE", color: "#3ECF8E" },
-    { name: "POSTGRESQL", color: "#4169E1" },
+    { name: "REACT", color: "#61DAFB", Icon: ReactIcon },
+    { name: "NEXT.JS", color: "#FFFFFF", Icon: NextjsIcon },
+    { name: "TYPESCRIPT", color: "#3178C6", Icon: TypeScriptIcon },
+    { name: "TAILWIND CSS", color: "#38B2AC", Icon: TailwindIcon },
+    { name: "FRAMER MOTION", color: "#F51996", Icon: FramerIcon },
+    { name: "NODE.JS", color: "#339933", Icon: NodejsIcon },
+    { name: "SUPABASE", color: "#3ECF8E", Icon: SupabaseIcon },
+    { name: "POSTGRESQL", color: "#4169E1", Icon: PostgresqlIcon },
   ];
   // Duplicación perfecta para que el loop matemático del -50% sea invisible
   const technologies = [...baseTech, ...baseTech];
@@ -59,9 +70,10 @@ export function TechMarquee() {
         {technologies.map((tech, index) => (
           <span 
             key={index} 
-            className="group mx-4 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-stroke-0 transition-all cursor-default flex items-center"
+            className="group mx-4 flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-stroke-0 transition-all cursor-default"
             style={{ "--brand-color": tech.color } as React.CSSProperties}
           >
+            <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-white/20 group-hover:text-[var(--brand-color)] transition-colors duration-300" />
             <span className="group-hover:text-[var(--brand-color)] transition-colors duration-300">
               {tech.name}
             </span>
