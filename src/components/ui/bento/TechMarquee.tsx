@@ -11,8 +11,14 @@ const wrap = (min: number, max: number, v: number) => {
 
 export function TechMarquee() {
   const baseTech = [
-    "REACT", "NEXT.JS", "TYPESCRIPT", "TAILWIND CSS", 
-    "FRAMER MOTION", "NODE.JS", "SUPABASE", "POSTGRESQL"
+    { name: "REACT", color: "#61DAFB" },
+    { name: "NEXT.JS", color: "#FFFFFF" },
+    { name: "TYPESCRIPT", color: "#3178C6" },
+    { name: "TAILWIND CSS", color: "#38B2AC" },
+    { name: "FRAMER MOTION", color: "#F51996" },
+    { name: "NODE.JS", color: "#339933" },
+    { name: "SUPABASE", color: "#3ECF8E" },
+    { name: "POSTGRESQL", color: "#4169E1" },
   ];
   // Duplicación perfecta para que el loop matemático del -50% sea invisible
   const technologies = [...baseTech, ...baseTech];
@@ -53,9 +59,13 @@ export function TechMarquee() {
         {technologies.map((tech, index) => (
           <span 
             key={index} 
-            className="mx-4 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-white transition-all cursor-default"
+            className="group mx-4 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-stroke-0 transition-all cursor-default flex items-center"
+            style={{ "--brand-color": tech.color } as React.CSSProperties}
           >
-            {tech} <span className="text-accentCyan ml-4 opacity-50 pointer-events-none">•</span>
+            <span className="group-hover:text-[var(--brand-color)] transition-colors duration-300">
+              {tech.name}
+            </span>
+            <span className="text-accentCyan ml-8 opacity-50 pointer-events-none group-hover:text-stroke-white group-hover:text-transparent transition-all duration-300">•</span>
           </span>
         ))}
       </motion.div>

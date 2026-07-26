@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import { MapPin, ArrowRight } from "lucide-react";
 import { useI18n } from "@/context/I18nContext";
 import { portfolioData } from "@/constants/portfolioData";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -88,8 +89,9 @@ export function Hero() {
       >
         <StatusBadge statusText={t.hero.availability} />
 
-        <div className="text-xs md:text-sm text-zinc-400 font-mono tracking-wide">
-          📍 {t.hero.location}
+        <div className="flex items-center gap-2 text-xs md:text-sm text-zinc-400 font-mono tracking-wide">
+          <MapPin className="w-4 h-4 text-zinc-500" />
+          <span>{t.hero.location}</span>
         </div>
       </motion.div>
 
@@ -143,19 +145,7 @@ export function Hero() {
           <MagneticButton href="#projects">
             <div className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-display font-bold uppercase tracking-wider text-sm rounded-full overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.2)]">
               <span>{t.hero.viewProjects}</span>
-              <svg
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
             </div>
           </MagneticButton>
         </motion.div>

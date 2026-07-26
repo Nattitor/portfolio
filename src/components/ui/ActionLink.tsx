@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { ExternalLink, Code2 } from "lucide-react";
 
 export function ActionLink({ href, type, label }: { href: string; type: "primary" | "secondary"; label: string }) {
   const isPrimary = type === "primary";
@@ -15,13 +16,11 @@ export function ActionLink({ href, type, label }: { href: string; type: "primary
       )}
     >
       <span>{label}</span>
-      <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        {isPrimary ? (
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        ) : (
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        )}
-      </svg>
+      {isPrimary ? (
+        <ExternalLink className="w-3.5 h-3.5" strokeWidth={2.5} />
+      ) : (
+        <Code2 className="w-3.5 h-3.5" strokeWidth={2.5} />
+      )}
     </a>
   );
 }
