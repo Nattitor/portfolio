@@ -110,7 +110,7 @@ export function Hero() {
           animate="visible"
           className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9] tracking-tighter text-white uppercase select-none"
         >
-          <span className="inline-flex overflow-hidden py-1">
+          <span className="inline-flex overflow-hidden py-1 pr-4">
             {firstName.split("").map((char, index) => (
               <motion.span key={`first-${index}`} variants={letterVariants} className="inline-block">
                 {char}
@@ -118,7 +118,7 @@ export function Hero() {
             ))}
           </span>
           <br />
-          <span className="text-stroke-white ml-4 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-1">
+          <span className="text-stroke-white ml-4 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-1 pr-4">
             {lastName.split("").map((char, index) => (
               <motion.span key={`last-${index}`} variants={letterVariants} className="inline-block">
                 {char === " " ? "\u00A0" : char}
