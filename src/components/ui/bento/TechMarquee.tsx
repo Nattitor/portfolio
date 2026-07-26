@@ -28,11 +28,12 @@ export function TechMarquee() {
   });
 
   const [isHovered, setIsHovered] = useState(false);
-  const directionFactor = useRef<number>(-1);
+  // Cambiamos a 1 para que el movimiento sea negativo (De Derecha a Izquierda)
+  const directionFactor = useRef<number>(1);
 
   useAnimationFrame((t, delta) => {
-    // Base speed multiplier (higher is faster)
-    let moveBy = directionFactor.current * -1 * (delta / 1000) * 10; 
+    // Reducimos la velocidad base de 10 a 4 para que sea más relajado
+    let moveBy = directionFactor.current * -1 * (delta / 1000) * 4; 
 
     // Accelerate based on scroll velocity
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
