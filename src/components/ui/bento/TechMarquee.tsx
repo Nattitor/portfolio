@@ -1,11 +1,7 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
-};
+import { motion } from "framer-motion";
+import { bentoVariants } from "@/lib/motion";
 
 export function TechMarquee() {
   const technologies = [
@@ -16,7 +12,7 @@ export function TechMarquee() {
 
   return (
     <motion.div
-      variants={itemVariants}
+      variants={bentoVariants}
       className="md:col-span-6 md:row-span-1 flex items-center overflow-hidden rounded-3xl border border-white/10 bg-accentCyan/5 py-4 md:py-0 min-h-[100px] relative"
     >
       <div className="absolute left-0 w-24 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />

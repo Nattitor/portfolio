@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import { bentoVariants } from "@/lib/motion";
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
-};
+import { cn } from "@/lib/utils";
 
 export function CopyEmailCard() {
   const [copied, setCopied] = useState(false);
@@ -20,15 +18,16 @@ export function CopyEmailCard() {
 
   return (
     <motion.button
-      variants={itemVariants}
+      variants={bentoVariants}
       whileHover={{ scale: 0.98 }}
       whileTap={{ scale: 0.95 }}
       onClick={handleCopy}
-      className={`md:col-span-4 md:row-span-2 flex flex-col items-center justify-center rounded-3xl border transition-all duration-300 p-8 glass-card group relative overflow-hidden ${
+      className={cn(
+        "md:col-span-4 md:row-span-2 flex flex-col items-center justify-center rounded-3xl border transition-all duration-300 p-8 glass-card group relative overflow-hidden",
         copied 
           ? "border-green-500/50 bg-green-950/30" 
           : "border-white/10 bg-zinc-900/50 hover:border-accentCyan/50 hover:bg-zinc-900/80"
-      }`}
+      )}
     >
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity blur-3xl pointer-events-none ${copied ? 'bg-green-500/10' : 'bg-accentCyan/10'}`} />
       

@@ -1,16 +1,12 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
-};
+import { motion } from "framer-motion";
+import { bentoVariants } from "@/lib/motion";
 
 export function LocationCard() {
   return (
     <motion.div
-      variants={itemVariants}
+      variants={bentoVariants}
       className="md:col-span-2 md:row-span-2 relative flex flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 p-6 glass-card"
     >
       {/* Abstract Map Background */}
