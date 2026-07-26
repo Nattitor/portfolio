@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 };
 
 import { I18nProvider } from "@/context/I18nContext";
+import { ConsoleEasterEgg } from "@/components/ui/ConsoleEasterEgg";
 
 export default function RootLayout({
   children,
@@ -44,6 +45,7 @@ export default function RootLayout({
         <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_100%)]" />
 
         <I18nProvider>
+          <ConsoleEasterEgg />
           <Navbar />
           {children}
         </I18nProvider>

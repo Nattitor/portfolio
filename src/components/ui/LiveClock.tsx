@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export function LiveClock() {
+export function LiveClock({ className = "" }: { className?: string }) {
   const [time, setTime] = useState<string>("00:00:00");
   const [mounted, setMounted] = useState(false);
 
@@ -28,7 +28,7 @@ export function LiveClock() {
   }, []);
 
   return (
-    <span className="font-mono font-bold text-accentCyan tabular-nums tracking-widest bg-white/5 px-2 py-0.5 rounded-md border border-white/10" suppressHydrationWarning>
+    <span className={`tabular-nums tracking-widest ${className}`} suppressHydrationWarning>
       {mounted ? time : "00:00:00"}
     </span>
   );

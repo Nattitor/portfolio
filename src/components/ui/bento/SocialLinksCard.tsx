@@ -18,8 +18,8 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 );
 
 const socials = [
-  { name: "GITHUB", url: "#", icon: <GithubIcon className="w-4 h-4" /> },
-  { name: "LINKEDIN", url: "#", icon: <LinkedinIcon className="w-4 h-4" /> },
+  { name: "@Nattitor", url: "https://github.com/Nattitor", icon: <GithubIcon className="w-4 h-4" /> },
+  { name: "@Nattitor", url: "https://linkedin.com/in/Nattitor", icon: <LinkedinIcon className="w-4 h-4" /> },
 ];
 
 export function SocialLinksCard() {
@@ -38,7 +38,7 @@ export function SocialLinksCard() {
       <div className="flex flex-col gap-3">
         {socials.map((social) => (
           <a
-            key={social.name}
+            key={social.url}
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"

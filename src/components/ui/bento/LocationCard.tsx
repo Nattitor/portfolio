@@ -19,7 +19,7 @@ export function LocationCard() {
           backgroundSize: "20px 20px"
         }}
       />
-      <div className="absolute top-6 left-6 flex items-center gap-2 bg-zinc-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5">
+      <div className="absolute top-6 left-6 flex items-center gap-2 bg-zinc-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 z-10">
         <span className="relative flex h-2.5 w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accentCyan opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accentCyan"></span>
@@ -27,13 +27,14 @@ export function LocationCard() {
         <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest">Online</span>
       </div>
       
+      {/* Massive Brutalist Clock */}
+      <div className="absolute inset-0 flex items-center justify-center md:justify-end md:pr-6 pointer-events-none overflow-hidden">
+        <LiveClock className="text-5xl sm:text-6xl md:text-7xl font-mono font-black text-transparent text-stroke-white text-stroke-2 opacity-40 select-none" />
+      </div>
+      
       <div className="relative z-10 mt-24">
         <h3 className="text-xl font-display font-bold text-white">Merlo, Buenos Aires</h3>
-        <div className="flex items-center gap-2 mt-2">
-          <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider">Argentina (GMT-3)</p>
-          <span className="text-zinc-600 font-mono">•</span>
-          <LiveClock />
-        </div>
+        <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">Argentina (GMT-3)</p>
       </div>
     </motion.div>
   );

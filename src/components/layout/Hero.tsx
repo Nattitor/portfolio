@@ -98,14 +98,24 @@ export function Hero() {
       {/* Main Asymmetric Typography Area */}
       <div className="relative z-10 my-auto py-12 flex flex-col justify-center">
         {/* Subtitle / Role Tag */}
-        <motion.div
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="inline-block text-accentCyan font-mono text-sm md:text-base uppercase tracking-widest mb-4"
-        >
-          // {t.hero.role}
-        </motion.div>
+        <div className="flex flex-col gap-2 mb-4">
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-block text-zinc-400 font-mono text-sm md:text-base tracking-widest"
+          >
+            <span className="text-accentViolet">const</span> developer = <span className="text-accentCyan">"Nattitor"</span>;
+          </motion.div>
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-block text-zinc-500 font-mono text-xs md:text-sm uppercase tracking-widest"
+          >
+            // {t.hero.role}
+          </motion.div>
+        </div>
 
         {/* Gigantic Asymmetric Heading with Letter Reveal */}
         <motion.h1
@@ -122,9 +132,9 @@ export function Hero() {
             ))}
           </span>
           <br />
-          <span className="text-stroke-white ml-4 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-1 pr-4">
+          <span className="group text-stroke-white ml-4 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-1 pr-4 cursor-default transition-colors duration-500 hover:text-white hover:text-stroke-0">
             {lastName.split("").map((char, index) => (
-              <motion.span key={`last-${index}`} variants={letterVariants} className="inline-block">
+              <motion.span key={`last-${index}`} variants={letterVariants} className="inline-block transition-colors duration-500">
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
