@@ -11,12 +11,13 @@ export function ProjectsSection() {
   const { t } = useI18n();
   const baseProjects = portfolioData.projects;
 
-  // Translate projects on the fly
+  // Translate projects on the fly and keep the base category for logical filtering
   const projects = useMemo(() => {
     return baseProjects.map((p) => {
       const translation = t.projects.items[p.id as keyof typeof t.projects.items];
       return {
         ...p,
+        baseCategory: p.category,
         title: translation?.title || p.title,
         category: translation?.category || p.category,
         shortDescription: translation?.description || p.shortDescription,
@@ -24,27 +25,36 @@ export function ProjectsSection() {
     });
   }, [baseProjects, t]);
 
+  // activeFilter stores the untranslated base category (e.g. "All", "AI Integration")
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
-  // Dynamically extract categories for filtering (memoized)
+  // Dynamically extract categories as objects with id and translated label
   const categories = useMemo(() => {
+    const uniqueBaseCategories = Array.from(
+      new Set(
+        projects
+          .map((project) => project.baseCategory)
+          .filter((cat): cat is string => Boolean(cat))
+      )
+    );
+
     return [
-      "All",
-      ...Array.from(
-        new Set(
-          projects
-            .map((project) => project.category)
-            .filter((cat): cat is string => Boolean(cat))
-        )
-      ),
+      { id: "All", label: "All" },
+      ...uniqueBaseCategories.map((baseCat) => {
+        const project = projects.find((p) => p.baseCategory === baseCat);
+        return {
+          id: baseCat as string,
+          label: project?.category || (baseCat as string),
+        };
+      }),
     ];
   }, [projects]);
 
-  // Derived filtered projects list (memoized)
+  // Derived filtered projects list based on baseCategory
   const filteredProjects = useMemo(() => {
     return activeFilter === "All"
       ? projects
-      : projects.filter((project) => project.category === activeFilter);
+      : projects.filter((project) => project.baseCategory === activeFilter);
   }, [activeFilter, projects]);
 
   return (
