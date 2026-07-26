@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { bentoVariants } from "@/lib/motion";
+import { useI18n } from "@/context/I18nContext";
 
 const socials = [
   { name: "GITHUB", url: "#", icon: "GH" },
@@ -9,6 +10,8 @@ const socials = [
 ];
 
 export function SocialLinksCard() {
+  const { t } = useI18n();
+
   return (
     <motion.div
       variants={bentoVariants}
@@ -16,7 +19,7 @@ export function SocialLinksCard() {
     >
       <div className="flex items-center gap-2 mb-6">
         <div className="w-2 h-2 rounded-full bg-zinc-500" />
-        <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Connect</span>
+        <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">{t.bento.social.connect}</span>
       </div>
 
       <div className="flex flex-col gap-3">

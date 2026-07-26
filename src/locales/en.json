@@ -9,7 +9,11 @@
     "role": "Web Developer",
     "location": "Merlo, Buenos Aires, Argentina",
     "availability": "Available for remote work",
-    "scrollDown": "Scroll Down"
+    "scrollDown": "Scroll Down",
+    "description": "Specialized in modern, asymmetric web interfaces with high visual impact interactive experiences.",
+    "viewProjects": "View Projects",
+    "portfolioVersion": "[ PORTFOLIO v2026 ]",
+    "scrollToExplore": "↓ SCROLL TO EXPLORE"
   },
   "projects": {
     "sectionTitle": "Selected Works",
@@ -54,6 +58,13 @@
       "copied": "Copied to Clipboard!",
       "ready": "Ready to paste",
       "click": "Click to copy email address"
+    },
+    "social": {
+      "connect": "Connect"
     }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "status": "System Normal"
   }
 }

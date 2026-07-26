@@ -9,7 +9,11 @@
     "role": "Desarrollador Web",
     "location": "Merlo, Buenos Aires, Argentina",
     "availability": "Disponible para trabajo remoto",
-    "scrollDown": "Desplazar Abajo"
+    "scrollDown": "Desplazar Abajo",
+    "description": "Especializado en interfaces web modernas, asimétricas y con experiencias interactivas de alto impacto visual.",
+    "viewProjects": "Ver proyectos",
+    "portfolioVersion": "[ PORTAFOLIO v2026 ]",
+    "scrollToExplore": "↓ DESPLAZA PARA EXPLORAR"
   },
   "projects": {
     "sectionTitle": "Obras Destacadas",
@@ -54,6 +58,13 @@
       "copied": "¡Copiado al Portapapeles!",
       "ready": "Listo para pegar",
       "click": "Clic para copiar email"
+    },
+    "social": {
+      "connect": "Conectar"
     }
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "status": "Sistema Operativo"
   }
 }

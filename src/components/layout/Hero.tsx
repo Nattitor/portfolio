@@ -136,13 +136,13 @@ export function Hero() {
           animate="visible"
           className="mt-16 md:mt-24 flex flex-col items-start md:items-end md:text-right md:ml-auto w-full md:w-2/3 lg:w-1/2 gap-8"
         >
-          <p className="max-w-lg text-zinc-400 text-lg md:text-xl lg:text-2xl font-normal leading-relaxed">
-            Especializado en interfaces web modernas, asimétricas y con experiencias interactivas de alto impacto visual.
+          <p className="max-w-lg text-zinc-400 text-lg md:text-xl lg:text-2xl font-normal leading-relaxed select-text">
+            {t.hero.description}
           </p>
 
           <MagneticButton href="#projects">
             <div className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-display font-bold uppercase tracking-wider text-sm rounded-full overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-              <span>Ver proyectos</span>
+              <span>{t.hero.viewProjects}</span>
               <svg
                 className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
@@ -168,8 +168,8 @@ export function Hero() {
         transition={{ duration: 1, delay: 1.2 }}
         className="relative z-10 flex items-center justify-between text-xs font-mono text-zinc-600 border-t border-white/5 pt-4"
       >
-        <span>[ PORTFOLIO v2026 ]</span>
-        <span className="animate-bounce">↓ SCROLL TO EXPLORE</span>
+        <span>{t.hero.portfolioVersion}</span>
+        <span className="animate-bounce">{t.hero.scrollToExplore}</span>
       </motion.div>
     </section>
   );
