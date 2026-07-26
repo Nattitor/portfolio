@@ -26,10 +26,11 @@ export function SocialLinksCard() {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`Visitar perfil de ${social.name}`}
             className="group flex items-center justify-between rounded-xl border border-white/5 bg-zinc-900/50 p-4 transition-colors hover:border-accentCyan/50 hover:bg-zinc-800"
           >
             <div className="flex items-center gap-3">
-              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 text-xs font-mono font-bold text-white group-hover:bg-accentCyan group-hover:text-black transition-colors">
+              <span aria-hidden="true" className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 text-xs font-mono font-bold text-white group-hover:bg-accentCyan group-hover:text-black transition-colors">
                 {social.icon}
               </span>
               <span className="font-mono text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">
@@ -37,6 +38,7 @@ export function SocialLinksCard() {
               </span>
             </div>
             <svg 
+              aria-hidden="true"
               className="w-4 h-4 text-zinc-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform group-hover:text-accentCyan" 
               fill="none" 
               stroke="currentColor" 

@@ -85,7 +85,7 @@ export function Navbar() {
               key={link.name}
               href={link.href}
               onClick={() => setActive(link.name)}
-              aria-current={isActive ? "page" : undefined}
+              aria-current={isActive ? "true" : undefined}
               className={`relative rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                 isActive ? "text-white" : "text-zinc-400 hover:text-white"
               }`}

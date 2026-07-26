@@ -19,7 +19,13 @@ export function ProjectCard({
 
   return (
     <motion.article
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
+      transition={{ layout: { type: "spring", stiffness: 300, damping: 30 }, duration: 0.2 }}
       whileHover={{ y: -6 }}
+      style={{ willChange: "transform, opacity" }}
       className="group relative flex h-full w-full flex-col justify-between rounded-2xl border border-white/10 bg-zinc-950/40 p-6 md:p-8 backdrop-blur-md transition-all duration-300 hover:border-accentCyan/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.08)]"
     >
       {/* Top Header Row: Index & Category */}
