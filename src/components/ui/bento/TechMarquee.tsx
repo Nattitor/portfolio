@@ -18,7 +18,12 @@ export function TechMarquee() {
       <div className="absolute left-0 w-24 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 w-24 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
       
-      <div className="flex w-[200%] animate-marquee whitespace-nowrap">
+      <motion.div 
+        className="flex w-[200%] whitespace-nowrap"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+        style={{ willChange: "transform" }}
+      >
         {technologies.map((tech, index) => (
           <span 
             key={index} 
@@ -27,7 +32,7 @@ export function TechMarquee() {
             {tech} <span className="text-accentCyan ml-4 opacity-50">•</span>
           </span>
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

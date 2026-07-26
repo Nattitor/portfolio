@@ -62,11 +62,11 @@ export function ProjectCard({
       {/* Content */}
       <div className="flex flex-col justify-between flex-grow">
         <div>
-          <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-3 group-hover:text-accentCyan transition-colors">
+          <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-3 group-hover:text-accentCyan transition-colors select-text">
             {project.title}
           </h3>
 
-          <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6 font-normal">
+          <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6 font-normal select-text">
             {project.shortDescription}
           </p>
         </div>
