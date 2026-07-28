@@ -9,8 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        darkBg: "#09090b",
-        accentCyan: "#00f0ff",
+        darkBg: "#0B132B",
+        vegaCyan: "#00E5FF",
+        ayabeGold: "#C5A059",
+        nebulaPurple: "#6B5B95",
         accentViolet: "#8b5cf6",
         accentLime: "#a3e635",
         accentPink: "#f43f5e",

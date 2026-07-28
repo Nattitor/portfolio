@@ -4,20 +4,22 @@
   --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
   --font-body: var(--font-inter), "Inter", sans-serif;
 
-  --color-dark-bg: #09090b;
-  --color-accent-cyan: #00f0ff;
-  --color-accent-violet: #8b5cf6;
-  --color-accent-lime: #a3e635;
-  --color-accent-pink: #f43f5e;
+  --color-darkBg: #0A0E17;
+  --color-vegaCyan: #00E5FF;
+  --color-ayabeGold: #C5A059;
+  --color-nebulaPurple: #6B5B95;
+  --color-accentViolet: #8b5cf6;
+  --color-accentLime: #a3e635;
+  --color-accentPink: #f43f5e;
 }
 
 @layer base {
   body {
-    background-color: #09090b;
+    background-color: var(--color-darkBg);
     background-image: 
-      radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(0, 240, 255, 0.08) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(244, 63, 94, 0.05) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(107, 91, 149, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(0, 229, 255, 0.03) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(107, 91, 149, 0.05) 0px, transparent 50%);
     background-attachment: fixed;
     color: #f4f4f5;
     font-family: var(--font-body);
@@ -32,10 +34,10 @@
 
 @layer utilities {
   .glass-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .glass-card-hover {
@@ -50,7 +52,7 @@
   }
 
   .glass-nav {
-    background: rgba(9, 9, 11, 0.75);
+    background: rgba(11, 19, 43, 0.75);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);

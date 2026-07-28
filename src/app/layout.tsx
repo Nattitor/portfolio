@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
-      <body className="font-body bg-darkBg text-zinc-100 antialiased select-none overflow-x-hidden max-w-[100vw] selection:bg-accentCyan selection:text-black">
+      <body className="font-body bg-darkBg text-slate-100 antialiased select-none overflow-x-hidden max-w-[100vw] selection:bg-[#243870] selection:text-white">
         {/* Noise Overlay */}
         <div className="fixed inset-0 z-0 pointer-events-none mix-blend-overlay">
           <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
@@ -41,8 +41,8 @@ export default function RootLayout({
             <rect width="100%" height="100%" filter="url(#noiseFilter)" />
           </svg>
         </div>
-        {/* Vignette / Radial Gradient */}
-        <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_100%)]" />
+        {/* Vignette / Radial Gradient (Nebula Glow) */}
+        <div className="fixed inset-0 z-0 pointer-events-none" />
 
         <I18nProvider>
           <ConsoleEasterEgg />
