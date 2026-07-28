@@ -67,7 +67,7 @@ export function ProjectsSection() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="mb-10 md:mb-12"
       >
-        <div className="text-accentCyan font-mono text-sm md:text-base uppercase tracking-widest mb-3">
+        <div className="text-vegaCyan font-mono text-sm md:text-base uppercase tracking-widest mb-3">
           // {t.projects.sectionTitle.toUpperCase()}
         </div>
         <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight">
