@@ -72,7 +72,7 @@ export function Navbar() {
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2"
     >
-      <nav className="flex items-center gap-1 rounded-full border border-white/10 bg-zinc-950/60 px-2 py-2 backdrop-blur-xl shadow-2xl">
+      <nav className="flex items-center gap-1 rounded-full border border-white/10 bg-nebulaPurple/20 px-2 py-2 backdrop-blur-xl shadow-2xl">
         {translatedNavLinks.map((link) => {
           const isActive = active === link.name;
           return (
@@ -82,13 +82,13 @@ export function Navbar() {
               onClick={() => setActive(link.name)}
               aria-current={isActive ? "true" : undefined}
               className={`relative rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
-                isActive ? "text-white" : "text-zinc-400 hover:text-white"
+                isActive ? "text-[#00E5FF]" : "text-slate-400 hover:text-white"
               }`}
             >
               {isActive && (
                 <motion.div
                   layoutId="nav-pill"
-                  className="absolute inset-0 z-[-1] rounded-full bg-white/10"
+                  className="absolute inset-0 z-[-1] rounded-full bg-[#243870]/20"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -103,7 +103,7 @@ export function Navbar() {
         {/* i18n Toggle */}
         <button
           onClick={() => setLanguage(language === "es" ? "en" : "es")}
-          className="relative rounded-full px-4 py-2.5 text-sm font-medium transition-colors text-zinc-400 hover:text-white uppercase tracking-wider"
+          className="relative rounded-full px-4 py-2.5 text-sm font-medium transition-colors text-slate-400 hover:text-white uppercase tracking-wider"
           aria-label="Toggle Language"
         >
           {language}

@@ -4,7 +4,7 @@ import { BentoSection } from "@/components/sections/BentoSection";
 
 export default function Home() {
   return (
-    <main className="w-full min-h-screen bg-black">
+    <main className="w-full min-h-screen bg-transparent">
       <Hero />
       <ProjectsSection />
       <BentoSection />
