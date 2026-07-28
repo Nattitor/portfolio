@@ -71,14 +71,14 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute top-1/4 -right-12 select-none pointer-events-none text-accentCyan font-display font-black text-9xl md:text-[20rem] leading-none z-0"
+        className="absolute top-1/4 -right-12 select-none pointer-events-none text-vegaCyan font-display font-black text-9xl md:text-[20rem] leading-none z-0"
       >
         DEV
       </motion.div>
 
       {/* Ambient glowing orbs for Glassmorphism refraction */}
-      <div className="absolute top-1/2 left-1/4 w-[30rem] h-[30rem] bg-accentCyan/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" aria-hidden="true" />
-      <div className="absolute bottom-0 right-0 w-[40rem] h-[30rem] bg-accentViolet/10 rounded-full blur-[150px] translate-x-1/4 translate-y-1/4 pointer-events-none z-0" aria-hidden="true" />
+      <div className="absolute top-1/2 left-1/4 w-[30rem] h-[30rem] bg-vegaCyan/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" aria-hidden="true" />
+      <div className="absolute bottom-0 right-0 w-[40rem] h-[30rem] bg-nebulaPurple/10 rounded-full blur-[150px] translate-x-1/4 translate-y-1/4 pointer-events-none z-0" aria-hidden="true" />
 
       {/* Top Asymmetric Bar: Status & Location */}
       <motion.div
@@ -89,8 +89,8 @@ export function Hero() {
       >
         <StatusBadge statusText={t.hero.availability} />
 
-        <div className="flex items-center gap-2 text-xs md:text-sm text-zinc-400 font-mono tracking-wide">
-          <MapPin className="w-4 h-4 text-zinc-500" />
+        <div className="flex items-center gap-2 text-xs md:text-sm text-slate-400 font-mono tracking-wide">
+          <MapPin className="w-4 h-4 text-[#CBA153]" />
           <span>{t.hero.location}</span>
         </div>
       </motion.div>
@@ -103,19 +103,22 @@ export function Hero() {
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-block text-zinc-400 font-mono text-sm md:text-base tracking-widest"
+            className="inline-block text-slate-400 font-mono text-sm md:text-base tracking-widest"
           >
-            <span className="text-accentViolet">const</span> developer = <span className="text-accentCyan">"Nattitor"</span>;
+            <span className="text-[#CBA153]">const</span> developer = <span className="text-vegaCyan">"Nattitor"</span>;
           </motion.div>
           <motion.div
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-block text-zinc-500 font-mono text-xs md:text-sm uppercase tracking-widest"
+            className="inline-block text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest"
           >
             // {t.hero.role}
           </motion.div>
         </div>
+
+        {/* Amethyst Glow Nebula Behind Text */}
+        <div className="absolute top-1/2 left-1/4 w-[150%] max-w-[80rem] h-[150%] max-h-[50rem] bg-[radial-gradient(ellipse_at_center,_#7A4988_0%,_#243870_40%,_transparent_70%)] blur-[100px] opacity-15 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[-1]" aria-hidden="true" />
 
         {/* Gigantic Asymmetric Heading with Letter Reveal */}
         <motion.h1
@@ -148,14 +151,14 @@ export function Hero() {
           animate="visible"
           className="mt-16 md:mt-24 flex flex-col items-start md:items-end md:text-right md:ml-auto w-full md:w-2/3 lg:w-1/2 gap-8"
         >
-          <p className="max-w-lg text-zinc-400 text-lg md:text-xl lg:text-2xl font-normal leading-relaxed select-text">
+          <p className="max-w-lg text-slate-400 text-lg md:text-xl lg:text-2xl font-normal leading-relaxed select-text">
             {t.hero.description}
           </p>
 
           <MagneticButton href="#projects">
-            <div className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-display font-bold uppercase tracking-wider text-sm rounded-full overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+            <div className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#0B0F19]/50 backdrop-blur-md text-white border border-[#243870] font-display font-bold uppercase tracking-wider text-sm rounded-full overflow-hidden transition-colors duration-300 hover:border-[#00E5FF] hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]">
               <span>{t.hero.viewProjects}</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
+              <ArrowRight className="w-4 h-4 text-white transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#00E5FF]" strokeWidth={2.5} />
             </div>
           </MagneticButton>
         </motion.div>
@@ -166,7 +169,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
-        className="relative z-10 flex items-center justify-between text-xs font-mono text-zinc-600 border-t border-white/5 pt-4"
+        className="relative z-10 flex items-center justify-between text-xs font-mono text-slate-600 border-t border-white/5 pt-4"
       >
         <span>{t.hero.portfolioVersion}</span>
         <span className="animate-bounce">{t.hero.scrollToExplore}</span>
