@@ -28,11 +28,11 @@ export function SocialLinksCard() {
   return (
     <motion.div
       variants={bentoVariants}
-      className="md:col-span-2 md:row-span-2 flex flex-col justify-between rounded-3xl border border-white/10 bg-zinc-950 p-6 glass-card relative"
+      className="md:col-span-2 md:row-span-2 flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-6 glass-card relative"
     >
       <div className="flex items-center gap-2 mb-6">
-        <div className="w-2 h-2 rounded-full bg-zinc-500" />
-        <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">{t.bento.social.connect}</span>
+        <div className="w-2 h-2 rounded-full bg-slate-500" />
+        <span className="text-xs font-mono uppercase tracking-widest text-slate-500">{t.bento.social.connect}</span>
       </div>
 
       <div className="flex flex-col gap-3">
@@ -43,18 +43,18 @@ export function SocialLinksCard() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Visitar perfil de ${social.name}`}
-            className="group flex items-center justify-between rounded-xl border border-white/5 bg-zinc-900/50 p-4 transition-colors hover:border-accentCyan/50 hover:bg-zinc-800"
+            className="group flex items-center justify-between rounded-xl border border-[#243870]/50 bg-[#243870]/20 p-4 transition-all duration-300 hover:border-[#00E5FF] hover:shadow-[0_0_15px_rgba(0,229,255,0.1)]"
           >
             <div className="flex items-center gap-3">
-              <span aria-hidden="true" className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 text-xs font-mono font-bold text-white group-hover:bg-accentCyan group-hover:text-black transition-colors">
+              <span aria-hidden="true" className="flex items-center justify-center w-8 h-8 rounded-lg bg-transparent text-xs font-mono font-bold text-slate-300 group-hover:text-[#00E5FF] transition-colors duration-300">
                 {social.icon}
               </span>
-              <span className="font-mono text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">
+              <span className="font-mono text-sm font-bold text-slate-300 group-hover:text-white transition-colors duration-300">
                 {social.name}
               </span>
             </div>
             <ArrowUpRight 
-              className="w-4 h-4 text-zinc-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform group-hover:text-accentCyan" 
+              className="w-4 h-4 text-slate-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 group-hover:text-[#00E5FF]" 
               strokeWidth={2}
             />
           </a>

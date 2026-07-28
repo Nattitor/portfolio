@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useTransform, useMotionValue, useAnimationFrame } from "framer-motion";
 import { bentoVariants } from "@/lib/motion";
 
@@ -58,27 +58,26 @@ export function TechMarquee() {
       variants={bentoVariants}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="md:col-span-6 md:row-span-1 flex items-center overflow-hidden rounded-3xl border border-white/10 bg-accentCyan/5 py-4 md:py-0 min-h-[100px] relative select-none"
+      className="md:col-span-6 md:row-span-1 flex items-center overflow-hidden rounded-3xl border border-white/10 bg-transparent py-4 md:py-0 min-h-[100px] relative select-none [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
     >
-      <div className="absolute left-0 w-24 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 w-24 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
       
       <motion.div 
         className="flex w-max whitespace-nowrap"
         style={{ x, willChange: "transform" }}
       >
         {technologies.map((tech, index) => (
-          <span 
-            key={index} 
-            className="group mx-4 flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-stroke-0 transition-all cursor-default"
-            style={{ "--brand-color": tech.color } as React.CSSProperties}
-          >
-            <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-white/20 group-hover:text-[var(--brand-color)] transition-colors duration-300" />
-            <span className="group-hover:text-[var(--brand-color)] transition-colors duration-300">
-              {tech.name}
+          <React.Fragment key={index}>
+            <span 
+              className="group flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-stroke-0 transition-all cursor-default"
+              style={{ "--brand-color": tech.color } as React.CSSProperties}
+            >
+              <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-white/20 group-hover:text-[var(--brand-color)] transition-colors duration-300" />
+              <span className="group-hover:text-[var(--brand-color)] transition-colors duration-300">
+                {tech.name}
+              </span>
             </span>
-            <span className="text-accentCyan ml-8 opacity-50 pointer-events-none group-hover:text-stroke-white group-hover:text-transparent transition-all duration-300">•</span>
-          </span>
+            <span className="text-ayabeGold mx-6 md:mx-10 text-2xl md:text-4xl pointer-events-none transition-all duration-300">✦</span>
+          </React.Fragment>
         ))}
       </motion.div>
     </motion.div>

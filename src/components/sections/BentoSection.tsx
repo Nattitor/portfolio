@@ -20,7 +20,7 @@ const containerVariants: Variants = {
 
 export function BentoSection() {
   return (
-    <section id="about" className="relative w-full px-6 py-24 md:px-16 lg:px-24 bg-black">
+    <section id="about" className="relative w-full px-6 py-24 md:px-16 lg:px-24 bg-transparent">
       {/* Bento Grid */}
       <motion.div
         variants={containerVariants}

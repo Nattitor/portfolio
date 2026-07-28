@@ -9,7 +9,7 @@ export function LocationCard() {
   return (
     <motion.div
       variants={bentoVariants}
-      className="md:col-span-2 md:row-span-2 relative flex flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 p-6 glass-card"
+      className="md:col-span-2 md:row-span-2 relative flex flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 glass-card"
     >
       {/* Abstract Map Background */}
       <div 
@@ -19,10 +19,10 @@ export function LocationCard() {
           backgroundSize: "20px 20px"
         }}
       />
-      <div className="absolute top-6 left-6 flex items-center gap-2 bg-zinc-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 z-10">
+      <div className="absolute top-6 left-6 flex items-center gap-2 bg-nebulaPurple/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 z-10">
         <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accentCyan opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accentCyan"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-vegaCyan opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-vegaCyan"></span>
         </span>
         <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest">Online</span>
       </div>
@@ -34,7 +34,7 @@ export function LocationCard() {
       
       <div className="relative z-10 mt-24">
         <h3 className="text-xl font-display font-bold text-white">Merlo, Buenos Aires</h3>
-        <p className="text-xs font-mono text-zinc-400 mt-2 uppercase tracking-wider">Argentina (GMT-3)</p>
+        <p className="text-xs font-mono text-slate-400 mt-2 uppercase tracking-wider">Argentina (GMT-3)</p>
       </div>
     </motion.div>
   );

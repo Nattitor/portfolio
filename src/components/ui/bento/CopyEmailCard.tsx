@@ -27,12 +27,12 @@ export function CopyEmailCard() {
         "md:col-span-4 md:row-span-2 flex flex-col items-center justify-center rounded-3xl border transition-all duration-300 p-8 glass-card group relative overflow-hidden",
         copied 
           ? "border-green-500/50 bg-green-950/30" 
-          : "border-white/10 bg-zinc-900/50 hover:border-accentCyan/50 hover:bg-zinc-900/80"
+          : "border-white/10 bg-white/5 hover:border-vegaCyan/50 hover:bg-nebulaPurple/20"
       )}
     >
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity blur-3xl pointer-events-none ${copied ? 'bg-green-500/10' : 'bg-accentCyan/10'}`} />
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity blur-3xl pointer-events-none ${copied ? 'bg-green-500/10' : 'bg-vegaCyan/10'}`} />
       
-      <span className="text-sm font-mono uppercase tracking-widest text-zinc-400 mb-4">
+      <span className="text-sm font-mono uppercase tracking-widest text-slate-400 mb-4">
         {copied ? t.bento.contact.success : t.bento.contact.letsTalk}
       </span>
       
@@ -40,7 +40,7 @@ export function CopyEmailCard() {
         {copied ? t.bento.contact.copied : email}
       </h3>
       
-      <p className="mt-6 text-xs font-mono uppercase tracking-widest text-zinc-500 group-hover:text-accentCyan transition-colors">
+      <p className="mt-6 text-xs font-mono uppercase tracking-widest text-slate-500 group-hover:text-vegaCyan transition-colors">
         {copied ? t.bento.contact.ready : t.bento.contact.click}
       </p>
     </motion.button>
