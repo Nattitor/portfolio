@@ -28,8 +28,10 @@ export function LiveClock({ className = "" }: { className?: string }) {
   }, []);
 
   return (
-    <span className={`tabular-nums tracking-widest ${className}`} suppressHydrationWarning>
-      {mounted ? time : "00:00:00"}
-    </span>
+    <span 
+      className={`tabular-nums tracking-widest select-none cursor-default before:content-[attr(data-time)] ${className}`} 
+      data-time={mounted ? time : "00:00:00"} 
+      suppressHydrationWarning
+    />
   );
 }
