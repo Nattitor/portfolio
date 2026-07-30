@@ -36,7 +36,7 @@ export function CopyEmailCard() {
         {copied ? t.bento.contact.success : t.bento.contact.letsTalk}
       </span>
       
-      <h3 className={`font-display font-black text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight transition-colors select-text ${copied ? 'text-green-400' : 'text-white'}`}>
+      <h3 className={`font-display font-black text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight transition-colors select-none ${copied ? 'text-green-400' : 'text-white'}`}>
         {copied ? t.bento.contact.copied : email}
       </h3>
       
