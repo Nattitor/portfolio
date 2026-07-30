@@ -68,15 +68,16 @@ export function TechMarquee() {
         {technologies.map((tech, index) => (
           <React.Fragment key={index}>
             <span 
-              className="group flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-stroke-0 transition-all cursor-default"
+              className="group flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-stroke-0 transition-all cursor-default select-none"
               style={{ "--brand-color": tech.color } as React.CSSProperties}
             >
-              <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-white/20 group-hover:text-[var(--brand-color)] transition-colors duration-300" />
-              <span className="group-hover:text-[var(--brand-color)] transition-colors duration-300">
-                {tech.name}
-              </span>
+              <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-white/20 group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none" />
+              <span 
+                className="group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none before:content-[attr(data-tech)]"
+                data-tech={tech.name}
+              />
             </span>
-            <span className="text-ayabeGold mx-6 md:mx-10 text-2xl md:text-4xl pointer-events-none transition-all duration-300">✦</span>
+            <span className="text-ayabeGold mx-6 md:mx-10 text-2xl md:text-4xl pointer-events-none transition-all duration-300 select-none before:content-['✦']" />
           </React.Fragment>
         ))}
       </motion.div>
