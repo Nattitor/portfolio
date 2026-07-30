@@ -26,9 +26,8 @@ export function BentoSection() {
     <section id="about" className="relative w-full px-6 py-24 md:px-16 lg:px-24 bg-transparent">
       {/* Section Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="mb-12 md:mb-16"
       >
@@ -44,9 +43,8 @@ export function BentoSection() {
       {/* Bento Grid */}
       <motion.div
         variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        initial={false}
+        animate="visible"
         className="grid grid-cols-1 md:grid-cols-6 gap-4 auto-rows-auto md:auto-rows-[minmax(120px,auto)] max-w-7xl mx-auto"
       >
         <LocationCard />

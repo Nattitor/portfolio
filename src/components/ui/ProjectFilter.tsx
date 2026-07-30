@@ -17,7 +17,7 @@ export function ProjectFilter({
     <div
       role="group"
       aria-label="Filter projects by technology"
-      className="flex flex-wrap items-center gap-2 mb-10"
+      className="flex flex-nowrap overflow-x-auto overflow-y-hidden pb-4 mb-6 md:mb-10 items-center gap-2 snap-x scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       {categories.map(({ id, label }) => {
         const isActive = activeFilter === id;

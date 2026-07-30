@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 import { I18nProvider } from "@/context/I18nContext";
 import { ConsoleEasterEgg } from "@/components/ui/ConsoleEasterEgg";
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
-      <body className="font-body bg-darkBg text-slate-100 antialiased select-none overflow-x-hidden max-w-[100vw] selection:bg-[#243870] selection:text-white">
+      <body className="font-body bg-darkBg text-slate-100 antialiased select-none selection:bg-[#243870] selection:text-white">
         {/* Noise Overlay */}
         <div className="fixed inset-0 z-0 pointer-events-none mix-blend-overlay">
           <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">

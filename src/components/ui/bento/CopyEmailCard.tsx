@@ -24,7 +24,7 @@ export function CopyEmailCard() {
       whileTap={{ scale: 0.95 }}
       onClick={handleCopy}
       className={cn(
-        "md:col-span-4 md:row-span-2 flex flex-col items-center justify-center rounded-3xl border transition-all duration-300 p-8 glass-card group relative overflow-hidden",
+        "md:col-span-4 md:row-span-2 flex flex-col items-center justify-center rounded-3xl border transition-all duration-300 p-8 glass-card group relative overflow-hidden active:scale-95",
         copied 
           ? "border-green-500/50 bg-green-950/30" 
           : "border-white/10 bg-white/5 hover:border-vegaCyan/50 hover:bg-nebulaPurple/20"

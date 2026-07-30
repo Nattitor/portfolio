@@ -11,14 +11,20 @@ export function LiveClock({ className = "" }: { className?: string }) {
     
     // Update the time immediately and then every second
     const updateClock = () => {
-      const formatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/Argentina/Buenos_Aires",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false, // Use 24h format for a more brutalist/dev feel
-      });
-      setTime(formatter.format(new Date()));
+      try {
+        const formatter = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Argentina/Buenos_Aires",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false, // Use 24h format for a more brutalist/dev feel
+        });
+        setTime(formatter.format(new Date()));
+      } catch (e) {
+        // Fallback for older mobile browsers that don't support timeZone
+        const d = new Date();
+        setTime(`${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`);
+      }
     };
 
     updateClock();

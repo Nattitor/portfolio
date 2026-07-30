@@ -12,6 +12,7 @@ interface I18nContextProps {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: Dictionary;
+  mounted: boolean;
 }
 
 const I18nContext = createContext<I18nContextProps | undefined>(undefined);
@@ -23,19 +24,32 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    const savedLang = localStorage.getItem("portfolio-lang") as Language;
-    if (savedLang && (savedLang === "en" || savedLang === "es")) {
-      setLanguage(savedLang);
-    } else {
-      // Auto-detect browser language if possible
+    try {
+      const savedLang = localStorage.getItem("portfolio-lang") as Language;
+      if (savedLang && (savedLang === "en" || savedLang === "es")) {
+        setLanguage(savedLang);
+        return;
+      }
+    } catch (error) {
+      console.warn("localStorage not available");
+    }
+    
+    // Auto-detect browser language if possible
+    try {
       const browserLang = navigator.language.startsWith("es") ? "es" : "en";
       setLanguage(browserLang);
+    } catch (error) {
+      setLanguage("es");
     }
   }, []);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
-    localStorage.setItem("portfolio-lang", lang);
+    try {
+      localStorage.setItem("portfolio-lang", lang);
+    } catch (error) {
+      console.warn("localStorage not available");
+    }
   };
 
   const t = language === "es" ? es : en;
@@ -47,7 +61,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   // We can suppress hydration warnings in layout.tsx.
 
   return (
-    <I18nContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+    <I18nContext.Provider value={{ language, setLanguage: handleSetLanguage, t, mounted }}>
       {children}
     </I18nContext.Provider>
   );

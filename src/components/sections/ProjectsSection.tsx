@@ -60,26 +60,19 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="relative w-full px-6 py-20 md:px-16 lg:px-24">
       {/* Section Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mb-10 md:mb-12"
-      >
+      <div className="mb-10 md:mb-12">
         <div className="text-vegaCyan font-mono text-sm md:text-base uppercase tracking-widest mb-3">
           // {t.projects.sectionTitle.toUpperCase()}
         </div>
         <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight">
           {t.projects.heading1} <span className="text-stroke-white">{t.projects.heading2}</span>
         </h2>
-      </motion.div>
+      </div>
 
       {/* Filter Bar */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
       >
         <ProjectFilter
@@ -90,16 +83,13 @@ export function ProjectsSection() {
       </motion.div>
 
       {/* Animated Asymmetric Grid */}
-      <motion.div
-        layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative">
         <AnimatePresence>
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               layout
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
               transition={{
@@ -115,8 +105,8 @@ export function ProjectsSection() {
               />
             </motion.div>
           ))}
-        </AnimatePresence>
-      </motion.div>
-    </section>
+          </AnimatePresence>
+        </div>
+      </section>
   );
 }

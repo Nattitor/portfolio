@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useI18n } from "@/context/I18nContext";
 
 export function Navbar() {
@@ -12,11 +12,11 @@ export function Navbar() {
   const [lastY, setLastY] = useState(0);
   const { t, language, setLanguage } = useI18n();
 
-  const translatedNavLinks = [
+  const translatedNavLinks = useMemo(() => [
     { name: "Home", label: t.nav.home, href: "#home" },
     { name: "Projects", label: t.nav.projects, href: "#projects" },
     { name: "About", label: t.nav.about, href: "#about" },
-  ];
+  ], [t.nav.home, t.nav.projects, t.nav.about]);
 
   // 1. Smart Floating: Hide on scroll down, show on scroll up
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -32,12 +32,12 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY < 200) {
-        if (active !== "Home") setActive("Home");
+        setActive((prev) => prev !== "Home" ? "Home" : prev);
         return;
       }
 
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
-        if (active !== "About") setActive("About");
+        setActive((prev) => prev !== "About" ? "About" : prev);
         return;
       }
 
@@ -45,7 +45,7 @@ export function Navbar() {
         .map((link) => document.querySelector(link.href))
         .filter((el): el is HTMLElement => el !== null);
 
-      let currentActive = active;
+      let currentActive = null;
 
       for (const section of sections) {
         const rect = section.getBoundingClientRect();
@@ -55,15 +55,15 @@ export function Navbar() {
         }
       }
 
-      if (currentActive !== active) {
-        setActive(currentActive);
+      if (currentActive) {
+        setActive((prev) => prev !== currentActive ? currentActive : prev);
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Check on mount
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [active, translatedNavLinks]);
+  }, [translatedNavLinks]);
 
   return (
     <motion.div

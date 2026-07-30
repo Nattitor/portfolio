@@ -64,17 +64,14 @@ export function Hero() {
   const lastName = lastNameParts.join(" ");
 
   return (
-    <section id="home" className="relative min-h-screen w-full flex flex-col justify-between px-6 py-12 md:px-16 md:py-20 lg:px-24 overflow-hidden overflow-x-hidden pt-24 md:pt-32">
+    <section id="home" className="relative min-h-[100dvh] w-full flex flex-col justify-between px-6 py-12 md:px-16 md:py-20 lg:px-24 pt-24 md:pt-32 overflow-x-clip">
       {/* Background Decorative Watermark - aria-hidden for accessibility */}
-      <motion.div
+      <div
         aria-hidden="true"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 0.03, scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute top-1/4 -right-12 select-none pointer-events-none text-vegaCyan font-display font-black text-9xl md:text-[20rem] leading-none z-0"
+        className="absolute top-1/4 -right-4 sm:-right-12 select-none pointer-events-none text-vegaCyan opacity-[0.03] font-display font-black text-7xl sm:text-9xl md:text-[20rem] leading-none z-0"
       >
         DEV
-      </motion.div>
+      </div>
 
       {/* Ambient glowing orbs for Glassmorphism refraction */}
       <div className="absolute top-1/2 left-1/4 w-[30rem] h-[30rem] bg-vegaCyan/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" aria-hidden="true" />
@@ -83,7 +80,6 @@ export function Hero() {
       {/* Top Asymmetric Bar: Status & Location */}
       <motion.div
         variants={topBarVariants}
-        initial="hidden"
         animate="visible"
         className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6"
       >
@@ -96,7 +92,7 @@ export function Hero() {
       </motion.div>
 
       {/* Main Asymmetric Typography Area */}
-      <div className="relative z-10 my-auto py-12 flex flex-col justify-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col justify-center flex-grow">
         {/* Subtitle / Role Tag */}
         <div className="flex flex-col gap-2 mb-4">
           <motion.div
@@ -108,7 +104,7 @@ export function Hero() {
             <span className="text-[#CBA153]">const</span> developer = <span className="text-vegaCyan">"Nattitor"</span>;
           </motion.div>
           <motion.div
-            initial={{ x: -20, opacity: 0 }}
+            initial={false}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-block text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest"
@@ -123,9 +119,9 @@ export function Hero() {
         {/* Gigantic Asymmetric Heading with Letter Reveal */}
         <motion.h1
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           animate="visible"
-          className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9] tracking-tighter text-white uppercase select-none"
+          className="font-display font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9] tracking-tighter text-white uppercase select-none"
         >
           <span className="inline-flex overflow-hidden py-1 pr-4">
             {firstName.split("").map((char, index) => (
@@ -135,7 +131,7 @@ export function Hero() {
             ))}
           </span>
           <br />
-          <span className="group text-stroke-white ml-4 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-1 pr-4 cursor-default transition-colors duration-500 hover:text-white hover:text-stroke-0">
+          <span className="group text-stroke-white ml-0 sm:ml-4 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-1 pr-4 cursor-default transition-colors duration-500 hover:text-white hover:text-stroke-0 active:text-white active:text-stroke-0">
             {lastName.split("").map((char, index) => (
               <motion.span key={`last-${index}`} variants={letterVariants} className="inline-block transition-colors duration-500">
                 {char === " " ? "\u00A0" : char}
@@ -147,7 +143,6 @@ export function Hero() {
         {/* Asymmetric Description & CTA Row */}
         <motion.div
           variants={contentFadeInVariants}
-          initial="hidden"
           animate="visible"
           className="mt-16 md:mt-24 flex flex-col items-start md:items-end md:text-right md:ml-auto w-full md:w-2/3 lg:w-1/2 gap-8"
         >
@@ -166,7 +161,6 @@ export function Hero() {
 
       {/* Bottom Decorative Indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
         className="relative z-10 flex items-center justify-between text-xs font-mono text-slate-600 border-t border-white/5 pt-4"

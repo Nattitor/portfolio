@@ -43,7 +43,7 @@ export function SocialLinksCard() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Visitar perfil de ${social.name}`}
-            className="group flex items-center justify-between rounded-xl border border-[#243870]/50 bg-[#243870]/20 p-4 transition-all duration-300 hover:border-[#00E5FF] hover:shadow-[0_0_15px_rgba(0,229,255,0.1)]"
+            className="group flex items-center justify-between rounded-xl border border-[#243870]/50 bg-[#243870]/20 p-4 transition-all duration-300 hover:border-[#00E5FF] hover:shadow-[0_0_15px_rgba(0,229,255,0.1)] active:scale-95"
           >
             <div className="flex items-center gap-3">
               <span aria-hidden="true" className="flex items-center justify-center w-8 h-8 rounded-lg bg-transparent text-xs font-mono font-bold text-slate-300 group-hover:text-[#00E5FF] transition-colors duration-300">

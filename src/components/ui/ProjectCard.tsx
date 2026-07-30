@@ -17,11 +17,9 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
   return (
     <motion.article
-      layout
-      initial={{ opacity: 0, y: 20 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
-      transition={{ layout: { type: "spring", stiffness: 300, damping: 30 }, duration: 0.2 }}
       whileHover={{ y: -6 }}
       style={{ willChange: "transform, opacity" }}
       className="group relative flex h-full w-full flex-col justify-between rounded-2xl glass-card p-6 md:p-8 transition-all duration-300 hover:border-vegaCyan/30 hover:shadow-[inset_0_0_30px_rgba(0,229,255,0.08)]"

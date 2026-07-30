@@ -49,7 +49,7 @@ export function MagneticButton({
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ x, y }}
-        className={`inline-block ${className}`}
+        className={`inline-block transition-transform duration-300 ease-out active:scale-95 ${className}`}
       >
         {children}
       </motion.a>
