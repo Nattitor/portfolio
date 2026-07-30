@@ -46,6 +46,11 @@
     }
   },
   "bento": {
+    "header": {
+      "sectionTitle": "Digital Identity",
+      "heading1": "About",
+      "heading2": "Me"
+    },
     "bio": {
       "titlePart1": "Software Engineer ",
       "titleMuted": "obsessed with performance and ",
