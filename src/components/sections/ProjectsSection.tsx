@@ -58,7 +58,7 @@ export function ProjectsSection() {
   }, [activeFilter, projects]);
 
   return (
-    <section id="projects" className="relative w-full px-6 py-20 md:px-16 lg:px-24">
+    <section id="projects" className="relative w-full px-6 pt-10 pb-20 md:py-20 md:px-16 lg:px-24">
       {/* Section Header */}
       <div className="mb-10 md:mb-12">
         <div className="text-vegaCyan font-mono text-sm md:text-base uppercase tracking-widest mb-3">

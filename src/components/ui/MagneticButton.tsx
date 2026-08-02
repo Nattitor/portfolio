@@ -22,7 +22,8 @@ export function MagneticButton({
   const x = useSpring(0, { stiffness: 350, damping: 25, mass: 0.5 });
   const y = useSpring(0, { stiffness: 350, damping: 25, mass: 0.5 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    if (e.pointerType !== "mouse") return; // Disable on touch devices
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
@@ -36,7 +37,7 @@ export function MagneticButton({
     y.set(middleY * 0.35);
   };
 
-  const handleMouseLeave = () => {
+  const handlePointerLeave = () => {
     x.set(0);
     y.set(0);
   };
@@ -46,8 +47,8 @@ export function MagneticButton({
       <motion.a
         href={href}
         ref={ref}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={handlePointerLeave}
         style={{ x, y }}
         className={`inline-block transition-transform duration-300 ease-out active:scale-95 ${className}`}
       >
@@ -60,8 +61,8 @@ export function MagneticButton({
     <motion.button
       ref={ref}
       onClick={onClick}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
       style={{ x, y }}
       className={`inline-block ${className}`}
     >
