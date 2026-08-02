@@ -9,7 +9,6 @@ export function Navbar() {
   const [active, setActive] = useState<string>("Home");
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
-  const [lastY, setLastY] = useState(0);
   const { t, language, setLanguage } = useI18n();
 
   const translatedNavLinks = useMemo(() => [
@@ -20,12 +19,23 @@ export function Navbar() {
 
   // 1. Smart Floating: Hide on scroll down, show on scroll up
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > lastY && latest > 150) {
-      setHidden(true);
-    } else {
+    // Obtenemos el valor previo directamente de Framer Motion (sin depender del estado de React)
+    const previous = scrollY.getPrevious() || 0;
+
+    // 1. Protección de rebote (Top): Si estamos en la cima o en negativo (pull-to-refresh)
+    if (latest <= 0) {
       setHidden(false);
+      return;
     }
-    setLastY(latest);
+
+    // 2. Fluidez de subida: Si el valor actual es menor que el previo, el usuario está subiendo
+    if (latest < previous) {
+      setHidden(false);
+    } 
+    // 3. Umbral de bajada: Solo oculta si baja Y cruzó la barrera de los 150px
+    else if (latest > previous && latest > 150) {
+      setHidden(true);
+    }
   });
 
   // 2. Scroll Spy: Update active tab based on scroll position
@@ -70,9 +80,10 @@ export function Navbar() {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: hidden ? 100 : 0, opacity: hidden ? 0 : 1 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2"
+      // Nuevo centrado ultra-seguro sin translate-x que previene el colapso a 0px en móviles
+      className="fixed bottom-4 md:bottom-8 left-0 w-full z-50 flex justify-center pointer-events-none px-4"
     >
-      <nav className="flex items-center gap-1 rounded-full border border-white/10 bg-nebulaPurple/20 px-2 py-2 backdrop-blur-xl shadow-2xl">
+      <nav className="pointer-events-auto flex items-center gap-0.5 md:gap-1 rounded-full border border-white/10 bg-nebulaPurple/20 px-1.5 md:px-2 py-1.5 md:py-2 backdrop-blur-xl shadow-2xl">
         {translatedNavLinks.map((link) => {
           const isActive = active === link.name;
           return (
@@ -81,8 +92,8 @@ export function Navbar() {
               href={link.href}
               onClick={() => setActive(link.name)}
               aria-current={isActive ? "true" : undefined}
-              className={`relative rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
-                isActive ? "text-[#00E5FF]" : "text-slate-400 hover:text-white"
+              className={`relative rounded-full px-3 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium transition-colors ${
+                isActive ? "text-[#00E5FF]" : "text-slate-400 md:hover:text-white"
               }`}
             >
               {isActive && (
@@ -98,12 +109,12 @@ export function Navbar() {
         })}
         
         {/* Divider */}
-        <div className="w-[1px] h-6 bg-white/20 mx-1" /> 
+        <div className="w-[1px] h-4 md:h-6 bg-white/20 mx-0.5 md:mx-1" /> 
         
         {/* i18n Toggle */}
         <button
           onClick={() => setLanguage(language === "es" ? "en" : "es")}
-          className="relative rounded-full px-4 py-2.5 text-sm font-medium transition-colors text-slate-400 hover:text-white uppercase tracking-wider"
+          className="relative rounded-full px-3 py-2 md:px-4 md:py-2.5 text-xs md:text-sm font-medium transition-colors text-slate-400 md:hover:text-white uppercase tracking-wider"
           aria-label="Toggle Language"
         >
           {language}
