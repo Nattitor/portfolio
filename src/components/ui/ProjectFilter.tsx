@@ -26,8 +26,8 @@ export function ProjectFilter({
             key={id}
             onClick={() => onSelectFilter(id)}
             aria-pressed={isActive}
-            className={`relative rounded-full px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors duration-300 ${
-              isActive ? "text-[#00E5FF] font-bold" : "text-slate-400 hover:text-white"
+            className={`relative rounded-full px-5 py-2.5 md:px-4 md:py-2 text-[10px] md:text-xs font-mono uppercase tracking-wider whitespace-nowrap transition-colors duration-300 active:scale-95 ${
+              isActive ? "text-[#00E5FF] font-bold" : "text-slate-400 md:hover:text-white active:text-white"
             }`}
           >
             {isActive && (
