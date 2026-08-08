@@ -35,7 +35,7 @@ export function LiveClock({ className = "" }: { className?: string }) {
 
   return (
     <span 
-      className={`tabular-nums tracking-widest select-none cursor-default before:content-[attr(data-time)] ${className}`} 
+      className={`tabular-nums tracking-normal md:tracking-widest select-none cursor-default before:content-[attr(data-time)] ${className}`} 
       data-time={mounted ? time : "00:00:00"} 
       suppressHydrationWarning
     />

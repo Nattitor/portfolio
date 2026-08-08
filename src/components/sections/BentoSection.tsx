@@ -23,7 +23,7 @@ export function BentoSection() {
   const { t } = useI18n();
 
   return (
-    <section id="about" className="relative w-full px-6 py-24 md:px-16 lg:px-24 bg-transparent">
+    <section id="about" className="relative w-full px-6 pt-12 pb-6 md:py-24 md:px-16 lg:px-24 bg-transparent">
       {/* Section Header */}
       <motion.div
         initial={false}

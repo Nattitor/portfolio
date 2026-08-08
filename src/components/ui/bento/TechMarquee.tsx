@@ -56,24 +56,33 @@ export function TechMarquee() {
   return (
     <motion.div
       variants={bentoVariants}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => {
+        if (typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches) {
+          setIsHovered(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches) {
+          setIsHovered(false);
+        }
+      }}
       className="md:col-span-6 md:row-span-1 flex items-center overflow-hidden rounded-3xl border border-white/10 bg-transparent py-4 md:py-0 min-h-[100px] relative select-none [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
     >
       
+      {/* Base Layer: Gray outline on mobile, interactive on desktop */}
       <motion.div 
-        className="flex w-max whitespace-nowrap"
+        className="flex w-max whitespace-nowrap items-center"
         style={{ x, willChange: "transform" }}
       >
         {technologies.map((tech, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={`base-${index}`}>
             <span 
-              className="group flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 hover:opacity-100 hover:text-stroke-0 transition-all cursor-default select-none"
+              className="group flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 md:hover:opacity-100 md:hover:text-stroke-0 transition-all cursor-default select-none"
               style={{ "--brand-color": tech.color } as React.CSSProperties}
             >
-              <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-white/20 group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none" />
+              <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-white/20 md:group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none" />
               <span 
-                className="group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none before:content-[attr(data-tech)]"
+                className="md:group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none before:content-[attr(data-tech)]"
                 data-tech={tech.name}
               />
             </span>
@@ -81,6 +90,36 @@ export function TechMarquee() {
           </React.Fragment>
         ))}
       </motion.div>
+
+      {/* Spotlight Layer: Colored center focus (Mobile Only) */}
+      <div 
+        className="absolute inset-0 h-full w-full pointer-events-none md:hidden flex items-center"
+        style={{ 
+          maskImage: "radial-gradient(circle at 50% 50%, black 10%, transparent 40%)",
+          WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 10%, transparent 40%)"
+        }}
+      >
+        <motion.div 
+          className="flex w-max whitespace-nowrap items-center"
+          style={{ x, willChange: "transform" }}
+        >
+          {technologies.map((tech, index) => (
+            <React.Fragment key={`spotlight-${index}`}>
+              <span 
+                className="group flex items-center gap-3 text-3xl font-display font-black uppercase text-transparent text-stroke-0 select-none"
+                style={{ color: tech.color }}
+              >
+                <tech.Icon className="w-7 h-7 select-none" style={{ color: tech.color }} />
+                <span 
+                  className="select-none before:content-[attr(data-tech)]"
+                  data-tech={tech.name}
+                />
+              </span>
+              <span className="text-ayabeGold mx-6 text-2xl pointer-events-none select-none before:content-['✦']" />
+            </React.Fragment>
+          ))}
+        </motion.div>
+      </div>
     </motion.div>
   );
 }

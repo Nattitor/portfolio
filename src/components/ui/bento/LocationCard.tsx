@@ -19,17 +19,17 @@ export function LocationCard() {
           backgroundSize: "20px 20px"
         }}
       />
-      <div className="absolute top-6 left-6 flex items-center gap-2 bg-nebulaPurple/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 z-10">
-        <span className="relative flex h-2.5 w-2.5">
+      <div className="absolute top-6 left-6 flex items-center gap-1.5 md:gap-2 bg-nebulaPurple/20 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full border border-white/5 z-10">
+        <span className="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-vegaCyan opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-vegaCyan"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-vegaCyan"></span>
         </span>
-        <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest">Online</span>
+        <span className="text-[9px] md:text-[10px] font-mono font-bold text-white uppercase tracking-widest">Online</span>
       </div>
       
       {/* Massive Brutalist Clock */}
-      <div className="absolute inset-0 flex items-center justify-center md:justify-end md:pr-6 pointer-events-none overflow-hidden">
-        <LiveClock className="text-5xl sm:text-6xl md:text-7xl font-mono font-black text-transparent text-stroke-white text-stroke-2 opacity-40 select-none" />
+      <div className="absolute inset-0 flex items-center justify-start pl-6 md:justify-end md:pl-0 md:pr-6 pointer-events-none overflow-hidden">
+        <LiveClock className="text-5xl md:text-7xl font-mono font-black text-transparent text-stroke-white text-stroke-[1px] md:text-stroke-2 opacity-60 md:opacity-40 select-none antialiased" />
       </div>
       
       <div className="relative z-10 mt-24">

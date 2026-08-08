@@ -11,10 +11,31 @@ export function CopyEmailCard() {
   const email = "Ryufg.100@gmail.com";
   const { t } = useI18n();
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(email);
+      } else {
+        // Fallback for non-secure contexts (like mobile local network testing)
+        const textArea = document.createElement("textarea");
+        textArea.value = email;
+        textArea.style.position = "absolute";
+        textArea.style.left = "-999999px";
+        document.body.prepend(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+        } catch (error) {
+          console.error("Fallback copy failed", error);
+        } finally {
+          textArea.remove();
+        }
+      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1000);
+    } catch (err) {
+      console.error("Failed to copy email: ", err);
+    }
   };
 
   return (
@@ -30,7 +51,7 @@ export function CopyEmailCard() {
           : "border-white/10 bg-white/5 hover:border-vegaCyan/50 hover:bg-nebulaPurple/20"
       )}
     >
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity blur-3xl pointer-events-none ${copied ? 'bg-green-500/10' : 'bg-vegaCyan/10'}`} />
+      <div className={`absolute inset-0 transition-opacity blur-3xl pointer-events-none ${copied ? 'opacity-100 bg-green-500/20' : 'opacity-0 md:group-hover:opacity-100 bg-vegaCyan/10'}`} />
       
       <span className="text-sm font-mono uppercase tracking-widest text-slate-400 mb-4">
         {copied ? t.bento.contact.success : t.bento.contact.letsTalk}
@@ -40,7 +61,7 @@ export function CopyEmailCard() {
         {copied ? t.bento.contact.copied : email}
       </h3>
       
-      <p className="mt-6 text-xs font-mono uppercase tracking-widest text-slate-500 group-hover:text-vegaCyan transition-colors">
+      <p className={`mt-6 text-xs font-mono uppercase tracking-widest transition-colors ${copied ? 'text-green-500' : 'text-slate-500 md:group-hover:text-vegaCyan'}`}>
         {copied ? t.bento.contact.ready : t.bento.contact.click}
       </p>
     </motion.button>

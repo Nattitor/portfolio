@@ -7,8 +7,8 @@ export function Footer() {
   const { t } = useI18n();
 
   return (
-    <footer className="mt-24 max-w-7xl mx-auto w-full border-t border-white/10 pt-8 pb-12 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div className="flex flex-col md:flex-row items-center gap-4 text-xs font-mono text-slate-500 uppercase tracking-widest">
+    <footer className="mt-16 md:mt-24 max-w-7xl mx-auto w-full border-t border-white/10 pt-8 pb-8 md:pb-12 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-4">
+      <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4 text-xs font-mono text-slate-500 uppercase tracking-widest text-center">
         <span>© {currentYear} Freddy Guerra</span>
         <span className="hidden md:inline-block text-slate-700">//</span>
         <span>{t.footer.rights}</span>
