@@ -11,9 +11,9 @@
 <br />
 
 <div align="center">
-  <img src="https://via.placeholder.com/1000x500/0A0E17/00E5FF?text=Portfolio+Preview+Screenshot" alt="Nattitor Portfolio Preview" width="100%" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);" />
+  <img src="./public/preview.png" alt="Nattitor Portfolio Preview" width="100%" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);" />
   <br />
-  <sub><em>Reemplaza esta imagen subiendo una captura real de tu portafolio y actualizando el link en el README.</em></sub>
+  <sub><em>Live Demo: <a href="https://portfolio-nattitors-projects.vercel.app/" target="_blank">portfolio-nattitors-projects.vercel.app</a></em></sub>
 </div>
 
 <br />
