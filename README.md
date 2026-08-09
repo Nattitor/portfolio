@@ -1,34 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✦ Nattitor | Brutalist Developer Portfolio
 
-## Getting Started
+<div align="center">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
+</div>
 
-First, run the development server:
+<br />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<div align="center">
+  <img src="https://via.placeholder.com/1000x500/0A0E17/00E5FF?text=Portfolio+Preview+Screenshot" alt="Nattitor Portfolio Preview" width="100%" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br />
+  <sub><em>Reemplaza esta imagen subiendo una captura real de tu portafolio y actualizando el link en el README.</em></sub>
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A highly optimized, brutally aesthetic portfolio built with modern web technologies. Designed to deliver a premium, native-app-like experience on both desktop and mobile devices.
 
-## Learn More
+## 🚀 Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Brutalist Glassmorphism UI:** Custom-built glass panels with deep blurs and dynamic lighting.
+- **Flawless Mobile Experience:** Interactive elements tailored specifically for touch screens, completely eliminating the "fake hover" syndrome.
+- **Server-Side i18n:** Native English and Spanish support resolved at the server level via Cookies (Zero hydration mismatch).
+- **Advanced Animations:** Fluid physics, magnetic buttons, and intersection observers powered by Framer Motion.
+- **Asymmetric Grid System:** A fully responsive Bento Grid layout.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Architecture & Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is built using the App Router in **Next.js 14+**.
 
-## Deploy on Vercel
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4 (with custom `@theme` variables)
+- **Animations:** Framer Motion (Hardware-accelerated)
+- **Icons:** Lucide React
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Installation & Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Nattitor/portfolio.git
+   cd portfolio
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🌐 Deployment
+
+This project is optimized for deployment on [Vercel](https://vercel.com).
+
+1. Push your code to a GitHub repository.
+2. Import the repository into Vercel.
+3. Vercel will automatically detect Next.js and configure the build settings.
+4. Deploy!
+
+## 📜 License
+
+Designed and developed by [Freddy Guerra (Nattitor)](https://github.com/Nattitor). All rights reserved.

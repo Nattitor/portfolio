@@ -31,7 +31,7 @@ export function TechMarquee() {
     { name: "SUPABASE", color: "#3ECF8E", Icon: SupabaseIcon },
     { name: "POSTGRESQL", color: "#4169E1", Icon: PostgresqlIcon },
   ];
-  // Duplicación perfecta para que el loop matemático del -50% sea invisible
+  // Perfect duplication so that the -50% mathematical loop is invisible
   const technologies = [...baseTech, ...baseTech];
 
   const baseX = useMotionValue(0);
@@ -39,7 +39,7 @@ export function TechMarquee() {
   const directionFactor = useRef<number>(1);
 
   useAnimationFrame((t, delta) => {
-    // Velocidad base constante (1.5) sin aceleración por scroll
+    // Constant base speed (1.5) without scroll acceleration
     let moveBy = directionFactor.current * -1 * (delta / 1000) * 1.5; 
 
     // Pause / massive slow down on hover
@@ -50,7 +50,7 @@ export function TechMarquee() {
     baseX.set(baseX.get() + moveBy);
   });
 
-  // wrap(-50, 0, v) asegura un loop perfecto
+  // wrap(-50, 0, v) ensures a perfect loop
   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
 
   return (
@@ -71,8 +71,8 @@ export function TechMarquee() {
       
       {/* Base Layer: Gray outline on mobile, interactive on desktop */}
       <motion.div 
-        className="flex w-max whitespace-nowrap items-center"
-        style={{ x, willChange: "transform" }}
+        className="flex w-max whitespace-nowrap items-center will-change-transform"
+        style={{ x }}
       >
         {technologies.map((tech, index) => (
           <React.Fragment key={`base-${index}`}>
@@ -100,8 +100,8 @@ export function TechMarquee() {
         }}
       >
         <motion.div 
-          className="flex w-max whitespace-nowrap items-center"
-          style={{ x, willChange: "transform" }}
+          className="flex w-max whitespace-nowrap items-center will-change-transform"
+          style={{ x }}
         >
           {technologies.map((tech, index) => (
             <React.Fragment key={`spotlight-${index}`}>

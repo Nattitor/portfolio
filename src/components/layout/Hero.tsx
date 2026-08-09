@@ -1,60 +1,17 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
 import { useI18n } from "@/context/I18nContext";
 import { portfolioData } from "@/constants/portfolioData";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-
-// Extracted Variants to prevent re-creation on every render (Performance Optimization)
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.04,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const letterVariants: Variants = {
-  hidden: { y: "120%", opacity: 0 },
-  visible: {
-    y: "0%",
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
-const contentFadeInVariants: Variants = {
-  hidden: { y: 24, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-      delay: 0.8,
-    },
-  },
-};
-
-const topBarVariants: Variants = {
-  hidden: { y: -20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
+import { 
+  heroContainerVariants, 
+  heroLetterVariants, 
+  heroContentFadeInVariants, 
+  heroTopBarVariants 
+} from "@/lib/motion";
 
 export function Hero() {
   const { profile } = portfolioData;
@@ -79,7 +36,7 @@ export function Hero() {
 
       {/* Top Asymmetric Bar: Status & Location */}
       <motion.div
-        variants={topBarVariants}
+        variants={heroTopBarVariants}
         animate="visible"
         className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-4 border-b border-white/10 pb-8 md:pb-6"
       >
@@ -118,14 +75,14 @@ export function Hero() {
 
         {/* Gigantic Asymmetric Heading with Letter Reveal */}
         <motion.h1
-          variants={containerVariants}
+          variants={heroContainerVariants}
           initial={false}
           animate="visible"
           className="font-display font-black text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9] tracking-tighter text-white uppercase select-none"
         >
           <span className="inline-flex overflow-hidden py-2 pr-4">
             {firstName.split("").map((char, index) => (
-              <motion.span key={`first-${index}`} variants={letterVariants} className="inline-block">
+              <motion.span key={`first-${index}`} variants={heroLetterVariants} className="inline-block">
                 {char}
               </motion.span>
             ))}
@@ -133,7 +90,7 @@ export function Hero() {
           <br />
           <span className="group text-stroke-white ml-0 md:ml-12 lg:ml-24 inline-flex overflow-hidden py-2 pr-4 mt-2 md:mt-0 cursor-default transition-colors duration-500 md:hover:text-white md:hover:text-stroke-0 active:text-white active:text-stroke-0">
             {lastName.split("").map((char, index) => (
-              <motion.span key={`last-${index}`} variants={letterVariants} className="inline-block transition-colors duration-500">
+              <motion.span key={`last-${index}`} variants={heroLetterVariants} className="inline-block transition-colors duration-500">
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
@@ -142,7 +99,7 @@ export function Hero() {
 
         {/* Asymmetric Description & CTA Row */}
         <motion.div
-          variants={contentFadeInVariants}
+          variants={heroContentFadeInVariants}
           animate="visible"
           className="mt-12 md:mt-24 flex flex-col items-center md:items-end md:text-right md:ml-auto w-full md:w-2/3 lg:w-1/2 gap-10 md:gap-8"
         >

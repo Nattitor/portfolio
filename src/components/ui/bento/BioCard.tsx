@@ -10,7 +10,7 @@ export function BioCard() {
   return (
     <motion.div
       variants={bentoVariants}
-      className="md:col-span-4 md:row-span-2 flex flex-col justify-center rounded-3xl border border-white/10 bg-white/5 p-8 lg:p-12 glass-card relative overflow-hidden"
+      className="md:col-span-4 md:row-span-2 flex flex-col justify-center rounded-3xl p-8 lg:p-12 glass-panel relative overflow-hidden"
     >
       <div 
         className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 blur-[100px] pointer-events-none rounded-full"

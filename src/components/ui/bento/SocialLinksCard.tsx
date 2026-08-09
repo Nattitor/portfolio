@@ -28,7 +28,7 @@ export function SocialLinksCard() {
   return (
     <motion.div
       variants={bentoVariants}
-      className="md:col-span-2 md:row-span-2 flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-6 glass-card relative"
+      className="md:col-span-2 md:row-span-2 flex flex-col justify-between rounded-3xl p-6 glass-panel relative"
     >
       <div className="flex items-center gap-2 mb-6">
         <div className="w-2 h-2 rounded-full bg-slate-500" />

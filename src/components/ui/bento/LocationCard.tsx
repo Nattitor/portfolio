@@ -9,7 +9,7 @@ export function LocationCard() {
   return (
     <motion.div
       variants={bentoVariants}
-      className="md:col-span-2 md:row-span-2 relative flex flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 glass-card"
+      className="md:col-span-2 md:row-span-2 relative flex flex-col justify-end overflow-hidden rounded-3xl p-6 glass-panel"
     >
       {/* Abstract Map Background */}
       <div 

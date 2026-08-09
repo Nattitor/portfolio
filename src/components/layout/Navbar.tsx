@@ -19,20 +19,20 @@ export function Navbar() {
 
   // 1. Smart Floating: Hide on scroll down, show on scroll up
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // Obtenemos el valor previo directamente de Framer Motion (sin depender del estado de React)
+    // Get the previous value directly from Framer Motion (without depending on React state)
     const previous = scrollY.getPrevious() || 0;
 
-    // 1. Protección de rebote (Top): Si estamos en la cima o en negativo (pull-to-refresh)
+    // 1. Bounce protection (Top): If we are at the top or negative (pull-to-refresh)
     if (latest <= 0) {
       setHidden(false);
       return;
     }
 
-    // 2. Fluidez de subida: Si el valor actual es menor que el previo, el usuario está subiendo
+    // 2. Upward fluidity: If current value is less than previous, user is scrolling up
     if (latest < previous) {
       setHidden(false);
     } 
-    // 3. Umbral de bajada: Solo oculta si baja Y cruzó la barrera de los 150px
+    // 3. Downward threshold: Only hide if scrolling down AND crossed the 150px barrier
     else if (latest > previous && latest > 150) {
       setHidden(true);
     }
@@ -80,7 +80,7 @@ export function Navbar() {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: hidden ? 100 : 0, opacity: hidden ? 0 : 1 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      // Nuevo centrado ultra-seguro sin translate-x que previene el colapso a 0px en móviles
+      // New ultra-safe centering without translate-x that prevents 0px collapse on mobiles
       className="fixed bottom-4 md:bottom-8 left-0 w-full z-50 flex justify-center pointer-events-none px-4"
     >
       <nav className="pointer-events-auto flex items-center gap-0.5 md:gap-1 rounded-full border border-white/10 bg-nebulaPurple/20 px-1.5 md:px-2 py-1.5 md:py-2 backdrop-blur-xl shadow-2xl">

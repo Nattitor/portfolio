@@ -23,15 +23,18 @@ export const metadata: Metadata = {
 
 import { I18nProvider } from "@/context/I18nContext";
 import { ConsoleEasterEgg } from "@/components/ui/ConsoleEasterEgg";
+import { cookies } from "next/headers";
 
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const lang = (cookieStore.get("portfolio-lang")?.value as "en" | "es") || "es";
+
   return (
-    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
+    <html lang={lang} className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <body className="font-body bg-darkBg text-slate-100 antialiased select-none selection:bg-[#243870] selection:text-white">
         {/* Noise Overlay */}
         <div className="fixed inset-0 z-0 pointer-events-none mix-blend-overlay">
@@ -45,7 +48,7 @@ export default function RootLayout({
         {/* Vignette / Radial Gradient (Nebula Glow) */}
         <div className="fixed inset-0 z-0 pointer-events-none" />
 
-        <I18nProvider>
+        <I18nProvider initialLanguage={lang}>
           <ConsoleEasterEgg />
           <Navbar />
           {children}

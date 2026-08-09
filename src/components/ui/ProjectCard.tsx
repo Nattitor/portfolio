@@ -38,8 +38,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
       whileHover={{ y: -6 }}
       whileTap={{ scale: 0.98 }}
-      style={{ willChange: "transform, opacity" }}
-      className="group relative flex h-full w-full flex-col justify-between rounded-2xl glass-card p-6 md:p-8 transition-all duration-300 data-[mobile-active=true]:border-vegaCyan/30 data-[mobile-active=true]:shadow-[inset_0_0_30px_rgba(0,229,255,0.08)] md:hover:border-vegaCyan/30 md:hover:shadow-[inset_0_0_30px_rgba(0,229,255,0.08)]"
+      className="group relative flex h-full w-full flex-col justify-between rounded-2xl glass-panel p-6 md:p-8 transition-all duration-300 data-[mobile-active=true]:border-vegaCyan/30 data-[mobile-active=true]:shadow-[inset_0_0_30px_rgba(0,229,255,0.08)] md:hover:border-vegaCyan/30 md:hover:shadow-[inset_0_0_30px_rgba(0,229,255,0.08)]"
     >
       {/* Top Header Row: Index & Category */}
       <div className="flex items-center justify-between gap-4 mb-4">
@@ -58,7 +57,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
       {/* Mock Glassmorphism Image Container with Brutalist Noise */}
       <div
-        className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 flex flex-col items-center justify-center p-6 mb-6 glass-card group-data-[mobile-active=true]:border-white/20 md:group-hover:border-white/20 transition-colors"
+        className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 flex flex-col items-center justify-center p-6 mb-6 backdrop-blur-xl group-data-[mobile-active=true]:border-white/20 md:group-hover:border-white/20 transition-colors"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
         }}

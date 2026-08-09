@@ -1,42 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { bentoVariants } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/context/I18nContext";
+import { useClipboard } from "@/hooks/useClipboard";
 
 export function CopyEmailCard() {
-  const [copied, setCopied] = useState(false);
+  const { hasCopied: copied, copyToClipboard } = useClipboard(1000);
   const email = "Ryufg.100@gmail.com";
   const { t } = useI18n();
 
-  const handleCopy = async () => {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(email);
-      } else {
-        // Fallback for non-secure contexts (like mobile local network testing)
-        const textArea = document.createElement("textarea");
-        textArea.value = email;
-        textArea.style.position = "absolute";
-        textArea.style.left = "-999999px";
-        document.body.prepend(textArea);
-        textArea.select();
-        try {
-          document.execCommand('copy');
-        } catch (error) {
-          console.error("Fallback copy failed", error);
-        } finally {
-          textArea.remove();
-        }
-      }
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1000);
-    } catch (err) {
-      console.error("Failed to copy email: ", err);
-    }
-  };
+  const handleCopy = () => copyToClipboard(email);
 
   return (
     <motion.button
@@ -45,10 +20,10 @@ export function CopyEmailCard() {
       whileTap={{ scale: 0.95 }}
       onClick={handleCopy}
       className={cn(
-        "md:col-span-4 md:row-span-2 flex flex-col items-center justify-center rounded-3xl border transition-all duration-300 p-8 glass-card group relative overflow-hidden active:scale-95",
+        "md:col-span-4 md:row-span-2 flex flex-col items-center justify-center rounded-3xl transition-all duration-300 p-8 glass-panel group relative overflow-hidden active:scale-95",
         copied 
           ? "border-green-500/50 bg-green-950/30" 
-          : "border-white/10 bg-white/5 hover:border-vegaCyan/50 hover:bg-nebulaPurple/20"
+          : "hover:border-vegaCyan/50 hover:bg-nebulaPurple/20"
       )}
     >
       <div className={`absolute inset-0 transition-opacity blur-3xl pointer-events-none ${copied ? 'opacity-100 bg-green-500/20' : 'opacity-0 md:group-hover:opacity-100 bg-vegaCyan/10'}`} />
