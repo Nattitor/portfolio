@@ -109,7 +109,7 @@ export function TechMarquee() {
                 className="group flex items-center gap-3 text-3xl font-display font-black uppercase text-transparent text-stroke-0 select-none"
                 style={{ color: tech.color }}
               >
-                <tech.Icon className="w-7 h-7 select-none" style={{ color: tech.color }} />
+                <tech.Icon className="w-7 h-7 select-none" />
                 <span 
                   className="select-none before:content-[attr(data-tech)]"
                   data-tech={tech.name}
