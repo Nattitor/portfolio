@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from "react";
 import { Project } from "@/constants/portfolioData";
 import { ActionLink } from "@/components/ui/ActionLink";
 import { useI18n } from "@/context/I18nContext";
+import Image from "next/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -62,13 +63,27 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
         }}
       >
-        <div className="absolute inset-0 bg-vegaCyan/10 opacity-0 group-data-[mobile-active=true]:opacity-100 md:group-hover:opacity-100 blur-3xl transition-opacity pointer-events-none mix-blend-screen" />
-        <span className="relative z-10 font-display font-bold text-lg md:text-xl text-slate-300 text-center tracking-wide uppercase select-none group-data-[mobile-active=true]:text-white md:group-hover:text-white transition-colors">
-          {project.title}
-        </span>
-        <span className="relative z-10 mt-2 text-[10px] font-mono text-slate-500 uppercase tracking-widest">
-          {t.projects.previewUnavailable}
-        </span>
+        <div className="absolute inset-0 bg-vegaCyan/10 opacity-0 group-data-[mobile-active=true]:opacity-100 md:group-hover:opacity-100 blur-3xl transition-opacity pointer-events-none mix-blend-screen z-20" />
+        
+        {project.image ? (
+          <Image 
+            src={project.image}
+            alt={`${project.title} preview`}
+            fill
+            quality={100}
+            className="object-cover relative z-10 transition-transform duration-500 md:group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          />
+        ) : (
+          <>
+            <span className="relative z-10 font-display font-bold text-lg md:text-xl text-slate-300 text-center tracking-wide uppercase select-none group-data-[mobile-active=true]:text-white md:group-hover:text-white transition-colors">
+              {project.title}
+            </span>
+            <span className="relative z-10 mt-2 text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+              {t.projects.previewUnavailable}
+            </span>
+          </>
+        )}
       </div>
 
       {/* Content */}

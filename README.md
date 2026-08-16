@@ -13,7 +13,7 @@
 <div align="center">
   <img src="./public/preview.png" alt="Nattitor Portfolio Preview" width="100%" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);" />
   <br />
-  <sub><em>Live Demo: <a href="https://portfolio-nattitors-projects.vercel.app/" target="_blank">portfolio-nattitors-projects.vercel.app</a></em></sub>
+  <sub><em>Live Demo: <a href="https://nattitor-portfolio.vercel.app/" target="_blank">nattitor-portfolio.vercel.app</a></em></sub>
 </div>
 
 <br />

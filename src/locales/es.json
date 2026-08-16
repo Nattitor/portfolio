@@ -23,6 +23,11 @@
     "liveDemo": "Demo en Vivo",
     "sourceCode": "Código Fuente",
     "items": {
+      "01": {
+        "category": "FULL-STACK / B2B",
+        "title": "Nattitor Analytics Dashboard",
+        "description": "Dashboard de analíticas de nivel empresarial con paginación del lado del servidor, visualización de datos compleja y animaciones fluidas dentro de un estricto sistema de diseño Dark Brutalist."
+      },
       "project-1": {
         "category": "Full-Stack",
         "title": "Apex SaaS Engine",

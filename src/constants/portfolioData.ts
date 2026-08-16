@@ -13,6 +13,7 @@ export interface Project {
   technologies: string[];
   liveUrl: string;
   repoUrl: string;
+  image?: string;
 }
 
 export interface PortfolioData {
@@ -28,6 +29,16 @@ export const portfolioData: PortfolioData = {
     availability: "Available for remote work",
   },
   projects: [
+    {
+      id: "01",
+      title: "Nattitor Analytics Dashboard",
+      category: "FULL-STACK / B2B",
+      shortDescription: "Enterprise-grade analytics dashboard featuring server-side pagination, complex data visualization, and fluid layout animations within a strict Dark Brutalist design system.",
+      technologies: ["Next.js 15", "Supabase", "Tailwind CSS", "Recharts", "Framer Motion"],
+      liveUrl: "https://nattitor-dashboard.vercel.app/",
+      repoUrl: "https://github.com/Nattitor/b2b-dashboard",
+      image: "/images/projects/nattitor-dashboard.webp"
+    },
     {
       id: "project-1",
       title: "Apex SaaS Engine",
