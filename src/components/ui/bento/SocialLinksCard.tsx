@@ -31,7 +31,7 @@ export function SocialLinksCard() {
       className="md:col-span-2 md:row-span-2 flex flex-col justify-between rounded-3xl p-6 glass-panel relative"
     >
       <div className="flex items-center gap-2 mb-6">
-        <div className="w-2 h-2 rounded-full bg-slate-500" />
+        <div className="w-2 h-2 rounded-full bg-starGold" />
         <span className="text-xs font-mono uppercase tracking-widest text-slate-500">{t.bento.social.connect}</span>
       </div>
 
@@ -43,18 +43,18 @@ export function SocialLinksCard() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Visitar perfil de ${social.name}`}
-            className="group flex items-center justify-between rounded-xl border border-[#243870]/50 bg-[#243870]/20 p-4 transition-all duration-300 hover:border-[#00E5FF] hover:shadow-[0_0_15px_rgba(0,229,255,0.1)] active:scale-95"
+            className="group flex items-center justify-between rounded-xl border border-vegaBlue/40 bg-vegaBlue/15 p-4 transition-all duration-300 hover:border-vegaCyan hover:shadow-[0_0_15px_rgba(120,213,225,0.15)] active:scale-95"
           >
             <div className="flex items-center gap-3">
-              <span aria-hidden="true" className="flex items-center justify-center w-8 h-8 rounded-lg bg-transparent text-xs font-mono font-bold text-slate-300 group-hover:text-[#00E5FF] transition-colors duration-300">
+              <span aria-hidden="true" className="flex items-center justify-center w-8 h-8 rounded-lg bg-transparent text-xs font-mono font-bold text-slate-300 group-hover:text-vegaCyan transition-colors duration-300">
                 {social.icon}
               </span>
-              <span className="font-mono text-sm font-bold text-slate-300 group-hover:text-white transition-colors duration-300">
+              <span className="font-mono text-sm font-bold text-slate-300 group-hover:text-paper transition-colors duration-300">
                 {social.name}
               </span>
             </div>
             <ArrowUpRight 
-              className="w-4 h-4 text-slate-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 group-hover:text-[#00E5FF]" 
+              className="w-4 h-4 text-slate-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 group-hover:text-vegaCyan" 
               strokeWidth={2}
             />
           </a>

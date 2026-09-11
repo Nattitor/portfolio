@@ -1,27 +1,46 @@
 @import "tailwindcss";
 
+/* ════════════════════════════════════════════════════════════════
+   Admire Vega palette — "the star of Lyra"
+   Official: Vega blue #3865A1 · twinkle cyan #78D5E1
+   From her outfit: race blue #2964B2 · night #131525 · violet #23233D
+                    ribbon gold #C8A45E · collar white #E8ECE4
+   ════════════════════════════════════════════════════════════════ */
 @theme {
   --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
   --font-body: var(--font-inter), "Inter", sans-serif;
 
-  --color-darkBg: #0A0E17;
-  --color-vegaCyan: #00E5FF;
-  --color-ayabeGold: #C5A059;
-  --color-nebulaPurple: #6B5B95;
-  --color-accentViolet: #8b5cf6;
-  --color-accentLime: #a3e635;
-  --color-accentPink: #f43f5e;
+  /* — Vega night — */
+  --color-nightBg: #0a0e1e;        /* base background */
+  --color-nightDeep: #131525;      /* panels & gradients */
+  --color-nightViolet: #23233d;    /* nocturne violet */
+  --color-vegaBlue: #3865a1;       /* Vega blue (primary) */
+  --color-vegaBlueBright: #2964b2; /* vivid blue (hover / active) */
+  --color-vegaCyan: #78d5e1;       /* twinkle cyan (accent) */
+  --color-starGold: #c8a45e;       /* ribbon gold */
+  --color-paper: #e8ece4;          /* collar / ribbon white */
+}
+
+/* Real text-stroke utilities (the old `text-stroke-*` classes never existed in CSS) */
+@utility text-stroke-0 {
+  -webkit-text-stroke: 0 transparent;
+}
+@utility text-stroke-1 {
+  -webkit-text-stroke: 1px var(--stroke-color, rgba(232, 236, 228, 0.75));
+}
+@utility text-stroke-2 {
+  -webkit-text-stroke: 2px var(--stroke-color, rgba(232, 236, 228, 0.75));
 }
 
 @layer base {
   body {
-    background-color: var(--color-darkBg);
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(107, 91, 149, 0.05) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(0, 229, 255, 0.03) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(107, 91, 149, 0.05) 0px, transparent 50%);
+    background-color: var(--color-nightBg);
+    background-image:
+      radial-gradient(1100px 700px at 8% -5%, rgba(56, 101, 161, 0.20), transparent 55%),
+      radial-gradient(900px 600px at 100% 0%, rgba(120, 213, 225, 0.07), transparent 50%),
+      radial-gradient(1000px 700px at 50% 110%, rgba(35, 35, 61, 0.55), transparent 60%);
     background-attachment: fixed;
-    color: #f4f4f5;
+    color: var(--color-paper);
     font-family: var(--font-body);
     min-height: 100vh;
   }
@@ -29,48 +48,73 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+
+  ::selection {
+    background-color: var(--color-vegaBlue);
+    color: var(--color-paper);
+  }
 }
 
 @layer utilities {
+  /* ── Nocturne glass: tinted deep blue, not generic white ── */
   .glass-panel {
-    background-color: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(155deg, rgba(56, 101, 161, 0.16), rgba(19, 21, 37, 0.60));
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(120, 213, 225, 0.14);
   }
 
-  .glass-card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  .glass-card {
+    background: linear-gradient(165deg, rgba(35, 35, 61, 0.50), rgba(19, 21, 37, 0.62));
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(120, 213, 225, 0.12);
   }
 
-  .glass-card-hover:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(0, 240, 255, 0.1);
-    transform: translateY(-2px);
+  /* ── Vega sky ── */
+  .vega-starfield {
+    background-image: url("/starfield.svg");
+    background-size: 420px 420px;
+    background-repeat: repeat;
   }
 
-  .glass-nav {
-    background: rgba(11, 19, 43, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  /* Shooting star — "Like a Shooting Star" (Ayabe's solo song) */
+  .shooting-star {
+    position: absolute;
+    top: 14%;
+    right: 10%;
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(90deg, #ffffff 0%, rgba(120, 213, 225, 0.9) 35%, rgba(232, 236, 228, 0) 100%);
+    transform: rotate(-32deg);
+    filter: drop-shadow(0 0 6px rgba(120, 213, 225, 0.8));
+    opacity: 0;
+    animation: shooting-star 22s ease-in infinite;
+    animation-delay: 9s;
   }
+}
 
-  .text-gradient {
-    background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+@keyframes shooting-star {
+  0% {
+    opacity: 0;
+    translate: 0 0;
   }
-
-  .text-gradient-accent {
-    background: linear-gradient(135deg, #00f0ff 0%, #8b5cf6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  2% {
+    opacity: 1;
   }
+  9% {
+    opacity: 0;
+    translate: -420px 260px;
+  }
+  100% {
+    opacity: 0;
+    translate: -420px 260px;
+  }
+}
 
-  .text-stroke-white {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
-    color: transparent;
+@media (prefers-reduced-motion: reduce) {
+  .shooting-star {
+    animation: none;
+    opacity: 0;
   }
 }

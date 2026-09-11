@@ -83,7 +83,7 @@ export function Navbar() {
       // New ultra-safe centering without translate-x that prevents 0px collapse on mobiles
       className="fixed bottom-4 md:bottom-8 left-0 w-full z-50 flex justify-center pointer-events-none px-4"
     >
-      <nav className="pointer-events-auto flex items-center gap-0.5 md:gap-1 rounded-full border border-white/10 bg-nebulaPurple/20 px-1.5 md:px-2 py-1.5 md:py-2 backdrop-blur-xl shadow-2xl">
+      <nav className="pointer-events-auto flex items-center gap-0.5 md:gap-1 rounded-full border border-vegaCyan/15 bg-nightDeep/70 px-1.5 md:px-2 py-1.5 md:py-2 backdrop-blur-xl shadow-2xl">
         {translatedNavLinks.map((link) => {
           const isActive = active === link.name;
           return (
@@ -93,13 +93,13 @@ export function Navbar() {
               onClick={() => setActive(link.name)}
               aria-current={isActive ? "true" : undefined}
               className={`relative rounded-full px-3 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium transition-colors ${
-                isActive ? "text-[#00E5FF]" : "text-slate-400 md:hover:text-white"
+                isActive ? "text-vegaCyan" : "text-slate-400 md:hover:text-paper"
               }`}
             >
               {isActive && (
                 <motion.div
                   layoutId="nav-pill"
-                  className="absolute inset-0 z-[-1] rounded-full bg-[#243870]/20"
+                  className="absolute inset-0 z-[-1] rounded-full bg-vegaBlue/25"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -109,12 +109,12 @@ export function Navbar() {
         })}
         
         {/* Divider */}
-        <div className="w-[1px] h-4 md:h-6 bg-white/20 mx-0.5 md:mx-1" /> 
+        <div className="w-[1px] h-4 md:h-6 bg-vegaCyan/20 mx-0.5 md:mx-1" /> 
         
         {/* i18n Toggle */}
         <button
           onClick={() => setLanguage(language === "es" ? "en" : "es")}
-          className="relative rounded-full px-3 py-2 md:px-4 md:py-2.5 text-xs md:text-sm font-medium transition-colors text-slate-400 md:hover:text-white uppercase tracking-wider"
+          className="relative rounded-full px-3 py-2 md:px-4 md:py-2.5 text-xs md:text-sm font-medium transition-colors text-slate-400 md:hover:text-paper uppercase tracking-wider"
           aria-label="Toggle Language"
         >
           {language}

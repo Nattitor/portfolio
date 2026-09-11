@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { Project } from "@/constants/portfolioData";
+import type { Dictionary } from "@/context/I18nContext";
 
 interface TranslatedProject extends Project {
   baseCategory: string;
@@ -10,18 +11,25 @@ interface Category {
   label: string;
 }
 
-export function useProjectsFilter(baseProjects: Project[], translationContext: any) {
+interface ProjectTranslation {
+  category?: string;
+  title?: string;
+  description?: string;
+}
+
+export function useProjectsFilter(baseProjects: Project[], translationContext: Dictionary) {
   // 1. Translate projects on the fly and keep the base category for logical filtering
   const projects = useMemo(() => {
-    return baseProjects.map((p) => {
-      const translation = translationContext.projects.items[p.id as keyof typeof translationContext.projects.items];
+    const items: Record<string, ProjectTranslation> = translationContext.projects.items;
+    return baseProjects.map((p): TranslatedProject => {
+      const translation = items[p.id];
       return {
         ...p,
-        baseCategory: p.category,
+        baseCategory: p.category ?? "",
         title: translation?.title || p.title,
         category: translation?.category || p.category,
         shortDescription: translation?.description || p.shortDescription,
-      } as TranslatedProject;
+      };
     });
   }, [baseProjects, translationContext]);
 
@@ -31,23 +39,21 @@ export function useProjectsFilter(baseProjects: Project[], translationContext: a
   // Dynamically extract categories as objects with id and translated label
   const categories = useMemo(() => {
     const uniqueBaseCategories = Array.from(
-      new Set(
-        projects
-          .map((project) => project.baseCategory)
-          .filter((cat): cat is string => Boolean(cat))
-      )
+      new Set(projects.map((project) => project.baseCategory).filter(Boolean))
     );
 
-    return [
+    const result: Category[] = [
       { id: "All", label: "All" },
       ...uniqueBaseCategories.map((baseCat) => {
         const project = projects.find((p) => p.baseCategory === baseCat);
         return {
-          id: baseCat as string,
-          label: project?.category || (baseCat as string),
+          id: baseCat,
+          label: project?.category || baseCat,
         };
       }),
-    ] as Category[];
+    ];
+
+    return result;
   }, [projects]);
 
   // Derived filtered projects list based on baseCategory

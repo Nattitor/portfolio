@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 
 export function LiveClock({ className = "" }: { className?: string }) {
   const [time, setTime] = useState<string>("00:00:00");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    
     // Update the time immediately and then every second
     const updateClock = () => {
       try {
@@ -17,13 +14,13 @@ export function LiveClock({ className = "" }: { className?: string }) {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
-          hour12: false, // Use 24h format for a more brutalist/dev feel
+          hour12: false, // 24h — the night runs on it
         });
         setTime(formatter.format(new Date()));
-      } catch (e) {
+      } catch {
         // Fallback for older mobile browsers that don't support timeZone
         const d = new Date();
-        setTime(`${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`);
+        setTime(`${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}:${String(d.getSeconds()).padStart(2, "0")}`);
       }
     };
 
@@ -36,7 +33,7 @@ export function LiveClock({ className = "" }: { className?: string }) {
   return (
     <span 
       className={`tabular-nums tracking-normal md:tracking-widest select-none cursor-default before:content-[attr(data-time)] ${className}`} 
-      data-time={mounted ? time : "00:00:00"} 
+      data-time={time} 
       suppressHydrationWarning
     />
   );

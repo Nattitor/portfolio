@@ -39,7 +39,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
       whileHover={{ y: -6 }}
       whileTap={{ scale: 0.98 }}
-      className="group relative flex h-full w-full flex-col justify-between rounded-2xl glass-panel p-6 md:p-8 transition-all duration-300 data-[mobile-active=true]:border-vegaCyan/30 data-[mobile-active=true]:shadow-[inset_0_0_30px_rgba(0,229,255,0.08)] md:hover:border-vegaCyan/30 md:hover:shadow-[inset_0_0_30px_rgba(0,229,255,0.08)]"
+      className="group relative flex h-full w-full flex-col justify-between rounded-2xl glass-panel p-6 md:p-8 transition-all duration-300 data-[mobile-active=true]:border-vegaCyan/30 data-[mobile-active=true]:shadow-[inset_0_0_30px_rgba(120,213,225,0.08)] md:hover:border-vegaCyan/30 md:hover:shadow-[inset_0_0_30px_rgba(120,213,225,0.08)]"
     >
       {/* Top Header Row: Index & Category */}
       <div className="flex items-center justify-between gap-4 mb-4">
@@ -58,7 +58,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
       {/* Mock Glassmorphism Image Container with Brutalist Noise */}
       <div
-        className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 flex flex-col items-center justify-center p-6 mb-6 backdrop-blur-xl group-data-[mobile-active=true]:border-white/20 md:group-hover:border-white/20 transition-colors"
+        className="relative aspect-video w-full overflow-hidden rounded-xl border border-vegaCyan/10 bg-gradient-to-br from-nightDeep to-nightBg flex flex-col items-center justify-center p-6 mb-6 backdrop-blur-xl group-data-[mobile-active=true]:border-vegaCyan/25 md:group-hover:border-vegaCyan/25 transition-colors"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
         }}
@@ -76,7 +76,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           />
         ) : (
           <>
-            <span className="relative z-10 font-display font-bold text-lg md:text-xl text-slate-300 text-center tracking-wide uppercase select-none group-data-[mobile-active=true]:text-white md:group-hover:text-white transition-colors">
+            <span className="relative z-10 font-display font-bold text-lg md:text-xl text-slate-300 text-center tracking-wide uppercase select-none group-data-[mobile-active=true]:text-paper md:group-hover:text-paper transition-colors">
               {project.title}
             </span>
             <span className="relative z-10 mt-2 text-[10px] font-mono text-slate-500 uppercase tracking-widest">
@@ -89,7 +89,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       {/* Content */}
       <div className="flex flex-col justify-between flex-grow">
         <div>
-          <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-3 md:group-hover:text-vegaCyan transition-colors select-text">
+          <h3 className="font-display font-bold text-2xl md:text-3xl text-paper mb-3 md:group-hover:text-vegaCyan transition-colors select-text">
             {project.title}
           </h3>
 
@@ -99,13 +99,13 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         </div>
 
         {/* Bottom Metadata: Tech Pills & Action Buttons */}
-        <div className="flex flex-col gap-4 pt-4 border-t border-white/10">
+        <div className="flex flex-col gap-4 pt-4 border-t border-vegaCyan/10">
           {/* Tech Pills */}
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="rounded-md border border-slate-700/50 bg-[#243870]/30 px-2.5 py-1 text-xs font-mono text-slate-300 transition-colors md:hover:border-[#00E5FF]/50 md:hover:text-[#00E5FF]"
+                className="rounded-md border border-vegaBlue/40 bg-vegaBlue/20 px-2.5 py-1 text-xs font-mono text-slate-300 transition-colors md:hover:border-vegaCyan/50 md:hover:text-vegaCyan"
               >
                 {tech}
               </span>

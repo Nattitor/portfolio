@@ -27,13 +27,13 @@ export function ProjectFilter({
             onClick={() => onSelectFilter(id)}
             aria-pressed={isActive}
             className={`relative rounded-full px-5 py-2.5 md:px-4 md:py-2 text-[10px] md:text-xs font-mono uppercase tracking-wider whitespace-nowrap transition-colors duration-300 active:scale-95 ${
-              isActive ? "text-[#00E5FF] font-bold" : "text-slate-400 md:hover:text-white active:text-white"
+              isActive ? "text-vegaCyan font-bold" : "text-slate-400 md:hover:text-paper active:text-paper"
             }`}
           >
             {isActive && (
               <motion.div
                 layoutId="projects-active-filter"
-                className="absolute inset-0 rounded-full bg-transparent border border-[#00E5FF] shadow-[0_0_15px_rgba(0,229,255,0.15)] z-0"
+                className="absolute inset-0 rounded-full bg-transparent border border-vegaCyan shadow-[0_0_15px_rgba(120,213,225,0.18)] z-0"
                 transition={{ type: "spring", stiffness: 350, damping: 30 }}
               />
             )}

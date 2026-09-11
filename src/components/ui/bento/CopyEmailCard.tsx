@@ -23,7 +23,7 @@ export function CopyEmailCard() {
         "md:col-span-4 md:row-span-2 flex flex-col items-center justify-center rounded-3xl transition-all duration-300 p-8 glass-panel group relative overflow-hidden active:scale-95",
         copied 
           ? "border-green-500/50 bg-green-950/30" 
-          : "hover:border-vegaCyan/50 hover:bg-nebulaPurple/20"
+          : "hover:border-vegaCyan/50 hover:bg-vegaBlue/15"
       )}
     >
       <div className={`absolute inset-0 transition-opacity blur-3xl pointer-events-none ${copied ? 'opacity-100 bg-green-500/20' : 'opacity-0 md:group-hover:opacity-100 bg-vegaCyan/10'}`} />
@@ -32,7 +32,7 @@ export function CopyEmailCard() {
         {copied ? t.bento.contact.success : t.bento.contact.letsTalk}
       </span>
       
-      <h3 className={`font-display font-black text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight transition-colors select-none ${copied ? 'text-green-400' : 'text-white'}`}>
+      <h3 className={`font-display font-black text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight transition-colors select-none ${copied ? 'text-green-400' : 'text-paper'}`}>
         {copied ? t.bento.contact.copied : email}
       </h3>
       

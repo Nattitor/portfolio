@@ -1,4 +1,4 @@
-# ✦ Nattitor | Brutalist Developer Portfolio
+# ✦ Nattitor | Nocturne Developer Portfolio
 
 <div align="center">
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
@@ -18,11 +18,20 @@
 
 <br />
 
-A highly optimized, brutally aesthetic portfolio built with modern web technologies. Designed to deliver a premium, native-app-like experience on both desktop and mobile devices.
+A highly optimized, night-sky portfolio built with modern web technologies. Designed to deliver a premium, native-app-like experience on both desktop and mobile devices.
+
+## 🌌 Design — "Vega Nocturne"
+
+The visual system is themed after **Admire Vega** (Uma Musume: Pretty Derby) — *the brightest star of Lyra*. Not a generic glassmorphism skin: the palette, the sky and the small details all come from her.
+
+- **Palette:** Vega blue `#3865A1`, twinkle cyan `#78D5E1`, race blue `#2964B2`, nocturne violets `#131525` / `#23233D`, ribbon gold `#C8A45E`, collar white `#E8ECE4`.
+- **Lyra constellation:** drawn in the background with its real asterism (Vega, the Double Double, Sheliak, Sulafat, Delta).
+- **Shooting star:** a slow streak crossing the sky — *"Like a Shooting Star"*, her solo song.
+- **Nocturne glass:** every panel is tinted deep blue with cyan borders instead of the default white blur.
 
 ## 🚀 Features
 
-- **Brutalist Glassmorphism UI:** Custom-built glass panels with deep blurs and dynamic lighting.
+- **Nocturne Glass UI:** Custom-built glass panels tinted with Vega blue and cyan borders — nothing like the default white glassmorphism.
 - **Flawless Mobile Experience:** Interactive elements tailored specifically for touch screens, completely eliminating the "fake hover" syndrome.
 - **Server-Side i18n:** Native English and Spanish support resolved at the server level via Cookies (Zero hydration mismatch).
 - **Advanced Animations:** Fluid physics, magnetic buttons, and intersection observers powered by Framer Motion.
@@ -30,7 +39,7 @@ A highly optimized, brutally aesthetic portfolio built with modern web technolog
 
 ## 🛠️ Architecture & Tech Stack
 
-This project is built using the App Router in **Next.js 14+**.
+This project is built using the App Router in **Next.js 16**.
 
 - **Framework:** Next.js (App Router)
 - **Language:** TypeScript

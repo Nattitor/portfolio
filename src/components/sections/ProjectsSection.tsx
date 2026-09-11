@@ -16,10 +16,10 @@ export function ProjectsSection() {
       {/* Section Header */}
       <div className="mb-10 md:mb-12">
         <div className="text-vegaCyan font-mono text-sm md:text-base uppercase tracking-widest mb-3">
-          // {t.projects.sectionTitle.toUpperCase()}
+          {"//"} {t.projects.sectionTitle.toUpperCase()}
         </div>
-        <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight">
-          {t.projects.heading1} <span className="text-stroke-white">{t.projects.heading2}</span>
+        <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-paper uppercase tracking-tight">
+          {t.projects.heading1} <span className="text-transparent text-stroke-1">{t.projects.heading2}</span>
         </h2>
       </div>
 

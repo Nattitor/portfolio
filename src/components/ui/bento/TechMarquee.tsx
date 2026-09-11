@@ -66,7 +66,7 @@ export function TechMarquee() {
           setIsHovered(false);
         }
       }}
-      className="md:col-span-6 md:row-span-1 flex items-center overflow-hidden rounded-3xl border border-white/10 bg-transparent py-4 md:py-0 min-h-[100px] relative select-none [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+      className="md:col-span-6 md:row-span-1 flex items-center overflow-hidden rounded-3xl border border-vegaCyan/10 bg-transparent py-4 md:py-0 min-h-[100px] relative select-none [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
     >
       
       {/* Base Layer: Gray outline on mobile, interactive on desktop */}
@@ -77,16 +77,16 @@ export function TechMarquee() {
         {technologies.map((tech, index) => (
           <React.Fragment key={`base-${index}`}>
             <span 
-              className="group flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-white opacity-40 md:hover:opacity-100 md:hover:text-stroke-0 transition-all cursor-default select-none"
+              className="group flex items-center gap-3 text-3xl md:text-5xl font-display font-black uppercase text-transparent text-stroke-1 opacity-40 md:hover:opacity-100 md:hover:text-stroke-0 transition-all cursor-default select-none"
               style={{ "--brand-color": tech.color } as React.CSSProperties}
             >
-              <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-white/20 md:group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none" />
+              <tech.Icon className="w-7 h-7 md:w-10 md:h-10 text-paper/20 md:group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none" />
               <span 
                 className="md:group-hover:text-[var(--brand-color)] transition-colors duration-300 select-none before:content-[attr(data-tech)]"
                 data-tech={tech.name}
               />
             </span>
-            <span className="text-ayabeGold mx-6 md:mx-10 text-2xl md:text-4xl pointer-events-none transition-all duration-300 select-none before:content-['✦']" />
+            <span className="text-starGold mx-6 md:mx-10 text-2xl md:text-4xl pointer-events-none transition-all duration-300 select-none before:content-['✦']" />
           </React.Fragment>
         ))}
       </motion.div>
@@ -115,7 +115,7 @@ export function TechMarquee() {
                   data-tech={tech.name}
                 />
               </span>
-              <span className="text-ayabeGold mx-6 text-2xl pointer-events-none select-none before:content-['✦']" />
+              <span className="text-starGold mx-6 text-2xl pointer-events-none select-none before:content-['✦']" />
             </React.Fragment>
           ))}
         </motion.div>

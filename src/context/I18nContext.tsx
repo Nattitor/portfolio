@@ -6,7 +6,7 @@ import es from "@/locales/es.json";
 
 type Language = "en" | "es";
 
-type Dictionary = typeof en;
+export type Dictionary = typeof en;
 
 interface I18nContextProps {
   language: Language;

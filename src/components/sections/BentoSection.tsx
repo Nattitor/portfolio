@@ -32,11 +32,11 @@ export function BentoSection() {
         className="mb-12 md:mb-16"
       >
         <div 
-          className="text-[#00E5FF] font-mono text-sm md:text-base uppercase tracking-widest mb-3 select-none before:content-[attr(data-title)]"
+          className="text-vegaCyan font-mono text-sm md:text-base uppercase tracking-widest mb-3 select-none before:content-[attr(data-title)]"
           data-title={`// ${t.bento.header.sectionTitle.toUpperCase()}`}
         />
-        <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight select-none">
-          {t.bento.header.heading1} <span className="text-stroke-white select-none before:content-[attr(data-title)]" data-title={t.bento.header.heading2} />
+        <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-paper uppercase tracking-tight select-none">
+          {t.bento.header.heading1} <span className="text-transparent text-stroke-1 select-none before:content-[attr(data-title)]" data-title={t.bento.header.heading2} />
         </h2>
       </motion.div>
 
