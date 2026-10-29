@@ -1,60 +1,26 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { LocationCard } from "@/components/ui/bento/LocationCard";
 import { BioCard } from "@/components/ui/bento/BioCard";
-import { TechMarquee } from "@/components/ui/bento/TechMarquee";
 import { CopyEmailCard } from "@/components/ui/bento/CopyEmailCard";
+import { LocationCard } from "@/components/ui/bento/LocationCard";
 import { SocialLinksCard } from "@/components/ui/bento/SocialLinksCard";
-import { Footer } from "@/components/layout/Footer";
+import { TechStack } from "@/components/ui/bento/TechStack";
 import { useI18n } from "@/context/I18nContext";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
 
 export function BentoSection() {
   const { t } = useI18n();
 
   return (
-    <section id="about" className="relative w-full px-6 pt-12 pb-6 md:py-24 md:px-16 lg:px-24 bg-transparent">
-      {/* Section Header */}
-      <motion.div
-        initial={false}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mb-12 md:mb-16"
-      >
-        <div 
-          className="text-vegaCyan font-mono text-sm md:text-base uppercase tracking-widest mb-3 select-none before:content-[attr(data-title)]"
-          data-title={`// ${t.bento.header.sectionTitle.toUpperCase()}`}
-        />
-        <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-paper uppercase tracking-tight select-none">
-          {t.bento.header.heading1} <span className="text-transparent text-stroke-1 select-none before:content-[attr(data-title)]" data-title={t.bento.header.heading2} />
-        </h2>
-      </motion.div>
-
-      {/* Bento Grid */}
-      <motion.div
-        variants={containerVariants}
-        initial={false}
-        animate="visible"
-        className="grid grid-cols-1 md:grid-cols-6 gap-4 auto-rows-auto md:auto-rows-[minmax(120px,auto)] max-w-7xl mx-auto"
-      >
-        <LocationCard />
+    <section id="about" aria-labelledby="about-heading" className="page-width py-16 sm:py-24">
+      <p className="section-kicker">{t.bento.header.sectionTitle}</p>
+      <h2 id="about-heading" className="section-heading mb-8 max-w-3xl">{t.bento.header.heading}</h2>
+      <div className="grid min-w-0 gap-5 md:grid-cols-6">
         <BioCard />
-        <TechMarquee />
+        <LocationCard />
+        <TechStack />
         <CopyEmailCard />
         <SocialLinksCard />
-      </motion.div>
-
-      <Footer />
+      </div>
     </section>
   );
 }

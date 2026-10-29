@@ -1,34 +1,68 @@
-import { useState, useCallback } from "react";
+"use client";
 
-export function useClipboard(timeoutMs: number = 1000) {
-  const [hasCopied, setHasCopied] = useState(false);
+import { useCallback, useEffect, useRef, useState } from "react";
+
+type CopyStatus = "idle" | "copying" | "copied" | "error";
+
+function fallbackCopy(text: string): boolean {
+  const previousFocus = document.activeElement;
+  const input = document.createElement("textarea");
+  input.value = text;
+  input.readOnly = true;
+  input.setAttribute("aria-hidden", "true");
+  input.style.cssText = "position:fixed;top:0;left:-9999px";
+  document.body.append(input);
+  try {
+    input.select();
+    return document.execCommand("copy");
+  } finally {
+    input.remove();
+    if (previousFocus instanceof HTMLElement) previousFocus.focus({ preventScroll: true });
+  }
+}
+
+export function useClipboard(timeoutMs = 2500) {
+  const [status, setStatus] = useState<CopyStatus>("idle");
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mounted = useRef(false);
+  const copying = useRef(false);
+
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      if (resetTimer.current) clearTimeout(resetTimer.current);
+    };
+  }, []);
 
   const copyToClipboard = useCallback(async (text: string) => {
+    if (copying.current) return;
+    copying.current = true;
+    if (resetTimer.current) clearTimeout(resetTimer.current);
+    setStatus("copying");
+    let copied: boolean;
     try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-      } else {
-        // Fallback for non-secure contexts (like mobile local network testing)
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-        textArea.style.position = "absolute";
-        textArea.style.left = "-999999px";
-        document.body.prepend(textArea);
-        textArea.select();
+      if (window.isSecureContext && navigator.clipboard?.writeText) {
         try {
-          document.execCommand('copy');
-        } catch (error) {
-          console.error("Fallback copy failed", error);
-        } finally {
-          textArea.remove();
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch {
+          copied = fallbackCopy(text);
         }
+      } else {
+        copied = fallbackCopy(text);
       }
-      setHasCopied(true);
-      setTimeout(() => setHasCopied(false), timeoutMs);
-    } catch (err) {
-      console.error("Failed to copy: ", err);
+    } catch {
+      copied = false;
+    } finally {
+      copying.current = false;
+    }
+    if (!mounted.current) return;
+    setStatus(copied ? "copied" : "error");
+    if (copied) {
+      resetTimer.current = setTimeout(() => setStatus("idle"), timeoutMs);
     }
   }, [timeoutMs]);
 
-  return { hasCopied, copyToClipboard };
+  return { status, copyToClipboard };
 }

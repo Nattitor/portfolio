@@ -2,39 +2,28 @@
 
 import { useEffect, useState } from "react";
 
+const TIME_ZONE = "America/Argentina/Buenos_Aires";
+
 export function LiveClock({ className = "" }: { className?: string }) {
-  const [time, setTime] = useState<string>("00:00:00");
+  const [time, setTime] = useState("--:--");
 
   useEffect(() => {
-    // Update the time immediately and then every second
-    const updateClock = () => {
-      try {
-        const formatter = new Intl.DateTimeFormat("en-US", {
-          timeZone: "America/Argentina/Buenos_Aires",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false, // 24h — the night runs on it
-        });
-        setTime(formatter.format(new Date()));
-      } catch {
-        // Fallback for older mobile browsers that don't support timeZone
-        const d = new Date();
-        setTime(`${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}:${String(d.getSeconds()).padStart(2, "0")}`);
-      }
-    };
+    try {
+      const formatter = new Intl.DateTimeFormat("en-GB", {
+        timeZone: TIME_ZONE,
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23",
+      });
+      const updateClock = () => setTime(formatter.format(new Date()));
 
-    updateClock();
-    const interval = setInterval(updateClock, 1000);
-
-    return () => clearInterval(interval);
+      updateClock();
+      const interval = setInterval(updateClock, 60_000);
+      return () => clearInterval(interval);
+    } catch {
+      // Keep the initial placeholder when this time zone is unavailable.
+    }
   }, []);
 
-  return (
-    <span 
-      className={`tabular-nums tracking-normal md:tracking-widest select-none cursor-default before:content-[attr(data-time)] ${className}`} 
-      data-time={time} 
-      suppressHydrationWarning
-    />
-  );
+  return <span className={`tabular-nums tracking-normal select-none ${className}`}>{time}</span>;
 }

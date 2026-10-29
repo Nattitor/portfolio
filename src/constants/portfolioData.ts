@@ -1,79 +1,39 @@
-export interface Profile {
-  name: string;
-  role: string;
-  location: string;
-  availability: string;
-}
-
 export interface Project {
-  id: string;
-  title: string;
-  category?: string;
-  shortDescription: string;
+  id: "dashboard" | "vellura" | "miru";
+  status: "published" | "development";
   technologies: string[];
-  liveUrl: string;
-  repoUrl: string;
+  liveUrl?: string;
+  repoUrl?: string;
   image?: string;
 }
 
-export interface PortfolioData {
-  profile: Profile;
-  projects: Project[];
-}
-
-export const portfolioData: PortfolioData = {
+export const portfolioData = {
   profile: {
     name: "Freddy Guerra",
-    role: "Web Developer",
-    location: "Merlo, Buenos Aires, Argentina",
-    availability: "Available for remote work",
+    handle: "Nattitor",
+    url: "https://nattitor-portfolio.vercel.app",
+    email: "Ryufg.100@gmail.com",
   },
   projects: [
     {
-      id: "01",
-      title: "Nattitor Analytics Dashboard",
-      category: "FULL-STACK / B2B",
-      shortDescription: "Enterprise-grade analytics dashboard featuring server-side pagination, complex data visualization, and fluid layout animations within a strict Dark Brutalist design system.",
-      technologies: ["Next.js 15", "Supabase", "Tailwind CSS", "Recharts", "Framer Motion"],
+      id: "dashboard",
+      status: "published",
+      technologies: ["Next.js", "TypeScript", "Supabase", "Recharts", "Tailwind CSS"],
       liveUrl: "https://nattitor-dashboard.vercel.app/",
       repoUrl: "https://github.com/Nattitor/b2b-dashboard",
-      image: "/images/projects/nattitor-dashboard.webp"
+      image: "/images/projects/nattitor-dashboard.webp",
     },
     {
-      id: "project-1",
-      title: "Apex SaaS Engine",
-      category: "Full-Stack",
-      shortDescription: "Enterprise resource and analytics management dashboard built for high-scale workflows.",
-      technologies: ["Next.js", "Tailwind CSS", "Supabase", "PostgreSQL"],
-      liveUrl: "#",
-      repoUrl: "#",
+      id: "vellura",
+      status: "published",
+      technologies: ["Next.js", "React", "TypeScript", "Supabase", "Tailwind CSS"],
+      liveUrl: "https://vellura-ai.vercel.app/",
+      repoUrl: "https://github.com/Nattitor/Vellura",
     },
     {
-      id: "project-2",
-      title: "NeuraMind AI",
-      category: "AI Integration",
-      shortDescription: "Next-gen intelligent workspace integrating generative AI for creative content workflows.",
-      technologies: ["React", "Node.js", "Gemini API", "Framer Motion"],
-      liveUrl: "#",
-      repoUrl: "#",
+      id: "miru",
+      status: "development",
+      technologies: [],
     },
-    {
-      id: "project-3",
-      title: "VogueVault Storefront",
-      category: "Transactional Logic",
-      shortDescription: "A modern, lightning-fast e-commerce engine with full Stripe API integration.",
-      technologies: ["Next.js", "Zustand", "Stripe API", "Tailwind CSS"],
-      liveUrl: "#",
-      repoUrl: "#",
-    },
-    {
-      id: "project-4",
-      title: "PulseStream Hub",
-      category: "Sockets & Interactivity",
-      shortDescription: "Low-latency real-time collaborative workspace powered by WebSocket architecture.",
-      technologies: ["React", "Express", "Socket.io", "Tailwind CSS"],
-      liveUrl: "#",
-      repoUrl: "#",
-    },
-  ],
+  ] satisfies Project[],
 };

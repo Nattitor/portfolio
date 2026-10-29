@@ -25,8 +25,3 @@ export function LyraConstellation({ className = "" }: { className?: string }) {
     </svg>
   );
 }
-
-/* Shooting star — "Like a Shooting Star" */
-export function ShootingStar() {
-  return <span aria-hidden="true" className="shooting-star" />;
-}

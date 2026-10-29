@@ -1,40 +1,39 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
-import en from "@/locales/en.json";
-import es from "@/locales/es.json";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import { dictionaries, languageCookie, type Dictionary, type Language } from "@/lib/i18n";
 
-type Language = "en" | "es";
-
-export type Dictionary = typeof en;
-
-interface I18nContextProps {
+interface I18nContextValue {
   language: Language;
-  setLanguage: (lang: Language) => void;
+  setLanguage: (language: Language) => void;
   t: Dictionary;
-  mounted: boolean;
 }
 
-const I18nContext = createContext<I18nContextProps | undefined>(undefined);
+const I18nContext = createContext<I18nContextValue | null>(null);
 
-export function I18nProvider({ 
-  children,
-  initialLanguage = "es"
-}: { 
-  children: React.ReactNode;
-  initialLanguage?: Language;
+export function I18nProvider({ children, initialLanguage }: {
+  children: ReactNode;
+  initialLanguage: Language;
 }) {
-  const [language, setLanguage] = useState<Language>(initialLanguage);
+  const [language, setLanguage] = useState(initialLanguage);
 
-  const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    document.cookie = `portfolio-lang=${lang}; path=/; max-age=31536000`;
-  };
-
-  const t = language === "es" ? es : en;
+  function changeLanguage(nextLanguage: Language) {
+    setLanguage(nextLanguage);
+    document.documentElement.lang = nextLanguage;
+    const { title, description } = dictionaries[nextLanguage].metadata;
+    document.title = title;
+    for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
+      document.querySelector(selector)?.setAttribute("content", title);
+    }
+    for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
+      document.querySelector(selector)?.setAttribute("content", description);
+    }
+    document.querySelector('meta[property="og:locale"]')?.setAttribute("content", nextLanguage === "es" ? "es_AR" : "en_US");
+    document.cookie = `${languageCookie}=${nextLanguage}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
+  }
 
   return (
-    <I18nContext.Provider value={{ language, setLanguage: handleSetLanguage, t, mounted: true }}>
+    <I18nContext.Provider value={{ language, setLanguage: changeLanguage, t: dictionaries[language] }}>
       {children}
     </I18nContext.Provider>
   );
@@ -42,8 +41,6 @@ export function I18nProvider({
 
 export function useI18n() {
   const context = useContext(I18nContext);
-  if (context === undefined) {
-    throw new Error("useI18n must be used within an I18nProvider");
-  }
+  if (!context) throw new Error("useI18n requires I18nProvider");
   return context;
 }

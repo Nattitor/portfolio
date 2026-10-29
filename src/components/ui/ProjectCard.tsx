@@ -1,128 +1,51 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { Project } from "@/constants/portfolioData";
-import { ActionLink } from "@/components/ui/ActionLink";
-import { useI18n } from "@/context/I18nContext";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import type { Project } from "@/constants/portfolioData";
+import { useI18n } from "@/context/I18nContext";
+import { ActionLink } from "@/components/ui/ActionLink";
 
-interface ProjectCardProps {
-  project: Project;
-  featured?: boolean;
-  index?: number;
-}
-
-export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
-  const formattedIndex = (index + 1).toString().padStart(2, "0");
+export function ProjectCard({ project }: { project: Project }) {
   const { t } = useI18n();
-
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { margin: "-35% 0px -35% 0px" });
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile(); // Check immediately
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const mobileActive = isMobile && isInView;
+  const content = t.projects.items[project.id];
+  const development = project.status === "development";
+  const titleId = `project-${project.id}-title`;
 
   return (
-    <motion.article
-      ref={ref}
-      data-mobile-active={mobileActive}
-      initial={false}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
-      whileHover={{ y: -6 }}
-      whileTap={{ scale: 0.98 }}
-      className="group relative flex h-full w-full flex-col justify-between rounded-2xl glass-panel p-6 md:p-8 transition-all duration-300 data-[mobile-active=true]:border-vegaCyan/30 data-[mobile-active=true]:shadow-[inset_0_0_30px_rgba(120,213,225,0.08)] md:hover:border-vegaCyan/30 md:hover:shadow-[inset_0_0_30px_rgba(120,213,225,0.08)]"
-    >
-      {/* Top Header Row: Index & Category */}
-      <div className="flex items-center justify-between gap-4 mb-4">
-        {project.category ? (
-          <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-vegaCyan">
-            <span className="h-1.5 w-1.5 rounded-full bg-vegaCyan animate-pulse" />
-            {project.category}
-          </span>
-        ) : (
-          <div />
+    <article aria-labelledby={titleId} className={`flex min-w-0 flex-col overflow-hidden rounded-2xl border border-vegaCyan/15 bg-nightDeep/80${development ? " md:col-span-2" : ""}`}>
+      {project.image ? (
+        <div className="relative aspect-[16/9] overflow-hidden border-b border-vegaCyan/15 bg-nightBg">
+          <Image src={project.image} alt={t.projects.imageAlt.replace("{title}", content.title)} fill
+            sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc((100vw - 64px) / 2), 560px"
+            className="object-cover object-top" />
+        </div>
+      ) : !development ? (
+        <div aria-hidden="true" className="flex aspect-[16/9] items-center justify-between border-b border-vegaCyan/15 bg-gradient-to-br from-vegaBlue/20 to-nightDeep px-7 sm:px-10">
+          <span className="font-display text-4xl font-medium tracking-tight text-vegaCyan/80 sm:text-5xl">{content.title}<span className="text-starGold">.</span></span>
+          <ArrowUpRight className="h-10 w-10 shrink-0 text-starGold/80" />
+        </div>
+      ) : null}
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-slate-400">
+          <span>{content.category}</span>
+          <span className="rounded-full border border-vegaCyan/20 px-2.5 py-1 text-vegaCyan">{development ? t.projects.development : t.projects.published}</span>
+        </div>
+        <h3 id={titleId} className="font-display text-xl font-semibold leading-snug text-paper sm:text-2xl">{content.title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">{content.description}</p>
+        {"note" in content && <p className="mt-2 text-sm text-slate-400">{content.note}</p>}
+        {project.technologies.length > 0 && (
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {project.technologies.map((technology) => <li key={technology} className="rounded-md bg-vegaBlue/15 px-2.5 py-1 font-mono text-xs leading-relaxed text-slate-300">{technology}</li>)}
+          </ul>
         )}
-        <span className="font-mono text-xs text-slate-600 font-bold tracking-widest">
-          [{formattedIndex}]
-        </span>
-      </div>
-
-      {/* Mock Glassmorphism Image Container with Brutalist Noise */}
-      <div
-        className="relative aspect-video w-full overflow-hidden rounded-xl border border-vegaCyan/10 bg-gradient-to-br from-nightDeep to-nightBg flex flex-col items-center justify-center p-6 mb-6 backdrop-blur-xl group-data-[mobile-active=true]:border-vegaCyan/25 md:group-hover:border-vegaCyan/25 transition-colors"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
-        }}
-      >
-        <div className="absolute inset-0 bg-vegaCyan/10 opacity-0 group-data-[mobile-active=true]:opacity-100 md:group-hover:opacity-100 blur-3xl transition-opacity pointer-events-none mix-blend-screen z-20" />
-        
-        {project.image ? (
-          <Image 
-            src={project.image}
-            alt={`${project.title} preview`}
-            fill
-            quality={100}
-            className="object-cover relative z-10 transition-transform duration-500 md:group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-          />
-        ) : (
-          <>
-            <span className="relative z-10 font-display font-bold text-lg md:text-xl text-slate-300 text-center tracking-wide uppercase select-none group-data-[mobile-active=true]:text-paper md:group-hover:text-paper transition-colors">
-              {project.title}
-            </span>
-            <span className="relative z-10 mt-2 text-[10px] font-mono text-slate-500 uppercase tracking-widest">
-              {t.projects.previewUnavailable}
-            </span>
-          </>
+        {(project.liveUrl || project.repoUrl) && (
+          <div className="mt-auto flex flex-wrap gap-3 pt-6">
+            {project.liveUrl && <ActionLink href={project.liveUrl} type="primary" label={t.projects.liveDemo} accessibleLabel={`${t.projects.liveDemo}: ${content.title} (${t.common.newTab})`} />}
+            {project.repoUrl && <ActionLink href={project.repoUrl} type="secondary" label={t.projects.sourceCode} accessibleLabel={`${t.projects.sourceCode}: ${content.title} (${t.common.newTab})`} />}
+          </div>
         )}
       </div>
-
-      {/* Content */}
-      <div className="flex flex-col justify-between flex-grow">
-        <div>
-          <h3 className="font-display font-bold text-2xl md:text-3xl text-paper mb-3 md:group-hover:text-vegaCyan transition-colors select-text">
-            {project.title}
-          </h3>
-
-          <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-6 font-normal select-text">
-            {project.shortDescription}
-          </p>
-        </div>
-
-        {/* Bottom Metadata: Tech Pills & Action Buttons */}
-        <div className="flex flex-col gap-4 pt-4 border-t border-vegaCyan/10">
-          {/* Tech Pills */}
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md border border-vegaBlue/40 bg-vegaBlue/20 px-2.5 py-1 text-xs font-mono text-slate-300 transition-colors md:hover:border-vegaCyan/50 md:hover:text-vegaCyan"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* Action Links */}
-          <div className="flex items-center gap-3 pt-2">
-            {project.liveUrl && (
-              <ActionLink href={project.liveUrl} type="primary" label={t.projects.liveDemo} />
-            )}
-            {project.repoUrl && (
-              <ActionLink href={project.repoUrl} type="secondary" label={t.projects.sourceCode} />
-            )}
-          </div>
-        </div>
-      </div>
-    </motion.article>
+    </article>
   );
 }

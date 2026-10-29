@@ -1,41 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { bentoVariants } from "@/lib/motion";
-
+import { useI18n } from "@/context/I18nContext";
 import { LiveClock } from "@/components/ui/LiveClock";
 
 export function LocationCard() {
+  const { t } = useI18n();
+
   return (
-    <motion.div
-      variants={bentoVariants}
-      className="md:col-span-2 md:row-span-2 relative flex flex-col justify-end overflow-hidden rounded-3xl p-6 glass-panel"
-    >
-      {/* Abstract Map Background */}
-      <div 
-        className="absolute inset-0 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle at 50% 50%, rgba(120,213,225,0.14) 1px, transparent 1px)",
-          backgroundSize: "20px 20px"
-        }}
-      />
-      <div className="absolute top-6 left-6 flex items-center gap-1.5 md:gap-2 bg-vegaBlue/20 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-full border border-vegaCyan/10 z-10">
-        <span className="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-vegaCyan opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-vegaCyan"></span>
-        </span>
-        <span className="text-[9px] md:text-[10px] font-mono font-bold text-paper uppercase tracking-widest">Online</span>
+    <section className="md:col-span-2 flex min-h-[180px] flex-col justify-between rounded-2xl border border-vegaCyan/15 bg-nightDeep/70 p-6">
+      <div className="flex flex-col items-start gap-5">
+        <div>
+          <h3 className="font-display text-xl font-bold text-paper">Merlo, Buenos Aires</h3>
+          <p className="mt-2 font-mono text-xs uppercase tracking-wider text-slate-300">Argentina · UTC−3</p>
+        </div>
+        <LiveClock className="font-mono text-2xl font-bold text-slate-300 tabular-nums" />
       </div>
-      
-      {/* Massive Brutalist Clock */}
-      <div className="absolute inset-0 flex items-center justify-start pl-6 md:justify-end md:pl-0 md:pr-6 pointer-events-none overflow-hidden">
-        <LiveClock className="text-5xl md:text-7xl font-mono font-black text-transparent text-stroke-1 md:text-stroke-2 opacity-60 md:opacity-40 select-none antialiased" />
-      </div>
-      
-      <div className="relative z-10 mt-24">
-        <h3 className="text-xl font-display font-bold text-paper">Merlo, Buenos Aires</h3>
-        <p className="text-xs font-mono text-slate-400 mt-2 uppercase tracking-wider">Argentina (GMT-3)</p>
-      </div>
-    </motion.div>
+      <p className="font-mono text-xs text-slate-400">{t.bento.location.localTime}</p>
+    </section>
   );
 }

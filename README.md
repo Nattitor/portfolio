@@ -1,82 +1,61 @@
-# ✦ Nattitor | Nocturne Developer Portfolio
+# Nattitor — portafolio
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
-</div>
+Portafolio de Freddy Guerra, desarrollador web en Merlo, Buenos Aires.
 
-<br />
+[Sitio publicado](https://nattitor-portfolio.vercel.app) · [GitHub](https://github.com/Nattitor)
 
-<div align="center">
-  <img src="./public/preview.png" alt="Nattitor Portfolio Preview" width="100%" style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br />
-  <sub><em>Live Demo: <a href="https://nattitor-portfolio.vercel.app/" target="_blank">nattitor-portfolio.vercel.app</a></em></sub>
-</div>
+## Desarrollo
 
-<br />
+Requiere Node.js 22 desde la versión 22.13, o Node.js 24 o posterior. Probado con Node.js 24 y npm 11.
 
-A highly optimized, night-sky portfolio built with modern web technologies. Designed to deliver a premium, native-app-like experience on both desktop and mobile devices.
+```sh
+npm ci
+npm run dev
+```
 
-## 🌌 Design — "Vega Nocturne"
+Abre http://localhost:3000. No necesita variables de entorno ni servicios externos para funcionar.
 
-The visual system is themed after **Admire Vega** (Uma Musume: Pretty Derby) — *the brightest star of Lyra*. Not a generic glassmorphism skin: the palette, the sky and the small details all come from her.
+```sh
+npm run lint
+npm run typecheck
+npm run build
+npm run start
+```
 
-- **Palette:** Vega blue `#3865A1`, twinkle cyan `#78D5E1`, race blue `#2964B2`, nocturne violets `#131525` / `#23233D`, ribbon gold `#C8A45E`, collar white `#E8ECE4`.
-- **Lyra constellation:** drawn in the background with its real asterism (Vega, the Double Double, Sheliak, Sulafat, Delta).
-- **Shooting star:** a slow streak crossing the sky — *"Like a Shooting Star"*, her solo song.
-- **Nocturne glass:** every panel is tinted deep blue with cyan borders instead of the default white blur.
+El proyecto usa Next.js App Router, React, TypeScript y Tailwind CSS. Las fuentes se descargan durante el build mediante `next/font` y se sirven desde el propio sitio. ESLint 10 carga directamente las reglas de Next.js, TypeScript y React Hooks; no se usa el paquete agregado `eslint-config-next`, cuyos plugins de React, importaciones y accesibilidad aún declaran compatibilidad solo hasta ESLint 9. La accesibilidad se comprueba con axe y las pruebas de teclado indicadas abajo.
 
-## 🚀 Features
+## Contenido
 
-- **Nocturne Glass UI:** Custom-built glass panels tinted with Vega blue and cyan borders — nothing like the default white glassmorphism.
-- **Flawless Mobile Experience:** Interactive elements tailored specifically for touch screens, completely eliminating the "fake hover" syndrome.
-- **Server-Side i18n:** Native English and Spanish support resolved at the server level via Cookies (Zero hydration mismatch).
-- **Advanced Animations:** Fluid physics, magnetic buttons, and intersection observers powered by Framer Motion.
-- **Asymmetric Grid System:** A fully responsive Bento Grid layout.
+- [Nattitor Analytics Dashboard](https://github.com/Nattitor/b2b-dashboard): panel de métricas con Supabase y Recharts.
+- [Vellura](https://github.com/Nattitor/Vellura): documentos para postulaciones a partir del CV. Su aplicación publicada requiere iniciar sesión.
+- Miru: en desarrollo; todavía no se muestra un enlace público.
 
-## 🛠️ Architecture & Tech Stack
+Los enlaces, estados y tecnologías se editan en [portfolioData.ts](<src/constants/portfolioData.ts>). Los textos están en los diccionarios [español](<src/locales/es.json>) e [inglés](<src/locales/en.json>). Las descripciones de los proyectos no sustituyen una auditoría de sus repositorios o servicios.
 
-This project is built using the App Router in **Next.js 16**.
+El idioma inicial se resuelve en el servidor con la cookie `portfolio-lang`; sin una preferencia válida se usa español. El selector conserva la preferencia durante un año y actualiza el idioma del documento, el título y la descripción. Los filtros no se reinician al cambiar de idioma.
 
-- **Framework:** Next.js (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4 (with custom `@theme` variables)
-- **Animations:** Framer Motion (Hardware-accelerated)
-- **Icons:** Lucide React
+La paleta nocturna y la constelación de Lyra conservan la referencia visual a Admire Vega. No se usan animaciones continuas ni librerías de animación. Las transiciones y el desplazamiento suave se desactivan con `prefers-reduced-motion`.
 
-## 📦 Installation & Setup
+## Pruebas
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Nattitor/portfolio.git
-   cd portfolio
-   ```
+```sh
+npx playwright install chromium
+npm run build
+npm test
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+Playwright inicia el build de producción en el puerto 3001; debe estar libre. Se comprueban los dos idiomas, persistencia de la cookie, filtros, enlaces, copiado con sus rutas de error, cabeceras y tamaños de 320 a 1440 px. axe revisa accesibilidad en móvil y escritorio; no reemplaza una revisión manual con tecnologías de asistencia. El portapapeles se simula para comprobar éxito, fallback, errores y foco sin modificar el del equipo. Los informes y las capturas se guardan en las carpetas de resultados ignoradas por Git.
 
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
+`npm run check` ejecuta lint, tipos, build y pruebas. Es necesario instalar Chromium antes de usarlo.
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+## Seguridad y despliegue
 
-## 🌐 Deployment
+La política CSP usa un nonce nuevo por petición. Los scripts de producción no permiten `unsafe-inline` ni `unsafe-eval`; los atributos de estilo sí permiten estilos inline por `next/image` y el fallback del portapapeles. En desarrollo se permite `unsafe-eval` y WebSocket para las herramientas de Next.js. Las cabeceras se definen en [next.config.ts](<next.config.ts>) y [proxy.ts](<src/proxy.ts>).
 
-This project is optimized for deployment on [Vercel](https://vercel.com).
+La cookie de idioma es legible por JavaScript porque la modifica el selector; usa `SameSite=Lax` y `Secure` al navegar por HTTPS. No contiene información de autenticación. El sitio no incluye analítica ni formularios que almacenen datos.
 
-1. Push your code to a GitHub repository.
-2. Import the repository into Vercel.
-3. Vercel will automatically detect Next.js and configure the build settings.
-4. Deploy!
+Se puede desplegar como aplicación Next.js, por ejemplo en Vercel. El renderizado por petición es necesario para el idioma y la CSP; no está configurado como exportación estática. Si cambia el dominio, actualiza `profile.url` en [portfolioData.ts](<src/constants/portfolioData.ts>), usado por la URL canónica, robots y sitemap.
 
-## 📜 License
+Antes de actualizar o publicar, ejecuta también `npm audit` y revisa los avisos aplicables. Que las pruebas pasen no garantiza ausencia de vulnerabilidades.
 
-Designed and developed by [Freddy Guerra (Nattitor)](https://github.com/Nattitor). All rights reserved.
+© Freddy Guerra. Todos los derechos reservados.

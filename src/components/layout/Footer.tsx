@@ -7,17 +7,17 @@ export function Footer() {
   const { t } = useI18n();
 
   return (
-    <footer className="mt-16 md:mt-24 max-w-7xl mx-auto w-full border-t border-vegaCyan/10 pt-8 pb-8 md:pb-12 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-4">
-      <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4 text-xs font-mono text-slate-500 uppercase tracking-widest text-center">
+    <footer className="page-width border-t border-vegaCyan/15 pt-8 pb-28 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4 text-xs font-mono text-slate-400 uppercase tracking-widest">
         <span>© {currentYear} Freddy Guerra</span>
-        <span className="hidden md:inline-block text-slate-700">{"//"}</span>
         <span>{t.footer.rights}</span>
       </div>
-
-      <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-vegaCyan/10 bg-vegaBlue/15">
-        <div className="w-2 h-2 rounded-full bg-starGold animate-pulse" />
-        <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">{t.footer.status}</span>
-      </div>
+      <a
+        href="#home"
+        className="inline-flex min-h-[44px] items-center rounded-full border border-vegaCyan/15 bg-nightDeep/70 px-4 font-mono text-xs text-slate-300 transition-colors hover:border-vegaCyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vegaCyan"
+      >
+        {t.footer.backToTop}
+      </a>
     </footer>
   );
 }

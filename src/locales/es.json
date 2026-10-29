@@ -1,80 +1,95 @@
 {
+  "metadata": {
+    "title": "Freddy Guerra | Desarrollador web",
+    "description": "Soy Freddy Guerra, desarrollador web en Merlo, Buenos Aires. Proyectos con Next.js, React y TypeScript, código y formas de contacto."
+  },
+  "common": {
+    "skipToContent": "Saltar al contenido",
+    "newTab": "se abre en una pestaña nueva"
+  },
   "nav": {
+    "label": "Navegación principal",
     "home": "Inicio",
     "projects": "Proyectos",
-    "about": "Sobre Mí",
-    "contact": "Contacto"
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "switchLanguage": "Switch to English"
   },
   "hero": {
-    "role": "Desarrollador Web",
+    "role": "Desarrollador web",
     "location": "Merlo, Buenos Aires, Argentina",
     "availability": "Disponible para trabajo remoto",
-    "scrollDown": "Desplazar Abajo",
-    "description": "Especializado en interfaces web modernas, asimétricas y con experiencias interactivas de alto impacto visual.",
+    "description": "Desarrollo interfaces web con React, Next.js y TypeScript. Aquí comparto mis proyectos, su código y lo que estoy construyendo.",
     "viewProjects": "Ver proyectos",
-    "portfolioVersion": "[ PORTAFOLIO v2026 ]",
-    "scrollToExplore": "↓ DESPLAZA PARA EXPLORAR"
+    "contact": "Escríbeme"
   },
   "projects": {
-    "sectionTitle": "Obras Destacadas",
-    "heading1": "Proyectos",
-    "heading2": "Destacados",
-    "previewUnavailable": "Vista Previa No Disponible",
-    "liveDemo": "Demo en Vivo",
-    "sourceCode": "Código Fuente",
+    "sectionTitle": "Trabajo reciente",
+    "heading": "Proyectos",
+    "description": "Aplicaciones publicadas y un vistazo a lo que viene.",
+    "filterLabel": "Filtrar proyectos",
+    "filters": {
+      "all": "Todos",
+      "published": "Publicados",
+      "development": "En desarrollo"
+    },
+    "published": "Publicado",
+    "development": "En desarrollo",
+    "liveDemo": "Abrir aplicación",
+    "sourceCode": "Ver código",
+    "imageAlt": "Captura de {title}",
+    "results": "{count} proyectos",
+    "result": "1 proyecto",
+    "empty": "No hay proyectos en esta categoría.",
     "items": {
-      "01": {
-        "category": "FULL-STACK / B2B",
+      "dashboard": {
         "title": "Nattitor Analytics Dashboard",
-        "description": "Dashboard de analíticas de nivel empresarial con paginación del lado del servidor, visualización de datos compleja y animaciones fluidas dentro de un estricto sistema de diseño Dark Brutalist."
+        "category": "Panel de métricas",
+        "description": "Panel de analíticas con gráficos de métricas y una tabla con paginación del lado del servidor. Datos almacenados en Supabase."
       },
-      "project-1": {
-        "category": "Full-Stack",
-        "title": "Apex SaaS Engine",
-        "description": "Dashboard de gestión de recursos y analíticas empresariales construido para flujos de trabajo a gran escala."
+      "vellura": {
+        "title": "Vellura",
+        "category": "Herramientas para postulaciones",
+        "description": "Espacio de trabajo para preparar cartas de presentación y pitches a partir del CV, guardar documentos y exportarlos a PDF.",
+        "note": "La aplicación requiere iniciar sesión."
       },
-      "project-2": {
-        "category": "Integración IA",
-        "title": "NeuraMind AI",
-        "description": "Espacio de trabajo inteligente de próxima generación que integra IA generativa para flujos de contenido creativo."
-      },
-      "project-3": {
-        "category": "Lógica Transaccional",
-        "title": "VogueVault Storefront",
-        "description": "Un motor de comercio electrónico moderno y ultrarrápido con integración completa de la API de Stripe."
-      },
-      "project-4": {
-        "category": "Sockets e Interactividad",
-        "title": "PulseStream Hub",
-        "description": "Espacio de trabajo colaborativo en tiempo real de baja latencia impulsado por arquitectura WebSocket."
+      "miru": {
+        "title": "Miru",
+        "category": "Próximo proyecto",
+        "description": "Estoy trabajando en Miru. Compartiré más detalles y el enlace cuando esté listo."
       }
     }
   },
   "bento": {
     "header": {
-      "sectionTitle": "Identidad Digital",
-      "heading1": "Sobre",
-      "heading2": "Mí"
+      "sectionTitle": "Un poco sobre mí",
+      "heading": "Desarrollo desde Buenos Aires"
     },
     "bio": {
-      "titlePart1": "Software Engineer ",
-      "titleMuted": "obsesionado con el rendimiento y el ",
-      "titlePart2": "diseño pixel-perfect.",
-      "description": "OPERANDO A NIVEL GLOBAL // ENFOCADO EN EQUIPOS REMOTOS DE ALTO NIVEL PARA CREAR EXPERIENCIAS DIGITALES QUE SUPERAN LAS EXPECTATIVAS."
+      "title": "Soy Freddy, también conocido como Nattitor.",
+      "description": "Me interesa crear interfaces claras que funcionen bien en el día a día. Trabajo con React y TypeScript, y en mis proyectos conecto la interfaz con datos y servicios. Busco oportunidades de trabajo remoto y colaboración."
+    },
+    "location": { "localTime": "Hora local" },
+    "stack": {
+      "title": "Tecnologías",
+      "description": "Herramientas que uso en mis proyectos."
     },
     "contact": {
-      "letsTalk": "// HABLEMOS",
-      "success": "// ÉXITO",
-      "copied": "¡Copiado al Portapapeles!",
-      "ready": "Listo para pegar",
-      "click": "Clic para copiar email"
+      "letsTalk": "Hablemos",
+      "description": "Para propuestas de trabajo o para conversar sobre un proyecto, puedes escribirme por correo.",
+      "copy": "Copiar correo",
+      "copying": "Copiando…",
+      "copied": "Correo copiado.",
+      "error": "No se pudo copiar. Puedes seleccionar el correo o abrir tu aplicación de correo.",
+      "send": "Enviar correo"
     },
     "social": {
-      "connect": "Conectar"
+      "connect": "También puedes encontrarme en",
+      "visit": "Ver perfil en {service}"
     }
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
-    "status": "Sistema Operativo"
+    "backToTop": "Volver al inicio"
   }
 }

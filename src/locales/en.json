@@ -1,75 +1,95 @@
 {
+  "metadata": {
+    "title": "Freddy Guerra | Web Developer",
+    "description": "I'm Freddy Guerra, a web developer based in Merlo, Buenos Aires. Explore my Next.js, React and TypeScript projects, source code and contact details."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "newTab": "opens in a new tab"
+  },
   "nav": {
+    "label": "Main navigation",
     "home": "Home",
     "projects": "Projects",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "switchLanguage": "Cambiar a español"
   },
   "hero": {
-    "role": "Web Developer",
+    "role": "Web developer",
     "location": "Merlo, Buenos Aires, Argentina",
     "availability": "Available for remote work",
-    "scrollDown": "Scroll Down",
-    "description": "Specialized in modern, asymmetric web interfaces with high visual impact interactive experiences.",
-    "viewProjects": "View Projects",
-    "portfolioVersion": "[ PORTFOLIO v2026 ]",
-    "scrollToExplore": "↓ SCROLL TO EXPLORE"
+    "description": "I build web interfaces with React, Next.js and TypeScript. Here you'll find my projects, their source code and what I'm working on next.",
+    "viewProjects": "View projects",
+    "contact": "Get in touch"
   },
   "projects": {
-    "sectionTitle": "Selected Works",
-    "heading1": "Featured",
-    "heading2": "Projects",
-    "previewUnavailable": "Preview Unavailable",
-    "liveDemo": "Live Demo",
-    "sourceCode": "Source Code",
+    "sectionTitle": "Recent work",
+    "heading": "Projects",
+    "description": "Published applications and a look at what's next.",
+    "filterLabel": "Filter projects",
+    "filters": {
+      "all": "All",
+      "published": "Published",
+      "development": "In development"
+    },
+    "published": "Published",
+    "development": "In development",
+    "liveDemo": "Open application",
+    "sourceCode": "View code",
+    "imageAlt": "Screenshot of {title}",
+    "results": "{count} projects",
+    "result": "1 project",
+    "empty": "No projects in this category.",
     "items": {
-      "project-1": {
-        "category": "Full-Stack",
-        "title": "Apex SaaS Engine",
-        "description": "Enterprise resource and analytics management dashboard built for high-scale workflows."
+      "dashboard": {
+        "title": "Nattitor Analytics Dashboard",
+        "category": "Metrics dashboard",
+        "description": "An analytics dashboard with metric charts and a server-paginated table. Data is stored in Supabase."
       },
-      "project-2": {
-        "category": "AI Integration",
-        "title": "NeuraMind AI",
-        "description": "Next-gen intelligent workspace integrating generative AI for creative content workflows."
+      "vellura": {
+        "title": "Vellura",
+        "category": "Job application tools",
+        "description": "A workspace for preparing cover letters and pitches from a CV, saving documents and exporting them to PDF.",
+        "note": "The application requires sign-in."
       },
-      "project-3": {
-        "category": "Transactional Logic",
-        "title": "VogueVault Storefront",
-        "description": "A modern, lightning-fast e-commerce engine with full Stripe API integration."
-      },
-      "project-4": {
-        "category": "Sockets & Interactivity",
-        "title": "PulseStream Hub",
-        "description": "Low-latency real-time collaborative workspace powered by WebSocket architecture."
+      "miru": {
+        "title": "Miru",
+        "category": "Coming next",
+        "description": "I'm working on Miru. I'll share more details and a link when it's ready."
       }
     }
   },
   "bento": {
     "header": {
-      "sectionTitle": "Digital Identity",
-      "heading1": "About",
-      "heading2": "Me"
+      "sectionTitle": "A little about me",
+      "heading": "Building from Buenos Aires"
     },
     "bio": {
-      "titlePart1": "Software Engineer ",
-      "titleMuted": "obsessed with performance and ",
-      "titlePart2": "pixel-perfect design.",
-      "description": "OPERATING GLOBALLY // FOCUSED ON HIGH-PERFORMANCE REMOTE TEAMS TO CREATE DIGITAL EXPERIENCES THAT EXCEED EXPECTATIONS."
+      "title": "I'm Freddy, also known as Nattitor.",
+      "description": "I like building clear interfaces that work well in everyday use. I work with React and TypeScript, connecting the interface to data and services in my projects. I'm looking for remote work and opportunities to collaborate."
+    },
+    "location": { "localTime": "Local time" },
+    "stack": {
+      "title": "Technologies",
+      "description": "Tools I use in my projects."
     },
     "contact": {
-      "letsTalk": "// LET'S TALK",
-      "success": "// SUCCESS",
-      "copied": "Copied to Clipboard!",
-      "ready": "Ready to paste",
-      "click": "Click to copy email address"
+      "letsTalk": "Let's talk",
+      "description": "For work opportunities or to discuss a project, you can reach me by email.",
+      "copy": "Copy email",
+      "copying": "Copying…",
+      "copied": "Email copied.",
+      "error": "Could not copy. Select the address or open your email app.",
+      "send": "Send email"
     },
     "social": {
-      "connect": "Connect"
+      "connect": "You can also find me on",
+      "visit": "View profile on {service}"
     }
   },
   "footer": {
     "rights": "All rights reserved.",
-    "status": "System Normal"
+    "backToTop": "Back to top"
   }
 }
