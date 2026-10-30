@@ -12,7 +12,7 @@ Está hecho con Next.js, React, TypeScript y Tailwind CSS. Se puede ver en espa�
 - [Vellura](https://github.com/Nattitor/Vellura): un espacio para preparar cartas de presentación y pitches a partir del CV, guardar documentos y exportarlos a PDF. Para usar la aplicación hay que iniciar sesión.
 - **Miru**: todavía en desarrollo. Voy a compartir el enlace cuando esté listo.
 
-El diseño está inspirado en Ayabe (Admire Vega, de Umamusume): tonos nocturnos, la constelación de Lyra y algunos detalles dorados. La N del logo lleva una pequeña estrella de Vega. La portada de Vellura usa [el logo del propio proyecto](https://github.com/Nattitor/Vellura/blob/c965328bffa742b108ad3880cc1d32db523ac272/components/ui/vellura-logo.tsx), no una captura de su interfaz.
+La portada de Vellura usa [el logo del propio proyecto](https://github.com/Nattitor/Vellura/blob/c965328bffa742b108ad3880cc1d32db523ac272/components/ui/vellura-logo.tsx), no una captura de su interfaz.
 
 ## Correrlo en local
 
