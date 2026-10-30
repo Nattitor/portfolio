@@ -1,65 +1,60 @@
 # Nattitor — portafolio
 
-Portafolio de Freddy Guerra, desarrollador web en Merlo, Buenos Aires.
+Soy Freddy Guerra, desarrollador web en Merlo, Buenos Aires. Acá comparto mis proyectos, su código y lo que estoy construyendo.
 
-[Sitio publicado](https://nattitor-portfolio.vercel.app) · [GitHub](https://github.com/Nattitor)
+[Ver el portafolio](https://nattitor-portfolio.vercel.app) · [Mi GitHub](https://github.com/Nattitor)
 
-## Desarrollo
+Está hecho con Next.js, React, TypeScript y Tailwind CSS. Se puede ver en español e inglés y filtrar los proyectos por estado.
 
-Requiere Node.js 22 desde la versión 22.13, o Node.js 24 o posterior. Probado con Node.js 24 y npm 11.
+## Proyectos
+
+- [Nattitor Analytics Dashboard](https://github.com/Nattitor/b2b-dashboard): un panel de métricas con Supabase y Recharts.
+- [Vellura](https://github.com/Nattitor/Vellura): un espacio para preparar cartas de presentación y pitches a partir del CV, guardar documentos y exportarlos a PDF. Para usar la aplicación hay que iniciar sesión.
+- **Miru**: todavía en desarrollo. Voy a compartir el enlace cuando esté listo.
+
+El diseño está inspirado en Ayabe (Admire Vega, de Umamusume): tonos nocturnos, la constelación de Lyra y algunos detalles dorados. La N del logo lleva una pequeña estrella de Vega. La portada de Vellura usa [el logo del propio proyecto](https://github.com/Nattitor/Vellura/blob/c965328bffa742b108ad3880cc1d32db523ac272/components/ui/vellura-logo.tsx), no una captura de su interfaz.
+
+## Correrlo en local
+
+Necesitás Node.js 22 (desde la versión 22.13) o 24 en adelante, y npm.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Abre http://localhost:3000. No necesita variables de entorno ni servicios externos para funcionar.
+Después, abrí http://localhost:3000. No hace falta configurar variables de entorno ni conectar una base de datos. Las fuentes se descargan durante el build con `next/font` y después se sirven desde el sitio.
+
+Para probar el build de producción:
 
 ```sh
-npm run lint
-npm run typecheck
 npm run build
 npm run start
 ```
 
-El proyecto usa Next.js App Router, React, TypeScript y Tailwind CSS. Las fuentes se descargan durante el build mediante `next/font` y se sirven desde el propio sitio. ESLint 10 carga directamente las reglas de Next.js, TypeScript y React Hooks; no se usa el paquete agregado `eslint-config-next`, cuyos plugins de React, importaciones y accesibilidad aún declaran compatibilidad solo hasta ESLint 9. La accesibilidad se comprueba con axe y las pruebas de teclado indicadas abajo.
-
-## Contenido
-
-- [Nattitor Analytics Dashboard](https://github.com/Nattitor/b2b-dashboard): panel de métricas con Supabase y Recharts.
-- [Vellura](https://github.com/Nattitor/Vellura): documentos para postulaciones a partir del CV. Su aplicación publicada requiere iniciar sesión.
-- Miru: en desarrollo; todavía no se muestra un enlace público.
-
-Los enlaces, estados y tecnologías se editan en [portfolioData.ts](<src/constants/portfolioData.ts>). Los textos están en los diccionarios [español](<src/locales/es.json>) e [inglés](<src/locales/en.json>). Las descripciones de los proyectos no sustituyen una auditoría de sus repositorios o servicios.
-
-El idioma inicial se resuelve en el servidor con la cookie `portfolio-lang`; sin una preferencia válida se usa español. El selector conserva la preferencia durante un año y actualiza el idioma del documento, el título y la descripción. Los filtros no se reinician al cambiar de idioma.
-
-La paleta nocturna azul/violeta, Lyra y los pequeños acentos dorados conservan la referencia a Ayabe (Admire Vega, Umamusume). El monograma N comparte el SVG del header y del favicon e integra la estrella de Vega. La estrella fugaz recuerda «Like a Shooting Star»: aparece una sola vez, junto con una entrada breve del hero. No hay animaciones continuas ni librerías de animación; las entradas, el destello, las transiciones y el desplazamiento suave se desactivan con `prefers-reduced-motion`.
-
-La navegación inferior se oculta al bajar y reaparece al subir, con un pequeño umbral para evitar parpadeos. Reaparece al usar Tab y permanece visible mientras contiene foco de teclado; el foco de un clic no la deja fijada. Sus transiciones también respetan el movimiento reducido.
-
-La portada de Vellura muestra su nombre y el [logo vectorial original](https://github.com/Nattitor/Vellura/blob/c965328bffa742b108ad3880cc1d32db523ac272/components/ui/vellura-logo.tsx), servido localmente desde [vellura-logo.svg](<public/images/projects/vellura-logo.svg>). Se conservaron geometría y colores, se recortó el margen vacío y se eliminó una definición de filtro duplicada sin uso. No es una captura de la aplicación.
-
-## Pruebas
+## Comprobaciones
 
 ```sh
 npx playwright install chromium
-npm run build
-npm test
+npm run check
 ```
 
-Playwright inicia el build de producción en el puerto 3001; debe estar libre. Se comprueban los dos idiomas, persistencia de la cookie, filtros, enlaces, copiado con sus rutas de error, cabeceras y tamaños de 320 a 1440 px. axe revisa accesibilidad en móvil y escritorio; no reemplaza una revisión manual con tecnologías de asistencia. El portapapeles se simula para comprobar éxito, fallback, errores y foco sin modificar el del equipo. Los informes y las capturas se guardan en las carpetas de resultados ignoradas por Git.
+Esto ejecuta ESLint, la comprobación de tipos, el build y las pruebas de Playwright. Las pruebas usan el puerto 3001, así que tiene que estar libre.
 
-`npm run check` ejecuta lint, tipos, build y pruebas. Es necesario instalar Chromium antes de usarlo.
+Se revisan los idiomas, filtros, enlaces, copiado del correo, navegación con teclado y distintos tamaños de pantalla. También hay comprobaciones de accesibilidad con axe y de las cabeceras de seguridad. El portapapeles se simula: las pruebas no cambian lo que tengas copiado.
 
-## Seguridad y despliegue
+Para revisar las dependencias, podés ejecutar `npm audit`.
 
-La política CSP usa un nonce nuevo por petición. Los scripts de producción no permiten `unsafe-inline` ni `unsafe-eval`; los atributos de estilo sí permiten estilos inline por `next/image` y el fallback del portapapeles. En desarrollo se permite `unsafe-eval` y WebSocket para las herramientas de Next.js. Las cabeceras se definen en [next.config.ts](<next.config.ts>) y [proxy.ts](<src/proxy.ts>).
+## Cambiar el contenido
 
-La cookie de idioma es legible por JavaScript porque la modifica el selector; usa `SameSite=Lax` y `Secure` al navegar por HTTPS. No contiene información de autenticación. El sitio no incluye analítica ni formularios que almacenen datos.
+Los proyectos, enlaces y tecnologías están en [portfolioData.ts](<src/constants/portfolioData.ts>). Los textos se editan en los diccionarios de [español](<src/locales/es.json>) e [inglés](<src/locales/en.json>).
 
-Se puede desplegar como aplicación Next.js, por ejemplo en Vercel. El renderizado por petición es necesario para el idioma y la CSP; no está configurado como exportación estática. Si cambia el dominio, actualiza `profile.url` en [portfolioData.ts](<src/constants/portfolioData.ts>), usado por la URL canónica, robots y sitemap.
+El sitio abre en español si no hay una preferencia guardada. Al cambiar de idioma, lo recuerda con una cookie y mantiene el filtro de proyectos que hayas elegido.
 
-Antes de actualizar o publicar, ejecuta también `npm audit` y revisa los avisos aplicables. Que las pruebas pasen no garantiza ausencia de vulnerabilidades.
+## Despliegue
+
+Se puede desplegar en Vercel o en un servidor con soporte para Next.js. Necesita renderizado en el servidor para resolver el idioma y generar el nonce de la CSP; no está configurado como exportación estática.
+
+Si cambiás el dominio, actualizá `profile.url` en [portfolioData.ts](<src/constants/portfolioData.ts>): de ahí salen la URL canónica, robots y sitemap. Las cabeceras de seguridad están en [next.config.ts](<next.config.ts>) y [proxy.ts](<src/proxy.ts>).
 
 © Freddy Guerra. Todos los derechos reservados.
