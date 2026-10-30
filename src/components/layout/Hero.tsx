@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowDownRight, ArrowUpRight, MapPin } from "lucide-react";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { LyraConstellation, ShootingStar } from "@/components/ui/VegaSky";
@@ -12,7 +13,10 @@ export function Hero() {
   return (
     <section id="home" aria-labelledby="home-heading" className="page-width hero-section">
       <div className="hero-topline">
-        <p className="font-display text-lg font-medium tracking-wide text-paper">{portfolioData.profile.handle}<span aria-hidden="true" className="text-starGold">.</span></p>
+        <p className="hero-brand font-display text-lg font-medium tracking-wide text-paper">
+          <Image src="/icon.svg" alt="" aria-hidden="true" width={36} height={36} />
+          <span>{portfolioData.profile.handle}<span aria-hidden="true" className="text-starGold">.</span></span>
+        </p>
         <StatusBadge statusText={t.hero.availability} />
       </div>
       <div className="hero-body">

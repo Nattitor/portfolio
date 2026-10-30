@@ -6,7 +6,9 @@ const projects = ["Nattitor Analytics Dashboard", "Vellura", "Miru"];
 const contactStatus = (page: Page) => page.locator("#contact [role='status']");
 
 async function switchToEnglish(page: Page) {
-  await page.getByRole("button", { name: "Switch to English", exact: true }).click();
+  const languageButton = page.getByRole("button", { name: "Switch to English", exact: true });
+  await languageButton.focus();
+  await languageButton.click();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
 }
 
@@ -39,9 +41,12 @@ test("Spanish SSR, keyboard navigation, projects and production security headers
   await expect(miru.getByText("En desarrollo", { exact: true })).toBeVisible();
   await expect(miru.locator("a, img")).toHaveCount(0);
   await expect(page.locator('a[href="#"]')).toHaveCount(0);
-  const image = page.locator("#projects img");
-  await image.scrollIntoViewIfNeeded();
-  await expect.poll(() => image.evaluate((node: HTMLImageElement) => node.complete && node.naturalWidth > 0)).toBe(true);
+  const images = page.locator("#projects img, .hero-brand img");
+  await expect(images).toHaveCount(3);
+  for (const image of await images.all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(() => image.evaluate((node: HTMLImageElement) => node.complete && node.naturalWidth > 0)).toBe(true);
+  }
   for (const link of await page.locator('a[target="_blank"]').all()) {
     await expect(link).toHaveAttribute("rel", /noopener/);
     await expect(link).toHaveAttribute("rel", /noreferrer/);

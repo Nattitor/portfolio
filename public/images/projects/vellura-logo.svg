@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="90 200 820 600" width="820" height="600" fill="none">
+  <!-- Original Vellura logo, c965328bffa742b108ad3880cc1d32db523ac272, components/ui/vellura-logo.tsx. Only the empty viewport margins were trimmed; the unused duplicate filter ID was removed. -->
+  <defs>
+    <linearGradient id="vellura-purple-edge" x1="110" y1="220" x2="400" y2="780" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6741C8"/>
+      <stop offset="0.45" stop-color="#974BEE"/>
+      <stop offset="0.75" stop-color="#D66BEA"/>
+      <stop offset="1" stop-color="#8C4AE1"/>
+    </linearGradient>
+    <linearGradient id="vellura-purple-main" x1="170" y1="230" x2="430" y2="770" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#37216D"/>
+      <stop offset="0.35" stop-color="#6631B5"/>
+      <stop offset="0.68" stop-color="#8A28C9"/>
+      <stop offset="1" stop-color="#A85EE5"/>
+    </linearGradient>
+    <linearGradient id="vellura-purple-light" x1="190" y1="220" x2="400" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9A6DE9" stop-opacity="0.15"/>
+      <stop offset="0.55" stop-color="#9C54F5" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#D56DF3" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="vellura-purple-shadow" x1="150" y1="300" x2="420" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#21164B" stop-opacity="0.75"/>
+      <stop offset="0.55" stop-color="#3C237D" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#A45DE8" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="vellura-cyan-edge" x1="890" y1="220" x2="600" y2="780" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#58E8EF"/>
+      <stop offset="0.3" stop-color="#2CD8E7"/>
+      <stop offset="0.65" stop-color="#27B9EC"/>
+      <stop offset="1" stop-color="#4BC9F4"/>
+    </linearGradient>
+    <linearGradient id="vellura-cyan-main" x1="830" y1="230" x2="570" y2="770" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#42D9E1"/>
+      <stop offset="0.4" stop-color="#17BDD8"/>
+      <stop offset="0.72" stop-color="#139AD9"/>
+      <stop offset="1" stop-color="#1F7BE0"/>
+    </linearGradient>
+    <linearGradient id="vellura-cyan-light" x1="600" y1="220" x2="820" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B4FFFF" stop-opacity="0.25"/>
+      <stop offset="0.45" stop-color="#59EEF2" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#55D9EF" stop-opacity="0.25"/>
+    </linearGradient>
+    <linearGradient id="vellura-cyan-shadow" x1="850" y1="300" x2="580" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#176F99" stop-opacity="0.45"/>
+      <stop offset="0.55" stop-color="#0E7EBB" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2460B9" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="vellura-center-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(500 560) rotate(90) scale(115 95)">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="0.18" stop-color="#FFFFFF" stop-opacity="0.72"/>
+      <stop offset="0.38" stop-color="#EAF3FF" stop-opacity="0.42"/>
+      <stop offset="0.62" stop-color="#D8B8FF" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#8B4CFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="vellura-center" x1="450" y1="500" x2="560" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D6CBFF" stop-opacity="0.12"/>
+      <stop offset="0.32" stop-color="#FFFFFF" stop-opacity="0.78"/>
+      <stop offset="0.55" stop-color="#E7F7FF" stop-opacity="0.62"/>
+      <stop offset="0.8" stop-color="#A9E8FF" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#7ED9FF" stop-opacity="0.12"/>
+    </linearGradient>
+    <linearGradient id="vellura-highlight" x1="425" y1="520" x2="585" y2="665" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.38" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="0.52" stop-color="#FFFFFF" stop-opacity="0.88"/>
+      <stop offset="0.64" stop-color="#FFFFFF" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="vellura-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="vellura-soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  <path d="M110 220L400 220L500 515L630 780L370 780Z" fill="url(#vellura-purple-edge)"/>
+  <path d="M120 227L397 227L500 515L370 770Z" fill="url(#vellura-purple-main)"/>
+  <path d="M120 227L397 227L500 515Z" fill="url(#vellura-purple-light)"/>
+  <path d="M120 227L370 770L500 515Z" fill="url(#vellura-purple-shadow)"/>
+  <path d="M500 515L370 770L500 770L565 640Z" fill="#8A42D6" fill-opacity="0.22"/>
+  <path d="M120 227L500 515L370 770" stroke="#C99AFF" stroke-opacity="0.32" stroke-width="3"/>
+  <path d="M397 227L500 515L370 770" stroke="#D9B4FF" stroke-opacity="0.18" stroke-width="3"/>
+  <path d="M600 220L890 220L630 780L370 780L500 515Z" fill="url(#vellura-cyan-edge)"/>
+  <path d="M603 227L880 227L630 770L500 515Z" fill="url(#vellura-cyan-main)"/>
+  <path d="M603 227L880 227L500 515Z" fill="url(#vellura-cyan-light)"/>
+  <path d="M880 227L630 770L500 515Z" fill="url(#vellura-cyan-shadow)"/>
+  <path d="M500 515L630 770L565 640Z" fill="#1D8FE0" fill-opacity="0.18"/>
+  <path d="M603 227L500 515L630 770" stroke="#9BFAFF" stroke-opacity="0.38" stroke-width="3"/>
+  <path d="M880 227L500 515L630 770" stroke="#B6F9FF" stroke-opacity="0.22" stroke-width="3"/>
+  <ellipse cx="500" cy="555" rx="90" ry="78" fill="url(#vellura-center-glow)" opacity="0.55" filter="url(#vellura-glow)"/>
+  <path d="M500 515L370 770L630 770Z" fill="url(#vellura-center)" fill-opacity="0.48"/>
+  <path d="M500 515L555 625L630 770L500 700L370 770L445 625Z" fill="url(#vellura-center)" fill-opacity="0.62"/>
+  <path d="M435 535L500 515L585 675L548 640Z" fill="url(#vellura-highlight)"/>
+  <ellipse cx="500" cy="550" rx="34" ry="45" fill="url(#vellura-center-glow)" opacity="0.58" filter="url(#vellura-soft-glow)"/>
+  <path d="M500 515L520 565L630 770L540 635Z" fill="#FFFFFF" fill-opacity="0.26"/>
+  <path d="M500 515L370 770L500 700L630 770L500 515Z" stroke="#FFFFFF" stroke-opacity="0.20" stroke-width="3"/>
+  <path d="M370 780L630 780" stroke="#D9E8FF" stroke-opacity="0.65" stroke-width="4"/>
+  <path d="M110 220L400 220" stroke="#8D61E8" stroke-width="6"/>
+  <path d="M600 220L890 220" stroke="#5DECF0" stroke-width="6"/>
+  <path d="M110 220L370 780" stroke="#6B42D1" stroke-width="5" stroke-opacity="0.75"/>
+  <path d="M890 220L630 780" stroke="#43D9F0" stroke-width="5" stroke-opacity="0.75"/>
+  <path d="M370 780L630 780" stroke="#D9E8FF" stroke-opacity="0.7" stroke-width="5"/>
+</svg>

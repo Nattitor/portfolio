@@ -34,7 +34,11 @@ Los enlaces, estados y tecnologías se editan en [portfolioData.ts](<src/constan
 
 El idioma inicial se resuelve en el servidor con la cookie `portfolio-lang`; sin una preferencia válida se usa español. El selector conserva la preferencia durante un año y actualiza el idioma del documento, el título y la descripción. Los filtros no se reinician al cambiar de idioma.
 
-La paleta nocturna azul/violeta, Lyra y los pequeños acentos dorados conservan la referencia a Ayabe (Admire Vega, Umamusume). La estrella fugaz recuerda «Like a Shooting Star»: aparece una sola vez, junto con una entrada breve del hero. No hay animaciones continuas ni librerías de animación; las entradas, el destello, las transiciones y el desplazamiento suave se desactivan con `prefers-reduced-motion`. La portada de Vellura es una ilustración de documentos, no una captura de la aplicación.
+La paleta nocturna azul/violeta, Lyra y los pequeños acentos dorados conservan la referencia a Ayabe (Admire Vega, Umamusume). El monograma N comparte el SVG del header y del favicon e integra la estrella de Vega. La estrella fugaz recuerda «Like a Shooting Star»: aparece una sola vez, junto con una entrada breve del hero. No hay animaciones continuas ni librerías de animación; las entradas, el destello, las transiciones y el desplazamiento suave se desactivan con `prefers-reduced-motion`.
+
+La navegación inferior se oculta al bajar y reaparece al subir, con un pequeño umbral para evitar parpadeos. Reaparece al usar Tab y permanece visible mientras contiene foco de teclado; el foco de un clic no la deja fijada. Sus transiciones también respetan el movimiento reducido.
+
+La portada de Vellura muestra su nombre y el [logo vectorial original](https://github.com/Nattitor/Vellura/blob/c965328bffa742b108ad3880cc1d32db523ac272/components/ui/vellura-logo.tsx), servido localmente desde [vellura-logo.svg](<public/images/projects/vellura-logo.svg>). Se conservaron geometría y colores, se recortó el margen vacío y se eliminó una definición de filtro duplicada sin uso. No es una captura de la aplicación.
 
 ## Pruebas
 

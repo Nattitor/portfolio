@@ -131,6 +131,13 @@
     padding-bottom: 1.25rem;
   }
 
+  .hero-brand {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
   .hero-body {
     position: relative;
     isolation: isolate;
@@ -339,26 +346,26 @@
   }
 
   .project-cover-vellura {
+    display: flex;
     aspect-ratio: 16 / 7;
-    background: radial-gradient(ellipse at 80% 20%, #3865a13b, transparent 65%), linear-gradient(125deg, #1d253b, #23233d);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    background: radial-gradient(ellipse at 50% 25%, #3865a126, transparent 65%), linear-gradient(125deg, #101727, #1c1930);
+  }
+
+  .vellura-logo {
+    width: clamp(6rem, 11vw, 9rem);
+    height: auto;
   }
 
   .project-cover-wordmark {
-    position: absolute;
-    z-index: 1;
-    top: 1.5rem;
-    left: 1.5rem;
-    color: var(--color-paper);
-    font-family: var(--font-display);
-    font-size: clamp(1.65rem, 3vw, 2rem);
-    font-weight: 500;
+    color: #fff;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
     letter-spacing: -0.04em;
-  }
-
-  .vellura-documents {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    line-height: 1.1;
   }
 
   .project-body {
@@ -625,6 +632,14 @@
     background: #101727f5;
     padding: 0.375rem;
     box-shadow: 0 8px 24px #0005;
+    opacity: 1;
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease;
+  }
+
+  .site-nav[data-scroll-hidden="true"]:not(:has(:focus-visible)) {
+    transform: translateY(calc(100% + 3rem + env(safe-area-inset-bottom)));
+    opacity: 0;
+    pointer-events: none;
   }
 
   .nav-link {
