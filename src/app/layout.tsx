@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { cookies } from "next/headers";
 import { Navbar } from "@/components/layout/Navbar";
-import { LyraConstellation } from "@/components/ui/VegaSky";
 import { I18nProvider } from "@/context/I18nContext";
 import { dictionaries, languageCookie, resolveLanguage } from "@/lib/i18n";
 import { portfolioData } from "@/constants/portfolioData";
@@ -37,9 +36,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html lang={language} className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="relative isolate font-body antialiased">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[900px] overflow-hidden">
-          <div className="vega-starfield absolute inset-0 opacity-25" />
-          <LyraConstellation className="absolute top-64 right-[8%] hidden h-80 w-80 text-vegaCyan/30 md:block" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[800px] overflow-hidden">
+          <div className="vega-starfield absolute inset-0 opacity-30" />
         </div>
         <I18nProvider initialLanguage={language}>
           <Navbar />

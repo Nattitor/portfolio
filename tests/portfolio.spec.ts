@@ -166,7 +166,7 @@ for (const width of [320, 375, 390, 768, 1440]) {
       const footerBox = await page.locator("footer").boundingBox();
       expect(footerBox!.x).toBeGreaterThanOrEqual(20);
       expect(footerBox!.x + footerBox!.width).toBeLessThanOrEqual(width - 20);
-      const nodes = page.locator("#projects article, #projects article h3, #contact, nav, nav a, nav button, footer");
+      const nodes = page.locator("#home .hero-topline, #home h1, #home .hero-actions, #home .hero-location, #projects article, #projects article h3, #contact, nav, nav a, nav button, footer");
       for (const node of await nodes.all()) {
         const box = await node.boundingBox();
         expect(box).not.toBeNull();
@@ -187,10 +187,57 @@ for (const width of [320, 375, 390, 768, 1440]) {
   }
 }
 
-test("reduced motion removes transitions and live clock uses a 24-hour time", async ({ page }) => {
+test("Ayabe sky is decorative and its motion finishes instead of looping", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await expect(page.locator(".hero-sky")).toHaveAttribute("aria-hidden", "true");
+  await expect(page.locator(".hero-constellation")).toHaveAttribute("aria-hidden", "true");
+  for (const node of await page.locator(".hero-name, .hero-constellation, .lyra-vega, .shooting-star").all()) {
+    const motion = await node.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return { name: style.animationName, iterations: style.animationIterationCount, duration: parseFloat(style.animationDuration), delay: parseFloat(style.animationDelay) };
+    });
+    expect(motion.name).not.toBe("none");
+    expect(motion.iterations).toBe("1");
+    expect(motion.duration + motion.delay).toBeLessThanOrEqual(5);
+  }
+  await page.locator(".shooting-star").evaluate(async (node) => {
+    await Promise.all(node.getAnimations().map((animation) => animation.finished));
+  });
+  await expect(page.locator(".shooting-star")).toHaveCSS("opacity", "0");
+  const running = await page.locator("#home").evaluate((node) => node.getAnimations({ subtree: true }).filter((animation) => animation.playState === "running").length);
+  expect(running).toBe(0);
+});
+
+test("desktop composition balances Lyra, keeps Miru compact and bounds section gaps", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+  const selectors = [".hero-intro", ".hero-sky", ".hero-location", "#projects-heading", "#project-list", ".project-dashboard", ".project-vellura", ".project-miru", "#about-heading"];
+  const boxes = await Promise.all(selectors.map((selector) => page.locator(selector).boundingBox()));
+  for (const box of boxes) expect(box).not.toBeNull();
+  const [intro, sky, location, heading, list, dashboard, vellura, miru, about] = boxes;
+  expect(sky!.x).toBeGreaterThan(intro!.x + intro!.width);
+  expect(miru!.x).toBeCloseTo(vellura!.x, 0);
+  expect(miru!.x).toBeGreaterThan(dashboard!.x);
+  expect(miru!.width).toBeLessThan(list!.width * 0.55);
+  expect(miru!.height).toBeLessThan(160);
+  await expect(page.locator(".project-miru .project-body")).toHaveCSS("padding", "0px");
+  expect(heading!.y - location!.y - location!.height).toBeLessThan(180);
+  expect(about!.y - list!.y - list!.height).toBeLessThan(140);
+});
+
+test("reduced motion removes sky animation, hover motion and transitions; clock uses 24-hour time", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   expect(await page.locator("html").evaluate((node) => getComputedStyle(node).scrollBehavior)).toBe("auto");
   expect(await page.locator(".button-primary").first().evaluate((node) => getComputedStyle(node).transitionDuration)).toBe("0s");
+  for (const node of await page.locator(".hero-name, .hero-constellation, .lyra-vega, .shooting-star").all()) {
+    await expect(node).toHaveCSS("animation-name", "none");
+  }
+  await page.locator(".project-dashboard").hover();
+  await expect(page.locator(".project-dashboard")).toHaveCSS("transform", "none");
+  await expect(page.locator(".project-dashboard img")).toHaveCSS("transform", "none");
   await expect(page.locator("#about .tabular-nums")).toHaveText(/^(?:[01]\d|2[0-3]):[0-5]\d$/);
 });

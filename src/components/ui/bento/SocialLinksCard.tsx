@@ -24,12 +24,9 @@ export function SocialLinksCard() {
   const { t } = useI18n();
 
   return (
-    <section className="md:col-span-2 flex flex-col justify-between rounded-2xl border border-vegaCyan/15 bg-nightDeep/70 p-6">
-      <h3 className="mb-6 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-slate-300">
-        <span aria-hidden="true" className="h-2 w-2 rounded-full bg-starGold" />
-        {t.bento.social.connect}
-      </h3>
-      <div className="flex flex-col gap-3">
+    <section>
+      <h3 className="social-heading">{t.bento.social.connect}</h3>
+      <div className="flex flex-col">
         {socials.map(({ name, url, icon: Icon }) => (
           <a
             key={url}
@@ -37,13 +34,13 @@ export function SocialLinksCard() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${t.bento.social.visit.replace("{service}", name)} (${t.common.newTab})`}
-            className="group flex min-h-[44px] items-center justify-between rounded-xl border border-vegaBlue/40 bg-vegaBlue/15 p-3 transition-colors hover:border-vegaCyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vegaCyan"
+            className="social-link"
           >
             <span className="flex items-center gap-3">
-              <span aria-hidden="true" className="flex h-8 w-8 items-center justify-center text-slate-300">
-                <Icon className="h-4 w-4" />
+              <span aria-hidden="true" className="flex h-8 w-8 items-center justify-center">
+                <Icon className="h-5 w-5" />
               </span>
-              <span className="font-mono text-sm font-bold text-slate-300">{name}</span>
+              <span className="text-sm font-medium">{name}</span>
             </span>
             <ArrowUpRight aria-hidden="true" className="h-4 w-4 text-slate-400" strokeWidth={2} />
           </a>

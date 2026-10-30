@@ -34,7 +34,7 @@ Los enlaces, estados y tecnologías se editan en [portfolioData.ts](<src/constan
 
 El idioma inicial se resuelve en el servidor con la cookie `portfolio-lang`; sin una preferencia válida se usa español. El selector conserva la preferencia durante un año y actualiza el idioma del documento, el título y la descripción. Los filtros no se reinician al cambiar de idioma.
 
-La paleta nocturna y la constelación de Lyra conservan la referencia visual a Admire Vega. No se usan animaciones continuas ni librerías de animación. Las transiciones y el desplazamiento suave se desactivan con `prefers-reduced-motion`.
+La paleta nocturna azul/violeta, Lyra y los pequeños acentos dorados conservan la referencia a Ayabe (Admire Vega, Umamusume). La estrella fugaz recuerda «Like a Shooting Star»: aparece una sola vez, junto con una entrada breve del hero. No hay animaciones continuas ni librerías de animación; las entradas, el destello, las transiciones y el desplazamiento suave se desactivan con `prefers-reduced-motion`. La portada de Vellura es una ilustración de documentos, no una captura de la aplicación.
 
 ## Pruebas
 

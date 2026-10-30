@@ -11,13 +11,15 @@ export function BentoSection() {
   const { t } = useI18n();
 
   return (
-    <section id="about" aria-labelledby="about-heading" className="page-width py-16 sm:py-24">
+    <section id="about" aria-labelledby="about-heading" className="page-width about-section">
       <p className="section-kicker">{t.bento.header.sectionTitle}</p>
-      <h2 id="about-heading" className="section-heading mb-8 max-w-3xl">{t.bento.header.heading}</h2>
-      <div className="grid min-w-0 gap-5 md:grid-cols-6">
+      <h2 id="about-heading" className="section-heading">{t.bento.header.heading}</h2>
+      <div className="about-intro">
         <BioCard />
         <LocationCard />
-        <TechStack />
+      </div>
+      <TechStack />
+      <div className="contact-layout">
         <CopyEmailCard />
         <SocialLinksCard />
       </div>

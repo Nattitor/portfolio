@@ -2,7 +2,6 @@
 
 import { useI18n } from "@/context/I18nContext";
 import type { ProjectFilterId } from "@/hooks/useProjectsFilter";
-import { cn } from "@/lib/utils";
 
 const filters: ProjectFilterId[] = ["all", "published", "development"];
 
@@ -13,18 +12,10 @@ export function ProjectFilter({ activeFilter, onFilterChange }: {
   const { t } = useI18n();
 
   return (
-    <div role="group" aria-label={t.projects.filterLabel} className="mb-6 flex flex-wrap gap-2">
+    <div role="group" aria-label={t.projects.filterLabel} className="project-filters">
       {filters.map((filter) => (
-        <button
-          type="button"
-          key={filter}
-          aria-pressed={activeFilter === filter}
-          aria-controls="project-list"
-          onClick={() => onFilterChange(filter)}
-          className={cn("min-h-11 rounded-full border px-4 py-2 text-sm transition-colors", activeFilter === filter
-            ? "border-vegaCyan/50 bg-vegaBlue/25 text-vegaCyan"
-            : "border-vegaCyan/20 text-slate-300 hover:border-vegaCyan/50 hover:text-paper")}
-        >
+        <button type="button" key={filter} aria-pressed={activeFilter === filter} aria-controls="project-list"
+          onClick={() => onFilterChange(filter)} className="project-filter">
           {t.projects.filters[filter]}
         </button>
       ))}
